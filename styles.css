@@ -916,33 +916,28 @@ body.modal-open {
     }
 
     .main-circle {
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
+        display: grid;
+        grid-template-columns: 140px 1fr 140px;
+        gap: 20px;
         padding: 0;
-    }
-
-    .center-image {
-        order: 1;
-        max-width: 90%;
-        margin: 20px auto;
+        max-width: 100%;
     }
 
     .left-circles {
-        order: 2;
-        flex-direction: row;
-        gap: 20px;
+        flex-direction: column;
+        gap: 30px;
         justify-content: center;
-        width: 100%;
     }
 
     .right-circles {
-        order: 3;
-        flex-direction: row;
-        gap: 20px;
+        flex-direction: column;
+        gap: 25px;
         justify-content: center;
-        width: 100%;
-        flex-wrap: wrap;
+    }
+
+    .center-image {
+        max-width: 100%;
+        aspect-ratio: 3/4;
     }
 
     .section-circle {
@@ -963,11 +958,12 @@ body.modal-open {
     }
 
     .section-content h3 {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
+        line-height: 1.1;
     }
 
     .section-content p {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
     }
 
     .nav-btn {
@@ -977,16 +973,11 @@ body.modal-open {
     }
 
     .title {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
 
     .subtitle {
-        font-size: 1rem;
-    }
-
-    #video-background {
-        max-width: 95%;
-        max-height: 70vh;
+        font-size: 0.95rem;
     }
 }
 @media (max-width: 480px) {
