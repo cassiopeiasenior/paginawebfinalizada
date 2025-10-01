@@ -498,7 +498,33 @@
         });
 
         // Pausa del carrusel al pasar mouse
-        $('#theCarousel').carousel({ pause: "hover" });
+        // Configuración del carrusel según el dispositivo
+        if (window.innerWidth <= 768) {
+            // En móviles: desactivar auto-avance
+            $('#theCarousel').carousel({
+                interval: false,  // Desactiva el avance automático
+                pause: "hover"
+            });
+        } else {
+            // En escritorio: mantener auto-avance
+            $('#theCarousel').carousel({
+                interval: 4000,
+                pause: "hover"
+            });
+        }
+
+        // Reconfigurar si cambia el tamaño de la pantalla
+        $(window).on('resize', function () {
+            if (window.innerWidth <= 768) {
+                $('#theCarousel').carousel({
+                    interval: false
+                });
+            } else {
+                $('#theCarousel').carousel({
+                    interval: 4000
+                });
+            }
+        });
 
         // Mostrar/Ocultar círculos al presionar Abrir (usa data-target = id del contenedor)
         document.querySelectorAll('.btn-abrir').forEach(btn => {
@@ -549,7 +575,7 @@
                         const audioFiba = new Audio('assets/flashcards/audio/audioprueba.mp3');
                         audioFiba.play().catch(() => {
                             console.log('Audio de Fiba no disponible');
-                            
+
                         });
                         break;
 
