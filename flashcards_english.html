@@ -561,6 +561,138 @@
             });
         });
 
+        // ===========================
+        // REORGANIZACIÓN DINÁMICA PARA MÓVILES
+        // ===========================
+
+        function reorganizeCarouselForMobile() {
+            const isMobile = window.innerWidth <= 768;
+            const carousel = $('#theCarousel');
+
+            if (isMobile && !carousel.data('mobile-reorganized')) {
+                // Marcar como reorganizado
+                carousel.data('mobile-reorganized', true);
+
+                // Detener el carrusel
+                carousel.carousel('pause');
+
+                // Obtener referencia al carousel-inner
+                const carouselInner = $('.carousel-inner');
+
+                // Crear nuevo HTML para móviles
+                const mobileSlides = `
+            <div class="item active">
+                <div class="cards-wrapper">
+                    ${$('.card-ilari').first().prop('outerHTML')}
+                    ${$('.card-fiba').first().prop('outerHTML')}
+                </div>
+            </div>
+            <div class="item">
+                <div class="cards-wrapper">
+                    ${$('.card-orion').first().prop('outerHTML')}
+                    ${$('.card-nerea').first().prop('outerHTML')}
+                </div>
+            </div>
+            <div class="item">
+                <div class="cards-wrapper">
+                    ${$('.card-cassia').first().prop('outerHTML')}
+                    ${$('.card-gaia').first().prop('outerHTML')}
+                </div>
+            </div>
+            <div class="item">
+                <div class="cards-wrapper">
+                    ${$('.card-deneb').first().prop('outerHTML')}
+                    ${$('.card-sombra').first().prop('outerHTML')}
+                </div>
+            </div>
+            <div class="item">
+                <div class="cards-wrapper">
+                    ${$('.card-personaje9').first().prop('outerHTML')}
+                </div>
+            </div>
+        `;
+
+                // Reemplazar contenido
+                carouselInner.html(mobileSlides);
+
+                // Actualizar indicadores
+                const indicators = $('.carousel-indicators');
+                indicators.html(`
+            <li data-target="#theCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#theCarousel" data-slide-to="1"></li>
+            <li data-target="#theCarousel" data-slide-to="2"></li>
+            <li data-target="#theCarousel" data-slide-to="3"></li>
+            <li data-target="#theCarousel" data-slide-to="4"></li>
+        `);
+
+                // Reiniciar carrusel
+                carousel.carousel({
+                    interval: false,
+                    pause: "hover"
+                });
+
+                // Re-aplicar event listeners
+                reapplyEventListeners();
+
+                console.log('✅ Carrusel reorganizado para móvil');
+            } else if (!isMobile && carousel.data('mobile-reorganized')) {
+                // Si cambió a desktop, recargar la página
+                location.reload();
+            }
+        }
+
+        function reapplyEventListeners() {
+            // Flip de tarjetas
+            $('.card').off('click').on('click', function (e) {
+                const tag = e.target.tagName.toLowerCase();
+                if (tag === 'a' || tag === 'button') return;
+                $(this).toggleClass('flip');
+            });
+
+            // Botones abrir
+            $('.btn-abrir').off('click').on('click', function (e) {
+                e.stopPropagation();
+                const targetId = $(this).data('target');
+                $('#' + targetId).toggleClass('visible');
+            });
+
+            // Audio hover
+            $('.btn-abrir, .circulo').off('mouseenter').on('mouseenter', function () {
+                const audioPath = $(this).data('hover-audio');
+                if (audioPath) playHoverAudio(audioPath);
+            });
+
+            // Funcionalidades de círculos
+            $('.circulo').off('click').on('click', function (e) {
+                e.stopPropagation();
+                const parent = $(this).closest('.circulos-container');
+                const personaje = parent.attr('id').replace('circulos-', '');
+                const index = $(this).index();
+
+                switch (index) {
+                    case 0:
+                        const audio = new Audio('assets/flashcards/audio/audioprueba.mp3');
+                        audio.play().catch(() => console.log('Audio no disponible'));
+                        break;
+                    case 1:
+                        window.open('https://www.youtube.com/results?search_query=lenguaje+señas+colombia', '_blank');
+                        break;
+                    case 2:
+                        window.open(`assets/pdfs/papercraft-${personaje}.pdf`, '_blank');
+                        break;
+                }
+            });
+        }
+
+        // Ejecutar al cargar y al cambiar tamaño
+        $(document).ready(function () {
+            setTimeout(reorganizeCarouselForMobile, 100);
+        });
+
+        $(window).on('resize', function () {
+            clearTimeout(window.resizeTimer);
+            window.resizeTimer = setTimeout(reorganizeCarouselForMobile, 250);
+        });
     </script>
 </body>
 

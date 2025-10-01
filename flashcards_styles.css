@@ -541,128 +541,38 @@ body {
    OPTIMIZACIÓN PARA MÓVILES - 2 TARJETAS
    =========================== */
 
-/* Ocultar elementos mobile-only en desktop */
-@media (min-width: 769px) {
-    .mobile-only {
-        display: none !important;
-    }
-    
-    .mobile-slide {
-        display: none !important;
-    }
-    
-    .carousel-indicators .mobile-only {
-        display: none !important;
-    }
-}
-
-/* Configuración para móviles */
 @media (max-width: 768px) {
-    /* Ocultar elementos desktop */
-    .desktop-only {
-        display: none !important;
-    }
-    
-    /* Mostrar slides mobile */
-    .mobile-slide {
-        display: block !important;
-    }
-    
-    /* Mostrar todos los indicadores en mobile */
-    .carousel-indicators li {
-        display: inline-block !important;
-    }
-    
-    /* Wrapper de tarjetas */
     .cards-wrapper {
         display: flex !important;
         justify-content: center !important;
-        align-items: center !important;
-        gap: 12px !important;
+        gap: 15px !important;
         flex-wrap: nowrap !important;
-        padding: 0 10px;
     }
     
-    /* Tarjetas en móvil - 2 por slide */
     .card {
         max-width: 48% !important;
         min-width: 48% !important;
-        width: 48% !important;
-        height: 480px !important;
         flex: 0 0 48% !important;
-        margin: 0 !important;
+        height: 480px !important;
     }
     
-    /* SOHO solo (última tarjeta) */
-    .mobile-slide .cards-wrapper {
-        justify-content: center !important;
-    }
-    
-    .mobile-slide:last-child .card {
-        max-width: 65% !important;
-        min-width: 65% !important;
-        width: 65% !important;
-        flex: 0 0 65% !important;
-    }
-    
-    /* Mejorar legibilidad del texto */
-    .card .back {
-        padding: 18px !important;
-    }
-    
-    .card .back h3 {
-        font-size: 1.2rem !important;
-        margin-bottom: 10px !important;
-    }
-    
-    .card .back p {
-        font-size: 0.88rem !important;
-        line-height: 1.4 !important;
-    }
-    
-    /* Ajustar controles */
-    .carousel-control {
-        display: block !important;
+    /* SOHO solo */
+    .item:last-child .card:only-child {
+        max-width: 70% !important;
+        min-width: 70% !important;
+        flex: 0 0 70% !important;
     }
 }
 
-/* Móviles muy pequeños */
 @media (max-width: 520px) {
     .card {
         max-width: 47% !important;
         min-width: 47% !important;
-        width: 47% !important;
         height: 440px !important;
-        flex: 0 0 47% !important;
     }
     
-    .mobile-slide:last-child .card {
-        max-width: 80% !important;
-        min-width: 80% !important;
-        width: 80% !important;
-        flex: 0 0 80% !important;
-    }
-    
-    .carousel-control.left,
-    .carousel-control.right {
-        display: none !important;
-    }
-    
-    .carousel-indicators {
-        bottom: -50px !important;
-    }
-    
-    .circulo {
-        width: 36px !important;
-        height: 36px !important;
-    }
-    
-    .btn-abrir {
-        padding: 9px 16px !important;
-        font-size: 0.9rem !important;
-    }
-    
-    .card .back p {
-        font-size: 0.85rem !important;
+    .item:last-child .card:only-child {
+        max-width: 85% !important;
+        min-width: 85% !important;
     }
 }
