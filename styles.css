@@ -321,15 +321,30 @@ body.modal-open {
 /* Derecha: Configuración (azul) */
 /* Derecha: Configuración (azul) - MODIFICADO */
 /* Derecha: Configuración (azul) - Posición absoluta en esquina superior derecha */
+/* Derecha: Configuración (azul) */
 .section-3 {
     background: linear-gradient(135deg, rgba(33, 150, 243, 0.2), rgba(33, 150, 243, 0.1));
     border-color: rgba(33, 150, 243, 0.4);
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    top: -287px;
-    right: 1100px;
-    z-index: 15;
+}
+
+/* Solo en pantallas grandes, posicionar en esquina */
+@media (min-width: 1025px) {
+    .section-3 {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: -287px;
+        right: 1100px;
+        z-index: 15;
+    }
+
+    .section-3 .section-icon {
+        font-size: 1.5rem;
+    }
+
+    .section-3 .section-content h3 {
+        font-size: 0.75rem;
+    }
 }
 
 .section-3 .section-icon {
