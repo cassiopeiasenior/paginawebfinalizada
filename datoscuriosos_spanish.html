@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos Curiosos Estelares - Portal Espacial</title>
+    <link rel="stylesheet" href="datoscuriosos_styles.css">
+</head>
+
+<body>
+    <!--
+    ================================================
+    DATOS CURIOSOS ESTELARES - ESTRUCTURA HTML (17 PERSONAJES CORREGIDA)
+    ================================================
+    Esta página presenta datos curiosos sobre el espacio mediante:
+    - 17 personajes interactivos en carrusel con videos
+    - Globos de texto simplificados que aparecen al hacer hover
+    - Botones de sonido con efectos hover y click
+    - Navegación fluida entre personajes
+    - Botón de regreso al portal principal
+    - Diseño responsive y accesible
+    ================================================
+    -->
+
+    <!-- Fondo animado de estrellas -->
+    <div class="stars" id="starsContainer"></div>
+
+    <!-- Contenedor principal -->
+    <div class="container">
+        <!-- Encabezado con botón de regreso -->
+        <header class="page-header">
+            <button class="back-button" onclick="goBackToPortal()">
+                <span class="back-icon">←</span>
+                <span class="back-text">Regresar al Portal</span>
+            </button>
+            <div class="header-content">
+                <h1 class="page-title">Datos Curiosos Estelares</h1>
+                <p class="page-subtitle">Pasa el cursor sobre cada imagen para conocer datos fascinantes sobre el clima
+                    espacial</p>
+            </div>
+        </header>
+
+        <!-- Título dinámico del dato curioso actual -->
+        <div class="current-topic-header">
+            <h2 class="current-topic-title" id="currentTopicTitle">Tormenta Geomagnética 2024</h2>
+        </div>
+
+        <!-- Contenedor del carrusel de personajes -->
+        <div class="carousel-container">
+            <div class="carousel-wrapper">
+                <!-- Navegación del carrusel -->
+                <button class="carousel-nav prev-btn" onclick="previousCharacter()">
+                    <span>❮</span>
+                </button>
+                <button class="carousel-nav next-btn" onclick="nextCharacter()">
+                    <span>❯</span>
+                </button>
+
+                <!-- Carrusel interno -->
+                <div class="carousel-inner" id="charactersCarousel">
+
+                    <!-- Personaje 1: Deneb - Tormenta Geomagnética 2024 -->
+                    <div class="character-slide active" data-character="deneb">
+                        <div class="character-container">
+                            <div class="character-video">
+                                <video src="assets/datoscuriosos/vids/viddeneb.mp4" autoplay muted loop
+                                    class="character-video-element">
+                                    Tu navegador no soporta videos HTML5.
+                                </video>
+                            </div>
+                            <div class="sound-button-container">
+                                <button class="sound-button" onmouseenter="playHoverSound(0)"
+                                    onclick="playClickSound(0)">
+                                    <span class="sound-icon">🔊</span>
+                                    <span class="sound-waves"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="speech-bubble">
+                            <div class="bubble-content">
+                                <p>¿Te acuerdas de lo que hiciste el 10 de mayo de 2024? ¡Ese día ocurrió la
+                                    tormenta geomagnética más poderosa en décadas! Cientos de eyecciones de masa
+                                    coronal y llamaradas solares golpearon la Tierra, creando un espectáculo de
+                                    auroras que se vio hasta en lugares donde casi nunca aparecen. ¡Me hubiera
+                                    encantado estar ahí para verlas!</p>
+                            </div>
+                            <div class="bubble-arrow"></div>
+                            <div class="bubble-source">
+                                <p>Tomado de: <a
+                                        href="https://science.nasa.gov/science-research/heliophysics/how-nasa-tracked-the-most-intense-solar-storm-in-decades/"
+                                        target="_blank" rel="noopener noreferrer" class="source-link">NASA - Tormenta
+                                        Solar más Intensa</a>
+                                </p>
+                            </div>
+                        </div>
+                        <audio id="hoverSound0" preload="auto">
+                            <source src="assets/datoscuriosos/audio/audiohover.mp3" type="audio/mpeg">
+                        </audio>
+                        <audio id="clickSound0" preload="auto">
+                            <source src="assets/audios/personaje1_click.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+
+                    <!-- Personaje 2: Gaia - Llamaradas Solares -->
+                    <div class="character-slide" data-character="gaia">
+                        <div class="character-container">
+                            <div class="character-video">
+                                <video src="assets/datoscuriosos/vids/vidgaia2.mp4" autoplay muted loop
+                                    class="character-video-element">
+                                    Tu navegador no soporta videos HTML5.
+                                </video>
+                            </div>
+                            <div class="sound-button-container">
+                                <button class="sound-button" onmouseenter="playHoverSound(1)"
+                                    onclick="playClickSound(1)">
+                                    <span class="sound-icon">🔊</span>
+                                    <span class="sound-waves"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="speech-bubble">
+                            <div class="bubble-content">
+                                <p>Las llamaradas solares son tan increíbles que tienen su propia clasificación. Se
+                                    dividen en clases: A, B, C, M, y X, siendo 'X' la más intensa. Imagina esto:
+                                    cada letra representa un salto de energía diez veces mayor que la anterior. ¡Es
+                                    una locura!</p>
+                            </div>
+                            <div class="bubble-arrow"></div>
+                            <div class="bubble-source">
+                                <p>Tomado de: <a href="https://science.nasa.gov/sun/solar-storms-and-flares/"
+                                        target="_blank" rel="noopener noreferrer" class="source-link">NASA - Tormentas y
+                                        Llamaradas Solares</a>
+                                </p>
+                            </div>
+                        </div>
+                        <audio id="hoverSound1" preload="auto">
+                            <source src="assets/datoscuriosos/audio/audiohover.mp3" type="audio/mpeg">
+                        </audio>
+                        <audio id="clickSound1" preload="auto">
+                            <source src="assets/audios/personaje2_click.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+
+                    <!-- Personaje 3: SOHO - Llamarada X28 de 2003 -->
+                    <div class="character-slide" data-character="soho">
+                        <div class="character-container">
+                            <div class="character-video">
+                                <video src="assets/datoscuriosos/vids/vidsoho.mp4" autoplay muted loop
+                                    class="character-video-element">
+                                    Tu navegador no soporta videos HTML5.
+                                </video>
+                            </div>
+                            <div class="sound-button-container">
+                                <button class="sound-button" onmouseenter="playHoverSound(2)"
+                                    onclick="playClickSound(2)">
+                                    <span class="sound-icon">🔊</span>
+                                    <span class="sound-waves"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="speech-bubble">
+                            <div class="bubble-content">
+                                <p>¡Exacto, Gaia! Y hablando de clase X, la más potente registrada con métodos
+                                    modernos fue en 2003. Fue una explosión tan masiva, una llamarada X28, que
+                                    saturó los sensores y se salieron de escala. ¡Fue demasiado poder para ser
+                                    medido!</p>
+                            </div>
+                            <div class="bubble-arrow"></div>
+                            <div class="bubble-source">
+                                <p>Tomado de: <a href="https://science.nasa.gov/sun/solar-storms-and-flares/"
+                                        target="_blank" rel="noopener noreferrer" class="source-link">NASA - Tormentas y
+                                        Llamaradas Solares</a>
+                                </p>
+                            </div>
+                        </div>
+                        <audio id="hoverSound2" preload="auto">
+                            <source src="assets/datoscuriosos/audio/audiohover.mp3" type="audio/mpeg">
+                        </audio>
+                        <audio id="clickSound2" preload="auto">
+                            <source src="assets/audios/personaje3_click.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+
+                    <!-- Personaje 4: SOHO - Eyección de Masa Coronal -->
+                    <div class="character-slide" data-character="soho2">
+                        <div class="character-container">
+                            <div class="character-video">
+                                <video src="assets/datoscuriosos/vids/vidsoho2.mp4" autoplay muted loop
+                                    class="character-video-element">
+                                    Tu navegador no soporta videos HTML5.
+                                </video>
+                            </div>
+                            <div class="sound-button-container">
+                                <button class="sound-button" onmouseenter="playHoverSound(3)"
+                                    onclick="playClickSound(3)">
+                                    <span class="sound-icon">🔊</span>
+                                    <span class="sound-waves"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="speech-bubble">
+                            <div class="bubble-content">
+                                <p>Te apuesto a que no sabías que las eyecciones de masa coronal (CME) se lanzan
+                                    desde el Sol a velocidades asombrosas: desde menos de 250 km/s hasta casi 3000
+                                    km/s. Las más rápidas pueden llegar a la Tierra en solo 15 a 18 horas, mientras
+                                    que a las más lentas les toma varios días. ¡Son unos bólidos cósmicos!</p>
+                            </div>
+                            <div class="bubble-arrow"></div>
+                            <div class="bubble-source">
+                                <p>Tomado de: <a href="https://www.swpc.noaa.gov/phenomena/coronal-mass-ejections"
+                                        target="_blank" rel="noopener noreferrer" class="source-link">NOAA - Eyecciones
+                                        de Masa Coronal</a>
+                                </p>
+                            </div>
+                        </div>
+                        <audio id="hoverSound3" preload="auto">
+                            <source src="assets/datoscuriosos/audio/audiohover.mp3" type="audio/mpeg">
+                        </audio>
+                        <audio id="clickSound3" preload="auto">
+                            <source src="assets/audios/personaje4_click.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+
+                    <!-- Personaje 5: Fiba - Satélites -->
+                    <div class="character-slide" data-character="fiba">
+                        <div class="character-container">
+                            <div class="character-video">
+                                <video src="assets/datoscuriosos/vids/vidfiba.mp4" autoplay muted loop
+                                    class="character-video-element">
+                                    Tu navegador no soporta videos HTML5.
+                                </video>
+                            </div>
+                            <div class="sound-button-container">
+                                <button class="sound-button" onmouseenter="playHoverSound(4)"
+                                    onclick="playClickSound(4)">
+                                    <span class="sound-icon">🔊</span>
+                                    <span class="sound-waves"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="speech-bubble">
+                            <div class="bubble-content">
+                                <p>De grande quiero fabricar satélites, ¡son geniales! Algunos tienen una función
+                                    increíble: pueden ponerse en 'modo seguro' automáticamente durante una tormenta
+                                    solar. Es como si se escondieran en un caparazón de tortuga para proteger sus
+                                    instrumentos de la radiación y los efectos del clima espacial.</p>
+                            </div>
+                            <div class="bubble-arrow"></div>
+                            <div class="bubble-source">
+                                <p>Tomado de: <a
+                                        href="https://www.earthdata.nasa.gov/news/feature-articles/its-always-sunny-space-thats-problem-satellite-teams"
+                                        target="_blank" rel="noopener noreferrer" class="source-link">NASA Earth Data -
+                                        Satélites y Clima Espacial</a>
+                                </p>
+                            </div>
+                        </div>
+                        <audio id="hoverSound4" preload="auto">
+                            <source src="assets/datoscuriosos/audio/audiohover.mp3" type="audio/mpeg">
+                        </audio>
+                        <audio id="clickSound4" preload="auto">
+                            <source src="assets/audios/personaje5_click.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+
+                    <!-- Personaje 6: Cassia - Campo Magnético -->
+                    <div class="character-slide" data-character="cassia">
+                        <div class="character-container">
+                            <div class="character-video">
+                                <video src="assets/datoscuriosos/vids/vidcassia.mp4" autoplay muted loop
+                                    class="character-video-element">
+                                    Tu navegador no soporta videos HTML5.
+                                </video>
+                            </div>
+                            <div class="sound-button-container">
+                                <button class="sound-button" onmouseenter="playHoverSound(5)"
+                                    onclick="playClickSound(5)">
+                                    <span class="sound-icon">🔊</span>
+                                    <span class="sound-waves"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="speech-bubble">
+                            <div class="bubble-content">
+                                <p>Pienso que no apreciamos lo suficiente las capas que nos protegen en la Tierra.
+                                    Por ejemplo, la magnetosfera actúa como un escudo gigante que nos defiende de la
+                                    radiación solar y cósmica dañina. Pero hay un detalle preocupante: en los
+                                    últimos 200 años, el campo magnético de la Tierra se ha debilitado un 9% a nivel
+                                    global. ¡Hay que cuidarlo!</p>
+                            </div>
+                            <div class="bubble-arrow"></div>
+                            <div class="bubble-source">
+                                <p>Tomado de: <a
+                                        href="https://science.nasa.gov/science-research/earth-science/earths-magnetosphere-protecting-our-planet-from-harmful-space-energy/"
+                                        target="_blank" rel="noopener noreferrer" class="source-link">NASA -
+                                        Magnetosfera Terrestre</a>
+                                </p>
+                            </div>
+                        </div>
+                        <audio id="hoverSound5" preload="auto">
+                            <source src="assets/datoscuriosos/audio/audiohover.mp3" type="audio/mpeg">
+                        </audio>
+                        <audio id="clickSound5" preload="auto">
+                            <source src="assets/audios/personaje6_click.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+
+                    <!-- Personaje 7: Nerea - Radiación Solar -->
+                    <div class="character-slide" data-character="nerea">
+                        <div class="character-container">
+                            <div class="character-video">
+                                <video src="assets/datoscuriosos/vids/vidnerea.mp4" autoplay muted loop
+                                    class="character-video-element">
+                                    Tu navegador no soporta videos HTML5.
+                                </video>
+                            </div>
+                            <div class="sound-button-container">
+                                <button class="sound-button" onmouseenter="playHoverSound(6)"
+                                    onclick="playClickSound(6)">
+                                    <span class="sound-icon">🔊</span>
+                                    <span class="sound-waves"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="speech-bubble">
+                            <div class="bubble-content">
+                                <p>Mientras hacía una tarea, encontré un dato que me voló la cabeza: cuando hay una
+                                    llamarada solar muy potente, la radiación que emite (como rayos X y
+                                    ultravioleta) viaja a la velocidad de la luz. Por eso, los efectos de la
+                                    radiación llegan a la Tierra en solo 8 minutos después de la explosión.</p>
+                            </div>
+                            <div class="bubble-arrow"></div>
+                            <div class="bubble-source">
+                                <p>Tomado de: <a href="https://science.nasa.gov/sun/solar-storms-and-flares/"
+                                        target="_blank" rel="noopener noreferrer" class="source-link">NASA - Tormentas y
+                                        Llamaradas Solares</a>
+                                </p>
+                            </div>
+                        </div>
+                        <audio id="hoverSound6" preload="auto">
+                            <source src="assets/datoscuriosos/audio/audiohover.mp3" type="audio/mpeg">
+                        </audio>
+                        <audio id="clickSound6" preload="auto">
+                            <source src="assets/audios/personaje7_click.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+
+                    <!-- Personaje 8: Deneb - Señales de GPS -->
+                    <div class="character-slide" data-character="deneb2">
+                        <div class="character-container">
+                            <div class="character-video">
+                                <video src="assets/datoscuriosos/vids/viddeneb2.mp4" autoplay muted loop
+                                    class="character-video-element">
+                                    Tu navegador no soporta videos HTML5.
+                                </video>
+                            </div>
+                            <div class="sound-button-container">
+                                <button class="sound-button" onmouseenter="playHoverSound(7)"
+                                    onclick="playClickSound(7)">
+                                    <span class="sound-icon">🔊</span>
+                                    <span class="sound-waves"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="speech-bubble">
+                            <div class="bubble-content">
+                                <p>La comunicación es mi pasión, y la de la radio también, pero ¿sabías que las
+                                    tormentas magnéticas pueden interferir con las comunicaciones de radio de alta
+                                    frecuencia y la navegación GPS? Son tan disruptivas que me recuerdan a mí;
+                                    ¡deberían llamarme 'tormenta' a partir de ahora!</p>
+                            </div>
+                            <div class="bubble-arrow"></div>
+                            <div class="bubble-source">
+                                <p>Tomado de: <a
+                                        href="https://science.nasa.gov/heliophysics/science-questions/how-does-solar-variability-affect-human-society-technological-systems-and-the-habitability-of-planets/"
+                                        target="_blank" rel="noopener noreferrer" class="source-link">NASA -
+                                        Variabilidad Solar y Sociedad</a>
+                                </p>
+                            </div>
+                        </div>
+                        <audio id="hoverSound7" preload="auto">
+                            <source src="assets/datoscuriosos/audio/audiohover.mp3" type="audio/mpeg">
+                        </audio>
+                        <audio id="clickSound7" preload="auto">
+                            <source src="assets/audios/personaje8_click.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+
+                    <!-- Personaje 9: Orión - Red Eléctrica -->
+                    <div class="character-slide" data-character="orion">
+                        <div class="character-container">
+                            <div class="character-video">
+                                <video src="assets/datoscuriosos/vids/vidorion.mp4" autoplay muted loop
+                                    class="character-video-element">
+                                    Tu navegador no soporta videos HTML5.
+                                </video>
+                            </div>
+                            <div class="sound-button-container">
+                                <button class="sound-button" onmouseenter="playHoverSound(8)"
+                                    onclick="playClickSound(8)">
+                                    <span class="sound-icon">🔊</span>
+                                    <span class="sound-waves"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="speech-bubble">
+                            <div class="bubble-content">
+                                <p>Si alguna vez te quedas a oscuras y no sabes por qué, piensa en una tormenta
+                                    geomagnética. Estas tormentas pueden inducir corrientes eléctricas que viajan por
+                                    las líneas de transmisión, transformadores y otros componentes, causando picos de
+                                    voltaje, daños e incluso apagones. ¡El espacio puede apagar tu luz!</p>
+                            </div>
+                            <div class="bubble-arrow"></div>
+                            <div class="bubble-source">
+                                <p>Tomado de: <a href="https://www.cisa.gov/news-events/ics-advisories/icsa-11-084-01"
+                                        target="_blank" rel="noopener noreferrer" class="source-link">CISA - Tormentas
+                                        Geomagnéticas</a>
+                                </p>
+                            </div>
+                        </div>
+                        <audio id="hoverSound8" preload="auto">
+                            <source src="assets/datoscuriosos/audio/audiohover.mp3" type="audio/mpeg">
+                        </audio>
+                        <audio id="clickSound8" preload="auto">
+                            <source src="assets/audios/personaje9_click.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+
+                    <!-- Personaje 10: Sombra Solar - Telecomunicaciones y Paneles Solares -->
+                    <div class="character-slide" data-character="sombra-solar">
+                        <div class="character-container">
+                            <div class="character-video">
+                                <video src="assets/datoscuriosos/vids/vidsombrasolar.mp4" autoplay muted loop
+                                    class="character-video-element">
+                                    Tu navegador no soporta videos HTML5.
+                                </video>
+                            </div>
+                            <div class="sound-button-container">
+                                <button class="sound-button" onmouseenter="playHoverSound(9)"
+                                    onclick="playClickSound(9)">
+                                    <span class="sound-icon">🔊</span>
+                                    <span class="sound-waves"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="speech-bubble">
+                            <div class="bubble-content">
+                                <p>¡No me culpen solo a mí! La radiación del clima espacial también puede ser la
+                                    culpable. Puede dañar los paneles solares de las naves y causar interferencia en
+                                    las comunicaciones. ¡Así que no me echen toda la culpa a mí!</p>
+                            </div>
+                            <div class="bubble-arrow"></div>
+                            <div class="bubble-source">
+                                <p>Tomado de: <a
+                                        href="https://science.nasa.gov/heliophysics/science-questions/how-does-solar-variability-affect-human-society-technological-systems-and-the-habitability-of-planets/"
+                                        target="_blank" rel="noopener noreferrer" class="source-link">NASA -
+                                        Variabilidad Solar y Sociedad</a>
+                                </p>
+                            </div>
+                        </div>
+                        <audio id="hoverSound9" preload="auto">
+                            <source src="assets/datoscuriosos/audio/audiohover.mp3" type="audio/mpeg">
+                        </audio>
+                        <audio id="clickSound9" preload="auto">
+                            <source src="assets/audios/personaje10_click.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+
+                    <!-- Personaje 11: Ilari - Partículas Cargadas y Nave Espacial -->
+                    <div class="character-slide" data-character="ilari">
+                        <div class="character-container">
+                            <div class="character-video">
+                                <video src="assets/datoscuriosos/vids/vidilari.mp4" autoplay muted loop
+                                    class="character-video-element">
+                                    Tu navegador no soporta videos HTML5.
+                                </video>
+                            </div>
+                            <div class="sound-button-container">
+                                <button class="sound-button" onmouseenter="playHoverSound(10)"
+                                    onclick="playClickSound(10)">
+                                    <span class="sound-icon">🔊</span>
+                                    <span class="sound-waves"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="speech-bubble">
+                            <div class="bubble-content">
+                                <p>Si buscas algo interesante para leer, la NASA tiene un estudio genial llamado
+                                    'Spacecraft Charging'. Explica cómo las partículas cargadas, fotones, y
+                                    electrones interactúan con una nave espacial. A veces, estas interacciones causan
+                                    acumulaciones de carga que pueden provocar descargas eléctricas o fallos en los
+                                    equipos.</p>
+                                <a href="https://ntrs.nasa.gov/api/citations/20180002456/downloads/20180002456.pdf"
+                                    target="_blank" rel="noopener noreferrer" class="bubble-link">
+                                    Leer estudio de la NASA
+                                </a>
+                            </div>
+                            <div class="bubble-arrow"></div>
+                            <div class="bubble-source">
+                                <p>Tomado de: <a
+                                        href="https://ntrs.nasa.gov/api/citations/20180002456/downloads/20180002456.pdf"
+                                        target="_blank" rel="noopener noreferrer" class="source-link">NASA - Estudio
+                                        Spacecraft Charging</a>
+                                </p>
+                            </div>
+                        </div>
+                        <audio id="hoverSound10" preload="auto">
+                            <source src="assets/datoscuriosos/audio/audiohover.mp3" type="audio/mpeg">
+                        </audio>
+                        <audio id="clickSound10" preload="auto">
+                            <source src="assets/audios/personaje11_click.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+
+                    <!-- Personaje 12: Ilari - IDEAM -->
+                    <div class="character-slide" data-character="ilari2">
+                        <div class="character-container">
+                            <div class="character-video">
+                                <video src="assets/datoscuriosos/vids/vidilari2.mp4" autoplay muted loop
+                                    class="character-video-element">
+                                    Tu navegador no soporta videos HTML5.
+                                </video>
+                            </div>
+                            <div class="sound-button-container">
+                                <button class="sound-button" onmouseenter="playHoverSound(11)"
+                                    onclick="playClickSound(11)">
+                                    <span class="sound-icon">🔊</span>
+                                    <span class="sound-waves"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="speech-bubble">
+                            <div class="bubble-content">
+                                <p>¿Sabías que el IDEAM en Colombia monitorea los 'puntos de calor' usando imágenes
+                                    satelitales? Utilizan sensores como MODIS y VIIRS para detectar incendios y
+                                    cambios en la cobertura terrestre, conectando los datos de los satélites con la
+                                    información nacional para analizar estos eventos. ¡Es un trabajo increíble!</p>
+                                <a href="https://puntosdecalor.ideam.gov.co/?from_date=2025-09-19&to_date=2025-09-20&extent=(5.797783922099449_-72.91339874180268_5.751414366110791_-72.82937049778411)&region=colombia"
+                                    target="_blank" rel="noopener noreferrer" class="bubble-link">
+                                    Ver página del IDEAM
+                                </a>
+                            </div>
+                            <div class="bubble-arrow"></div>
+                            <div class="bubble-source">
+                                <p>Tomado de: <a
+                                        href="https://puntosdecalor.ideam.gov.co/?from_date=2025-09-19&to_date=2025-09-20&extent=(5.797783922099449_-72.91339874180268_5.751414366110791_-72.82937049778411)&region=colombia"
+                                        target="_blank" rel="noopener noreferrer" class="source-link">IDEAM - Puntos de
+                                        Calor Colombia</a>
+                                </p>
+                            </div>
+                        </div>
+                        <audio id="hoverSound11" preload="auto">
+                            <source src="assets/datoscuriosos/audio/audiohover.mp3" type="audio/mpeg">
+                        </audio>
+                        <audio id="clickSound11" preload="auto">
+                            <source src="assets/audios/personaje12_click.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+
+                    <!-- Personaje 13: Ilari - Parker Solar Probe -->
+                    <div class="character-slide" data-character="ilari3">
+                        <div class="character-container">
+                            <div class="character-video">
+                                <video src="assets/datoscuriosos/vids/vidilari3.mp4" autoplay muted loop
+                                    class="character-video-element">
+                                    Tu navegador no soporta videos HTML5.
+                                </video>
+                            </div>
+                            <div class="sound-button-container">
+                                <button class="sound-button" onmouseenter="playHoverSound(12)"
+                                    onclick="playClickSound(12)">
+                                    <span class="sound-icon">🔊</span>
+                                    <span class="sound-waves"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="speech-bubble">
+                            <div class="bubble-content">
+                                <p>Tengo que confesar algo: mi traje está inspirado en la Parker Solar Probe. Esta
+                                    sonda está protegida por un escudo térmico de carbono que soporta las
+                                    temperaturas extremas de la corona solar. Gracias a ese escudo, sus instrumentos
+                                    se mantienen a una temperatura mucho más baja ¡ideal para sentirse fresco en el
+                                    espacio!</p>
+                            </div>
+                            <div class="bubble-arrow"></div>
+                            <div class="bubble-source">
+                                <p>Tomado de: <a href="https://science.nasa.gov/mission/parker-solar-probe/"
+                                        target="_blank" rel="noopener noreferrer" class="source-link">NASA - Misión
+                                        Parker Solar Probe</a>
+                                </p>
+                            </div>
+                        </div>
+                        <audio id="hoverSound12" preload="auto">
+                            <source src="assets/datoscuriosos/audio/audiohover.mp3" type="audio/mpeg">
+                        </audio>
+                        <audio id="clickSound12" preload="auto">
+                            <source src="assets/audios/personaje13_click.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+
+                    <!-- Personaje 14: SOHO - Récord Parker Solar Probe -->
+                    <div class="character-slide" data-character="soho3">
+                        <div class="character-container">
+                            <div class="character-video">
+                                <video src="assets/datoscuriosos/vids/vidsoho3.mp4" autoplay muted loop
+                                    class="character-video-element">
+                                    Tu navegador no soporta videos HTML5.
+                                </video>
+                            </div>
+                            <div class="sound-button-container">
+                                <button class="sound-button" onmouseenter="playHoverSound(13)"
+                                    onclick="playClickSound(13)">
+                                    <span class="sound-icon">🔊</span>
+                                    <span class="sound-waves"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="speech-bubble">
+                            <div class="bubble-content">
+                                <p>La Parker Solar Probe tiene un récord alucinante: es la nave espacial que más
+                                    cerca ha llegado al Sol. En su última pasada, el 24 de diciembre de 2024, se
+                                    acercó a tan solo 3.8 millones de millas (unos 6.1 millones de kilómetros) de
+                                    nuestra estrella. ¡Un logro histórico!</p>
+                            </div>
+                            <div class="bubble-arrow"></div>
+                            <div class="bubble-source">
+                                <p>Tomado de: <a
+                                        href="https://science.nasa.gov/science-research/heliophysics/nasas-parker-solar-probe-makes-history-with-closest-pass-to-sun/"
+                                        target="_blank" rel="noopener noreferrer" class="source-link">NASA - Récord
+                                        Parker Solar Probe</a>
+                                </p>
+                            </div>
+                        </div>
+                        <audio id="hoverSound13" preload="auto">
+                            <source src="assets/datoscuriosos/audio/audiohover.mp3" type="audio/mpeg">
+                        </audio>
+                        <audio id="clickSound13" preload="auto">
+                            <source src="assets/audios/personaje14_click.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+
+                    <!-- Personaje 15: Fiba - Manchas Solares -->
+                    <div class="character-slide" data-character="fiba2">
+                        <div class="character-container">
+                            <div class="character-video">
+                                <video src="assets/datoscuriosos/vids/vidfiba2.mp4" autoplay muted loop
+                                    class="character-video-element">
+                                    Tu navegador no soporta videos HTML5.
+                                </video>
+                            </div>
+                            <div class="sound-button-container">
+                                <button class="sound-button" onmouseenter="playHoverSound(14)"
+                                    onclick="playClickSound(14)">
+                                    <span class="sound-icon">🔊</span>
+                                    <span class="sound-waves"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="speech-bubble">
+                            <div class="bubble-content">
+                                <p>¿Cuando piensas en algo grande, te imaginas las manchas solares? ¡Estas sí que
+                                    son gigantes! Típicamente miden entre 1,600 y 160,000 kilómetros de ancho. ¡Son
+                                    monstruos en la superficie del Sol!</p>
+                            </div>
+                            <div class="bubble-arrow"></div>
+                            <div class="bubble-source">
+                                <p>Tomado de: <a href="https://science.nasa.gov/sun/sunspots/" target="_blank"
+                                        rel="noopener noreferrer" class="source-link">NASA - Manchas Solares</a>
+                                </p>
+                            </div>
+                        </div>
+                        <audio id="hoverSound14" preload="auto">
+                            <source src="assets/datoscuriosos/audio/audiohover.mp3" type="audio/mpeg">
+                        </audio>
+                        <audio id="clickSound14" preload="auto">
+                            <source src="assets/audios/personaje15_click.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+
+                    <!-- Personaje 16: Sombra Solar - Viento Solar -->
+                    <div class="character-slide" data-character="sombra-solar2">
+                        <div class="character-container">
+                            <div class="character-video">
+                                <video src="assets/datoscuriosos/vids/vidsombrasolar2.mp4" autoplay muted loop
+                                    class="character-video-element">
+                                    Tu navegador no soporta videos HTML5.
+                                </video>
+                            </div>
+                            <div class="sound-button-container">
+                                <button class="sound-button" onmouseenter="playHoverSound(15)"
+                                    onclick="playClickSound(15)">
+                                    <span class="sound-icon">🔊</span>
+                                    <span class="sound-waves"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="speech-bubble">
+                            <div class="bubble-content">
+                                <p>¿Creías que el espacio es silencioso? ¡Te equivocas! Cuando las ondas de plasma
+                                    interactúan con el viento solar, crean una increíble y grandiosa melodía cósmica
+                                    que resuena en el eco del espacio. Es la verdadera sinfonía del universo.</p>
+                            </div>
+                            <div class="bubble-arrow"></div>
+                            <div class="bubble-source">
+                                <p>Tomado de: <a
+                                        href="https://assets.science.nasa.gov/content/dam/science/missions/psp/Solar%20Wind%20Sounds%20From%20Parker.mp4"
+                                        target="_blank" rel="noopener noreferrer" class="source-link">NASA - Sonidos del
+                                        Viento Solar</a>
+                                </p>
+                            </div>
+                        </div>
+                        <audio id="hoverSound15" preload="auto">
+                            <source src="assets/datoscuriosos/audio/audiohover.mp3" type="audio/mpeg">
+                        </audio>
+                        <audio id="clickSound15" preload="auto">
+                            <source src="assets/audios/personaje16_click.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+
+                    <!-- Personaje 17: Gaia - Animales y Clima Espacial -->
+                    <div class="character-slide" data-character="gaia2">
+                        <div class="character-container">
+                            <div class="character-video">
+                                <video src="assets/datoscuriosos/vids/vidgaia.mp4" autoplay muted loop
+                                    class="character-video-element">
+                                    Tu navegador no soporta videos HTML5.
+                                </video>
+                            </div>
+                            <div class="sound-button-container">
+                                <button class="sound-button" onmouseenter="playHoverSound(16)"
+                                    onclick="playClickSound(16)">
+                                    <span class="sound-icon">🔊</span>
+                                    <span class="sound-waves"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="speech-bubble">
+                            <div class="bubble-content">
+                                <p>¿Saben qué me contaron las aves en uno de mis viajes? Durante las tormentas
+                                    geomagnéticas, muchas bandadas se sienten confundidas. Me dijeron que en esas
+                                    noches su migración se vuelve más difícil y que hasta un 17% de ellas deja de
+                                    volar como debería. Esto pasa sobre todo en otoño, cuando intentan regresar a sus
+                                    lugares de descanso. El campo magnético de la Tierra, que es como su mapa
+                                    secreto, se desordena… ¡y claro!, las pobres se desorientan.</p>
+                            </div>
+                            <div class="bubble-arrow"></div>
+                            <div class="bubble-source">
+                                <p>Tomado de: <a href="https://doi.org/10.1073/pnas.2306317120" target="_blank"
+                                        rel="noopener noreferrer" class="source-link">PNAS - Estudio sobre Aves y
+                                        Magnetismo</a>
+                                </p>
+                            </div>
+                        </div>
+                        <audio id="hoverSound16" preload="auto">
+                            <source src="assets/datoscuriosos/audio/audiohover.mp3" type="audio/mpeg">
+                        </audio>
+                        <audio id="clickSound16" preload="auto">
+                            <source src="assets/audios/personaje17_click.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+
+                </div>
+
+                <!-- Indicadores del carrusel -->
+                <div class="carousel-indicators">
+                    <span class="indicator active" onclick="goToCharacter(0)"></span>
+                    <span class="indicator" onclick="goToCharacter(1)"></span>
+                    <span class="indicator" onclick="goToCharacter(2)"></span>
+                    <span class="indicator" onclick="goToCharacter(3)"></span>
+                    <span class="indicator" onclick="goToCharacter(4)"></span>
+                    <span class="indicator" onclick="goToCharacter(5)"></span>
+                    <span class="indicator" onclick="goToCharacter(6)"></span>
+                    <span class="indicator" onclick="goToCharacter(7)"></span>
+                    <span class="indicator" onclick="goToCharacter(8)"></span>
+                    <span class="indicator" onclick="goToCharacter(9)"></span>
+                    <span class="indicator" onclick="goToCharacter(10)"></span>
+                    <span class="indicator" onclick="goToCharacter(11)"></span>
+                    <span class="indicator" onclick="goToCharacter(12)"></span>
+                    <span class="indicator" onclick="goToCharacter(13)"></span>
+                    <span class="indicator" onclick="goToCharacter(14)"></span>
+                    <span class="indicator" onclick="goToCharacter(15)"></span>
+                    <span class="indicator" onclick="goToCharacter(16)"></span>
+                </div>
+
+                <!-- Contador de personajes -->
+                <div class="character-counter">
+                    <span id="currentCharacter">1</span> / <span id="totalCharacters">17</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Scripts JavaScript -->
+    <script>
+        // Variables globales
+        let currentCharacterIndex = 0;
+        const characterSlides = document.querySelectorAll('.character-slide');
+        const indicators = document.querySelectorAll('.indicator');
+        const totalCharacters = characterSlides.length;
+
+        // Array de títulos corregido para cada personaje
+        const characterTitles = [
+            "Clima Espacial",      // 1. Deneb
+            "Llamaradas Solares", // 2. Gaia
+            "Llamaradas Solares",           // 3. SOHO
+            "Eyección de Masa Coronal",      // 4. SOHO
+            "Satélites",         // 5. Fiba
+            "Campo Magnético",       // 6. Cassia
+            "Radiación Solar",                 // 7. Nerea
+            "Señales de GPS",       // 8. Deneb
+            "Red Eléctica",  // 9. Orión
+            "Telecomunicaciones / Páneles Solares", // 10. Sombra Solar
+            "Partículas Cargadas / Nave Espacial",    // 11. Ilari
+            "Monitoreo IDEAM Colombia",        // 12. Ilari
+            "Escudo Térmico Parker Solar Probe", // 13. Ilari
+            "Récord Parker Solar Probe",       // 14. SOHO
+            "Manchas Solares",       // 15. Fiba
+            "Viento Solar",       // 16. Sombra Solar
+            "Aves y Tormentas Geomagnéticas"   // 17. Gaia
+        ];
+
+        // ===== FUNCIONES DE AUDIO =====
+        function playHoverSound(characterIndex) {
+            const hoverAudio = document.getElementById(`hoverSound${characterIndex}`);
+            if (hoverAudio) {
+                hoverAudio.currentTime = 0;
+                hoverAudio.play().catch(error => {
+                    console.log(`Error al reproducir audio hover del personaje ${characterIndex + 1}:`, error);
+                });
+            }
+        }
+
+        function playClickSound(characterIndex) {
+            const clickAudio = document.getElementById(`clickSound${characterIndex}`);
+            if (clickAudio) {
+                clickAudio.currentTime = 0;
+                clickAudio.play().catch(error => {
+                    console.log(`Error al reproducir audio click del personaje ${characterIndex + 1}:`, error);
+                });
+            }
+        }
+
+        function updateCurrentTopic(index) {
+            const titleElement = document.getElementById('currentTopicTitle');
+            if (titleElement && characterTitles[index]) {
+                titleElement.textContent = characterTitles[index];
+            }
+        }
+
+        // ===== INICIALIZACIÓN =====
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeCarousel();
+            createStarField();
+            setupHoverEffects();
+            setupKeyboardNavigation();
+            setupTouchNavigation();
+            setupVideoControls();
+            setupSoundButtons();
+        });
+
+        // ===== FUNCIONES DEL CARRUSEL =====
+        function initializeCarousel() {
+            document.getElementById('totalCharacters').textContent = totalCharacters;
+            showCharacter(currentCharacterIndex);
+        }
+
+        function showCharacter(index) {
+            characterSlides.forEach(slide => slide.classList.remove('active'));
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+
+            characterSlides[index].classList.add('active');
+            indicators[index].classList.add('active');
+
+            document.getElementById('currentCharacter').textContent = index + 1;
+            currentCharacterIndex = index;
+            updateCurrentTopic(index);
+        }
+
+        function nextCharacter() {
+            const nextIndex = (currentCharacterIndex + 1) % totalCharacters;
+            showCharacter(nextIndex);
+        }
+
+        function previousCharacter() {
+            const prevIndex = (currentCharacterIndex - 1 + totalCharacters) % totalCharacters;
+            showCharacter(prevIndex);
+        }
+
+        function goToCharacter(index) {
+            showCharacter(index);
+        }
+
+        // ===== EFECTOS HOVER Y CONTROLES =====
+        function setupHoverEffects() {
+            characterSlides.forEach((slide, index) => {
+                const characterVideo = slide.querySelector('.character-video');
+                const speechBubble = slide.querySelector('.speech-bubble');
+
+                if (characterVideo && speechBubble) {
+                    characterVideo.addEventListener('mouseenter', () => {
+                        speechBubble.classList.add('show');
+                        characterVideo.classList.add('talking');
+                    });
+
+                    characterVideo.addEventListener('mouseleave', () => {
+                        speechBubble.classList.remove('show');
+                        characterVideo.classList.remove('talking');
+                    });
+
+                    characterVideo.addEventListener('touchstart', (e) => {
+                        e.preventDefault();
+                        speechBubble.classList.toggle('show');
+                        characterVideo.classList.toggle('talking');
+                    });
+                }
+            });
+        }
+
+        function setupSoundButtons() {
+            const soundButtons = document.querySelectorAll('.sound-button');
+
+            soundButtons.forEach((button, index) => {
+                button.addEventListener('mouseenter', () => {
+                    const soundWaves = button.querySelector('.sound-waves');
+                    if (soundWaves) {
+                        soundWaves.classList.add('active');
+                    }
+                    button.classList.add('hover-effect');
+                });
+
+                button.addEventListener('mouseleave', () => {
+                    const soundWaves = button.querySelector('.sound-waves');
+                    if (soundWaves) {
+                        soundWaves.classList.remove('active');
+                    }
+                    button.classList.remove('hover-effect');
+                });
+
+                button.addEventListener('click', () => {
+                    button.classList.add('clicked');
+                    setTimeout(() => {
+                        button.classList.remove('clicked');
+                    }, 300);
+                });
+            });
+        }
+
+        function setupVideoControls() {
+            const videos = document.querySelectorAll('.character-video-element');
+
+            videos.forEach(video => {
+                video.addEventListener('loadeddata', () => {
+                    if (video.closest('.character-slide').classList.contains('active')) {
+                        video.play().catch(e => console.log('Error al reproducir video:', e));
+                    }
+                });
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            video.play().catch(e => console.log('Error al reproducir video:', e));
+                        } else {
+                            video.pause();
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                observer.observe(video);
+            });
+        }
+
+        // ===== NAVEGACIÓN =====
+        function setupKeyboardNavigation() {
+            document.addEventListener('keydown', (e) => {
+                switch (e.key) {
+                    case 'ArrowLeft':
+                        previousCharacter();
+                        break;
+                    case 'ArrowRight':
+                        nextCharacter();
+                        break;
+                    case 'Escape':
+                        goBackToPortal();
+                        break;
+                }
+            });
+        }
+
+        function setupTouchNavigation() {
+            let startX = 0;
+            let endX = 0;
+
+            document.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            });
+
+            document.addEventListener('touchend', (e) => {
+                endX = e.changedTouches[0].clientX;
+                handleSwipe();
+            });
+
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diffX = startX - endX;
+
+                if (Math.abs(diffX) > swipeThreshold) {
+                    if (diffX > 0) {
+                        nextCharacter();
+                    } else {
+                        previousCharacter();
+                    }
+                }
+            }
+        }
+
+        // ===== EFECTOS VISUALES =====
+        function createStarField() {
+            const starsContainer = document.getElementById('starsContainer');
+            const numStars = 80;
+
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.animationDuration = (2 + Math.random() * 2) + 's';
+                starsContainer.appendChild(star);
+            }
+
+            setInterval(createShootingStar, 4000);
+        }
+
+        function createShootingStar() {
+            const starsContainer = document.getElementById('starsContainer');
+            const shootingStar = document.createElement('div');
+            shootingStar.className = 'shooting-star';
+            shootingStar.style.top = Math.random() * 40 + '%';
+            shootingStar.style.left = '-100px';
+            starsContainer.appendChild(shootingStar);
+
+            setTimeout(() => {
+                if (shootingStar.parentNode) {
+                    shootingStar.remove();
+                }
+            }, 3000);
+        }
+
+        // ===== NAVEGACIÓN ENTRE PÁGINAS =====
+        function goBackToPortal() {
+            window.location.href = 'index_spanish.html';
+        }
+    </script>
+</body>
+
+</html>

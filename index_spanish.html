@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Espacial</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="lang-es">
+    <!-- Fondo animado de estrellas -->
+    <div class="stars" id="starsContainer"></div>
+    <video id="video-background" autoplay muted loop playsinline>
+        <source src="assets/videofondo.mp4" type="video/mp4">
+    </video>
+    <!-- Contenedor principal -->
+    <div class="container">
+        <!-- Sección del título -->
+        <div class="title-section">
+            <h1 class="title">🌟 Portal Espacial 🌟</h1>
+            <p class="subtitle">Explora los maravillosos misterios del clima espacial</p>
+        </div>
+
+        <!-- Contenedor del círculo principal (sin rotación) -->
+        <!-- Contenedor del círculo principal (sin rotación) -->
+        <div class="circular-container">
+            <div class="main-circle" id="mainCircle">
+
+                <!-- COLUMNA IZQUIERDA: 2 círculos -->
+                <div class="left-circles">
+                    <!-- Sección 1: Cuento (arriba) -->
+                    <div class="section-circle section-1 active" data-section="1" onclick="selectSection(1)">
+                        <div class="section-content">
+                            <div class="section-icon">📖</div>
+                            <h3>Cuento</h3>
+                        </div>
+                    </div>
+
+                    <!-- Sección 2: Flashcards (abajo) -->
+                    <div class="section-circle section-2" data-section="2" onclick="selectSection(2)">
+                        <div class="section-content">
+                            <div class="section-icon">🎴</div>
+                            <h3>Flashcards</h3>
+                            <a href="flashcards_spanish.html" class="section-link"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CENTRO: Imagen principal -->
+                <div class="center-image main-highlight" id="centerImage">
+                    <img src="assets/fondoportada.jpg" alt="Imagen Central" id="centerImg">
+                    <div class="center-placeholder">
+                        <div class="placeholder-icon">🌎</div>
+                        <p>Portal Central</p>
+                    </div>
+                </div>
+
+                <!-- COLUMNA DERECHA: 3 círculos -->
+                <div class="right-circles">
+                    <!-- Sección 3: Configuración (arriba) -->
+                    <div class="section-circle section-3" data-section="3" onclick="selectSection(3)">
+                        <div class="section-content">
+                            <div class="section-icon">⚙️</div>
+                            <h3>Ajustes</h3>
+                        </div>
+                    </div>
+
+                    <!-- Sección 4: Material de Inclusión (medio) -->
+                    <div class="section-circle section-4" data-section="4" onclick="selectSection(4)">
+                        <div class="section-content">
+                            <div class="section-icon">🌍</div>
+                            <h3>Bitácora
+                                Inclusiva
+                            </h3>
+                        </div>
+                    </div>
+
+                    <!-- Sección 5: Datos Curiosos (abajo) -->
+                    <div class="section-circle section-5" data-section="5" onclick="selectSection(5)">
+                        <div class="section-content">
+                            <div class="section-icon">☁️</div>
+                            <h3>Datos Curiosos</h3>
+                            <a href="datoscuriosos_spanish.html" class="section-link"></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Controles de navegación -->
+            <div class="navigation-controls">
+                <button class="nav-btn nav-prev" onclick="previousSection()">❮</button>
+                <button class="nav-btn nav-next" onclick="nextSection()">❯</button>
+            </div>
+
+            <!-- Indicadores de sección -->
+            <div class="section-indicators">
+                <span class="indicator active" data-section="1" onclick="goToSection(1)"></span>
+                <span class="indicator" data-section="2" onclick="goToSection(2)"></span>
+                <span class="indicator" data-section="3" onclick="goToSection(3)"></span>
+                <span class="indicator" data-section="4" onclick="goToSection(4)"></span>
+                <span class="indicator" data-section="5" onclick="goToSection(5)"></span>
+            </div>
+        </div>
+
+        <!-- Modal de Información de Sección -->
+        <div class="section-modal" id="sectionModal">
+            <div class="modal-overlay" onclick="closeSectionModal()"></div>
+            <div class="modal-content section-modal-content">
+                <div class="modal-header">
+                    <h3 id="sectionModalTitle">Título de Sección</h3>
+                    <button class="close-btn" onclick="closeSectionModal()">×</button>
+                </div>
+                <div class="modal-body">
+                    <p id="sectionModalContent">Contenido de la sección...</p>
+                    <div id="sectionModalActions"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de Material de Inclusión -->
+        <div class="inclusion-modal" id="inclusionModal">
+            <div class="modal-overlay" onclick="closeInclusionModal()"></div>
+            <div class="modal-content inclusion-modal-content">
+                <div class="modal-header">
+                    <h3>🌍 Bitácora Inclusiva</h3>
+                    <button class="close-btn" onclick="closeInclusionModal()">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="inclusion-buttons">
+                        <button class="inclusion-btn" onclick="alert('Funcionalidad de Lenguaje Braille próximamente')">
+                            <div class="icon">⠃</div>
+                            <div class="text">Lenguaje Braille</div>
+                        </button>
+                        <a href="glosario_spanish.html" class="inclusion-btn">
+                            <div class="icon">👋</div>
+                            <div class="text">Lenguaje de Señas</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Configuración de Idioma -->
+    <div class="config-modal" id="configModal">
+        <div class="modal-overlay" onclick="closeConfigModal()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🌍 Configuración de Idioma</h3>
+                <button class="close-btn" onclick="closeConfigModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="language-selector">
+                    <div class="language-buttons">
+                        <button class="lang-btn" data-lang="en" onclick="showLanguageWarning('en')">
+                            <span class="flag">🇺🇸</span>
+                            <span class="lang-text">Inglés</span>
+                        </button>
+                        <button class="lang-btn active" data-lang="es">
+                            <span class="flag">🇪🇸</span>
+                            <span class="lang-text">Español</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Advertencia de Idioma -->
+    <div class="warning-modal" id="languageWarningModal">
+        <div class="modal-overlay" onclick="closeLanguageWarning()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>⚠️ Advertencia de Cambio de Idioma</h3>
+            </div>
+            <div class="modal-body">
+                <p id="warningMessage"></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel" onclick="closeLanguageWarning()">Cancelar</button>
+                <button class="btn-confirm" id="confirmButton" onclick="confirmLanguageChange()">Continuar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /*
+        ================================================
+        PORTAL ESPACIAL - JAVASCRIPT
+        ================================================
+        */
+
+        let currentSection = 1;
+        let totalSections = 5;
+        let pendingLanguage = null;
+
+        // Contenido de cada sección para los modales
+        const sectionData = {
+            1: {
+                title: "Cuento Espacial",
+                content: "",
+                buttons: [
+                    { text: "Leer Cuento", link: "cuento_parte1.html", icon: "📖" },
+                    { text: "Ver Versión Ilustrada", link: "cuento_ilustrado.html", icon: "🎨" }
+                ],
+                color: "#4fc3f7"
+            },
+            2: {
+                title: "Flashcards Espaciales",
+                content: "Aprende datos fascinantes sobre el universo con nuestras tarjetas interactivas. Perfecto para expandir tu conocimiento sobre el cosmos.",
+                link: "flashcards_spanish.html",
+                linkText: "Explorar Flashcards",
+                color: "#e1bee7"
+            },
+            3: {
+                title: "Configuración",
+                content: "Personaliza tu experiencia en el Portal Espacial. Cambia el idioma y ajusta las preferencias según tus necesidades.",
+                link: null,
+                action: "openConfigModal",
+                linkText: "Abrir Configuración",
+                color: "#ff9800"
+            },
+            4: {
+                title: "Material de Inclusión",
+                content: "",
+                link: null,
+                action: "openInclusionModal",
+                linkText: "Ver Opciones",
+                color: "#ffc107"
+            },
+            5: {
+                title: "Clima Estelar",
+                content: "Descubre datos asombrosos sobre el clima estelar y los fenómenos meteorológicos del espacio. ¡Prepárate para sorprenderte!",
+                link: "datoscuriosos_spanish.html",
+                linkText: "¿Sabías que?",
+                color: "#4caf50"
+            }
+        };
+
+        // ===== FUNCIONES DE INICIALIZACIÓN =====
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                initializePortal();
+                createStars();
+                setupEventListeners();
+                loadLanguagePreference();
+            }, 100);
+        });
+
+        function initializePortal() {
+            setActiveSection(currentSection);
+            checkCustomImage();
+            console.log('Portal Espacial inicializado');
+        }
+
+        function checkCustomImage() {
+            const centerImg = document.getElementById('centerImg');
+            const placeholder = document.querySelector('.center-placeholder');
+
+            if (centerImg && placeholder) {
+                centerImg.onload = function () {
+                    console.log('✅ Imagen cargada exitosamente');
+                    centerImg.style.display = 'block';
+                    placeholder.style.display = 'none';
+                };
+
+                centerImg.onerror = function () {
+                    console.log('❌ Error cargando imagen, mostrando placeholder');
+                    centerImg.style.display = 'none';
+                    placeholder.style.display = 'flex';
+                };
+
+                if (centerImg.complete && centerImg.naturalWidth > 0) {
+                    centerImg.style.display = 'block';
+                    placeholder.style.display = 'none';
+                } else if (centerImg.complete) {
+                    centerImg.style.display = 'none';
+                    placeholder.style.display = 'flex';
+                }
+            }
+        }
+
+        // ===== NAVEGACIÓN ENTRE SECCIONES =====
+
+        function previousSection() {
+            currentSection = currentSection === 1 ? totalSections : currentSection - 1;
+            setActiveSection(currentSection);
+        }
+
+        function nextSection() {
+            currentSection = currentSection === totalSections ? 1 : currentSection + 1;
+            setActiveSection(currentSection);
+        }
+
+        function goToSection(sectionNumber) {
+            currentSection = sectionNumber;
+            setActiveSection(currentSection);
+        }
+
+        function selectSection(sectionNumber) {
+            if (sectionNumber === 4) {
+                openInclusionModal();
+            } else {
+                openSectionModal(sectionNumber);
+            }
+
+            if (sectionNumber !== currentSection) {
+                goToSection(sectionNumber);
+            }
+        }
+
+        function setActiveSection(sectionNumber) {
+            document.querySelectorAll('.section-circle').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            document.querySelectorAll('.indicator').forEach(indicator => {
+                indicator.classList.remove('active');
+            });
+
+            const activeSection = document.querySelector(`.section-${sectionNumber}`);
+            const activeIndicator = document.querySelector(`.indicator[data-section="${sectionNumber}"]`);
+
+            if (activeSection) {
+                activeSection.classList.add('active');
+            }
+
+            if (activeIndicator) {
+                activeIndicator.classList.add('active');
+            }
+        }
+
+        // ===== GESTIÓN DE MODALES =====
+
+        function openSectionModal(sectionNumber) {
+            const modal = document.getElementById('sectionModal');
+            const title = document.getElementById('sectionModalTitle');
+            const content = document.getElementById('sectionModalContent');
+            const actions = document.getElementById('sectionModalActions');
+            const data = sectionData[sectionNumber];
+
+            if (!modal || !data) return;
+
+            title.textContent = data.title;
+            title.style.color = data.color;
+            content.textContent = data.content;
+
+            let actionsHtml = '';
+
+            // Si tiene botones personalizados (como en el cuento)
+            if (data.buttons && data.buttons.length > 0) {
+                actionsHtml = '<div class="story-buttons">';
+                data.buttons.forEach(button => {
+                    actionsHtml += `
+                        <a href="${button.link}" class="story-btn">
+                            <span class="btn-icon">${button.icon}</span>
+                            <span class="btn-text">${button.text}</span>
+                        </a>
+                    `;
+                });
+                actionsHtml += '</div>';
+            }
+            // Si tiene un enlace simple
+            else if (data.link) {
+                actionsHtml = `<a href="${data.link}" class="modal-action-btn">${data.linkText || 'Ver más'}</a>`;
+            }
+            // Si tiene una acción (como abrir otro modal)
+            else if (data.linkText && data.action) {
+                actionsHtml = `<button class="modal-action-btn" onclick="${data.action}(); closeSectionModal();">${data.linkText}</button>`;
+            }
+
+            actions.innerHTML = actionsHtml;
+
+            modal.classList.add('show');
+            document.body.classList.add('modal-open');
+        }
+
+        function closeSectionModal() {
+            const modal = document.getElementById('sectionModal');
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.classList.remove('modal-open');
+            }
+        }
+
+        function openInclusionModal() {
+            const modal = document.getElementById('inclusionModal');
+            if (modal) {
+                modal.classList.add('show');
+                document.body.classList.add('modal-open');
+            }
+        }
+
+        function closeInclusionModal() {
+            const modal = document.getElementById('inclusionModal');
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.classList.remove('modal-open');
+            }
+        }
+
+        // ===== EFECTOS VISUALES DE ESTRELLAS =====
+
+        function createStars() {
+            const starsContainer = document.getElementById('starsContainer');
+            if (!starsContainer) return;
+
+            const numStars = 100;
+
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+
+            setInterval(createShootingStar, 3000);
+        }
+
+        function createShootingStar() {
+            const starsContainer = document.getElementById('starsContainer');
+            if (!starsContainer) return;
+
+            const shootingStar = document.createElement('div');
+            shootingStar.className = 'shooting-star';
+            shootingStar.style.top = Math.random() * 50 + '%';
+            shootingStar.style.left = '-100px';
+            starsContainer.appendChild(shootingStar);
+
+            setTimeout(() => {
+                if (shootingStar.parentNode) {
+                    shootingStar.remove();
+                }
+            }, 4000);
+        }
+
+        // ===== SISTEMA DE CONFIGURACIÓN E IDIOMAS =====
+
+        function openConfigModal() {
+            const modal = document.getElementById('configModal');
+            if (modal) {
+                modal.classList.add('show');
+                document.body.classList.add('modal-open');
+            }
+        }
+
+        function closeConfigModal() {
+            const modal = document.getElementById('configModal');
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.classList.remove('modal-open');
+            }
+        }
+
+        function showLanguageWarning(targetLang) {
+            const modal = document.getElementById('languageWarningModal');
+            const warningMessage = document.getElementById('warningMessage');
+
+            pendingLanguage = targetLang;
+
+            if (targetLang === 'en') {
+                warningMessage.textContent = "Ten en cuenta que al pasar a inglés, en el apartado de lenguaje de señas solo se usará lenguaje de señas colombiano.";
+            } else if (targetLang === 'es') {
+                warningMessage.textContent = "Ten en cuenta que al pasar a español, en el apartado de lenguaje de señas solo se usa lenguaje de señas colombiano.";
+            }
+
+            modal.classList.add('show');
+            document.body.classList.add('modal-open');
+        }
+
+        function closeLanguageWarning() {
+            const modal = document.getElementById('languageWarningModal');
+            modal.classList.remove('show');
+            document.body.classList.remove('modal-open');
+            pendingLanguage = null;
+        }
+
+        function confirmLanguageChange() {
+            if (pendingLanguage) {
+                switchLanguage(pendingLanguage);
+                closeLanguageWarning();
+                closeConfigModal();
+            }
+        }
+
+        function switchLanguage(lang) {
+            localStorage.setItem('portal-language', lang);
+            console.log(`Cambiando idioma a: ${lang}`);
+
+            if (lang === 'en') {
+                window.location.href = 'index_english.html';
+            } else if (lang === 'es') {
+                updateLanguageInterface('es');
+            }
+        }
+
+        function updateLanguageInterface(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.lang === lang) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        function loadLanguagePreference() {
+            const savedLang = localStorage.getItem('portal-language') || 'es';
+            updateLanguageInterface(savedLang);
+        }
+
+        // ===== CONTROLES Y EVENT LISTENERS =====
+
+        function setupEventListeners() {
+            document.addEventListener('keydown', (e) => {
+                switch (e.key) {
+                    case 'ArrowLeft':
+                        previousSection();
+                        break;
+                    case 'ArrowRight':
+                        nextSection();
+                        break;
+                    case 'Escape':
+                        closeConfigModal();
+                        closeLanguageWarning();
+                        closeSectionModal();
+                        closeInclusionModal();
+                        break;
+                    case '1':
+                    case '2':
+                    case '3':
+                    case '4':
+                    case '5':
+                        goToSection(parseInt(e.key));
+                        break;
+                }
+            });
+
+            let startX = 0;
+            let endX = 0;
+
+            document.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            });
+
+            document.addEventListener('touchend', (e) => {
+                endX = e.changedTouches[0].clientX;
+                handleSwipe();
+            });
+
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diffX = startX - endX;
+
+                if (Math.abs(diffX) > swipeThreshold) {
+                    if (diffX > 0) {
+                        nextSection();
+                    } else {
+                        previousSection();
+                    }
+                }
+            }
+
+            document.addEventListener('click', (e) => {
+                if (e.target.classList.contains('modal-overlay')) {
+                    closeConfigModal();
+                    closeLanguageWarning();
+                    closeSectionModal();
+                    closeInclusionModal();
+                }
+            });
+        }
+
+        // Exponer funciones globales
+        window.previousSection = previousSection;
+        window.nextSection = nextSection;
+        window.selectSection = selectSection;
+        window.goToSection = goToSection;
+        window.openSectionModal = openSectionModal;
+        window.closeSectionModal = closeSectionModal;
+        window.openInclusionModal = openInclusionModal;
+        window.closeInclusionModal = closeInclusionModal;
+        window.openConfigModal = openConfigModal;
+        window.closeConfigModal = closeConfigModal;
+        window.showLanguageWarning = showLanguageWarning;
+        window.closeLanguageWarning = closeLanguageWarning;
+        window.confirmLanguageChange = confirmLanguageChange;
+
+    </script>
+</body>
+
+</html>

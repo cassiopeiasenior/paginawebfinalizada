@@ -1,0 +1,1212 @@
+/*
+================================================
+DATOS CURIOSOS ESTELARES - CSS COMPLETO CON BOTONES DE AUDIO
+================================================
+Archivo de estilos para la página de personajes interactivos con videos y sonido
+
+SECCIONES:
+1. Reset y configuración base
+2. Fondo animado de estrellas
+3. Contenedor principal y encabezado
+4. Botón de regreso al portal
+5. Sistema de carrusel
+6. Videos de personajes
+7. Botones de sonido
+8. Globos de texto simplificados
+9. Texto de fuente debajo del globo
+10. Navegación del carrusel
+11. Instrucciones y elementos informativos
+12. Animaciones y efectos especiales
+13. Diseño responsive
+14. Accesibilidad
+15. Estados de carga y error
+16. Enlaces en globos de texto
+17. Título dinámico del dato curioso
+18. Efectos especiales adicionales para audio
+================================================
+*/
+
+/* ================================================
+   1. RESET Y CONFIGURACIÓN BASE
+   ================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    /* LUGAR PARA IMAGEN DE FONDO: Cambiar esta línea por tu imagen */
+    background: url("assets/datoscuriosos/fondodatoscuriosos.jpeg") no-repeat center center fixed;
+    /* Para cambiar la imagen de fondo, reemplaza la URL de arriba por tu imagen:
+       background: url("TU_IMAGEN_DE_FONDO.jpg") no-repeat center center fixed; */
+    background-size: cover;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    color: white;
+}
+
+/* Desactivar animaciones si el usuario lo prefiere */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ================================================
+   2. FONDO ANIMADO DE ESTRELLAS
+   ================================================ */
+
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Estrellas parpadeantes */
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle {
+    0% { opacity: 0.3; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Estrellas fugaces */
+.shooting-star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: linear-gradient(45deg, #fff, #4fc3f7);
+    border-radius: 50%;
+    box-shadow: 0 0 10px #4fc3f7;
+    animation: shoot 3s linear infinite;
+}
+
+@keyframes shoot {
+    0% {
+        transform: translateX(-100px) translateY(100px);
+        opacity: 0;
+    }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% {
+        transform: translateX(100vw) translateY(-100px);
+        opacity: 0;
+    }
+}
+
+/* ================================================
+   3. CONTENEDOR PRINCIPAL Y ENCABEZADO
+   ================================================ */
+
+.container {
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Encabezado con botón de regreso y título */
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 25px 30px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    animation: slideInFromTop 0.8s ease-out;
+}
+
+.header-content {
+    text-align: center;
+    flex-grow: 1;
+}
+
+/* Título principal con efecto de gradiente */
+.page-title {
+    font-size: 2.5rem;
+    background: linear-gradient(45deg, #fff, #4fc3f7, #e1bee7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 20px rgba(79, 195, 247, 0.5);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.page-subtitle {
+    color: #b0bec5;
+    font-size: 1.1rem;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* Animaciones del encabezado */
+@keyframes slideInFromTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glow {
+    from { filter: brightness(1); }
+    to { filter: brightness(1.3); }
+}
+
+/* ================================================
+   4. BOTÓN DE REGRESO AL PORTAL
+   ================================================ */
+
+.back-button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(79, 195, 247, 0.2);
+    border: 2px solid rgba(79, 195, 247, 0.4);
+    border-radius: 15px;
+    padding: 15px 25px;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    text-decoration: none;
+}
+
+.back-button:hover {
+    background: rgba(79, 195, 247, 0.3);
+    border-color: rgba(79, 195, 247, 0.6);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(79, 195, 247, 0.4);
+}
+
+.back-button:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* Icono de flecha del botón */
+.back-icon {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.back-button:hover .back-icon {
+    transform: translateX(-5px);
+}
+
+/* ================================================
+   5. SISTEMA DE CARRUSEL
+   ================================================ */
+
+.carousel-container {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Contenedor principal del carrusel */
+.carousel-wrapper {
+    width: 100%;
+    max-width: 1000px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 25px;
+    padding: 40px 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Área interna donde se muestran los personajes */
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+/* Cada slide individual del carrusel */
+.character-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: translateX(100%) scale(0.9);
+    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* Slide activo (visible) */
+.character-slide.active {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+}
+
+.character-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 300px;
+    gap: 20px;
+}
+
+/* ================================================
+   6. VIDEOS DE PERSONAJES
+   ================================================ */
+
+/* Contenedor del video del personaje */
+.character-video {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: characterFloat 4s ease-in-out infinite;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Elemento de video HTML5 */
+.character-video-element {
+    width: 500px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+/* Efectos de hover en el video */
+.character-video:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(79, 195, 247, 0.3);
+}
+
+.character-video.talking {
+    animation: characterTalk 0.6s ease-in-out infinite;
+}
+
+/* Animaciones para los videos */
+@keyframes characterFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes characterTalk {
+    0%, 100% { transform: scale(1) rotate(-1deg); }
+    50% { transform: scale(1.02) rotate(1deg); }
+}
+
+/* ================================================
+   7. BOTONES DE SONIDO
+   ================================================ */
+
+/* Contenedor del botón de sonido */
+.sound-button-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Botón principal de sonido */
+.sound-button {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #c481ff, #d498ff);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+    animation: soundButtonFloat 3s ease-in-out infinite;
+    z-index: 50;
+}
+
+/* Icono de sonido dentro del botón */
+.sound-icon {
+    font-size: 2rem;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* Ondas de sonido animadas */
+.sound-waves {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 2px solid rgb(0, 166, 255);
+    opacity: 0;
+    transform: scale(1);
+    transition: all 0.6s ease;
+}
+
+/* Estados del botón de sonido */
+.sound-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 35px rgba(0, 208, 255, 0.6);
+    background: linear-gradient(135deg, #ea80ff, #f7a0ff);
+}
+
+.sound-button.hover-effect {
+    animation: soundButtonPulse 1.5s ease-in-out infinite;
+}
+
+.sound-button.clicked {
+    transform: scale(0.95);
+    background: linear-gradient(135deg, #52fff3, #35e5df);
+}
+
+/* Ondas activas en hover */
+.sound-waves.active {
+    opacity: 1;
+    transform: scale(1.8);
+    border-color: rgba(0, 102, 255, 0.3);
+    animation: soundWavesPulse 1.5s ease-out infinite;
+}
+
+/* Animaciones de los botones de sonido */
+@keyframes soundButtonFloat {
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg); 
+    }
+    33% { 
+        transform: translateY(-8px) rotate(2deg); 
+    }
+    66% { 
+        transform: translateY(-4px) rotate(-1deg); 
+    }
+}
+
+@keyframes soundButtonPulse {
+    0%, 100% { 
+        transform: scale(1.1); 
+        box-shadow: 0 12px 35px rgba(255, 107, 107, 0.6);
+    }
+    50% { 
+        transform: scale(1.15); 
+        box-shadow: 0 15px 40px rgb(18, 153, 221);
+    }
+}
+
+@keyframes soundWavesPulse {
+    0% { 
+        transform: scale(1.8); 
+        opacity: 1; 
+        border-color: rgba(107, 255, 253, 0.6);
+    }
+    50% { 
+        transform: scale(2.2); 
+        opacity: 0.5; 
+        border-color: rgba(107, 255, 255, 0.4);
+    }
+    100% { 
+        transform: scale(2.8); 
+        opacity: 0; 
+        border-color: rgba(107, 223, 255, 0.1);
+    }
+}
+
+/* Efectos adicionales para el botón de sonido */
+.sound-button::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.sound-button:hover::before {
+    opacity: 1;
+}
+
+/* ================================================
+   8. GLOBOS DE TEXTO SIMPLIFICADOS
+   ================================================ */
+
+/* Globo de texto que aparece en hover */
+.speech-bubble {
+    position: relative;
+    width: 950px;
+    margin-top: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.8);
+    transition: all 2.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 100;
+}
+
+/* Estado visible del globo */
+.speech-bubble.show {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+/* Contenido interno del globo */
+.bubble-content {
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(79, 195, 247, 0.3);
+    animation: bubbleFloat 3s ease-in-out infinite;
+}
+
+/* Solo párrafo, sin título ni elementos extra */
+.bubble-content p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0;
+    text-align: justify;
+}
+
+/* Animación flotante del globo */
+@keyframes bubbleFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-3px); }
+}
+
+/* Flecha del globo apuntando hacia arriba */
+.bubble-arrow {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid rgba(255, 255, 255, 0.95);
+}
+
+/* ================================================
+   9. TEXTO DE FUENTE DEBAJO DEL GLOBO
+   ================================================ */
+
+/* Contenedor del texto de fuente */
+.bubble-source {
+    text-align: center;
+    margin-top: 15px;
+    padding: 8px 15px;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Párrafo del texto de fuente */
+.bubble-source p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-style: italic;
+}
+
+/* Enlace de la fuente */
+.source-link {
+    color: #4fc3f7 !important;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.source-link:hover {
+    color: #29b6f6 !important;
+    border-bottom-color: #4fc3f7;
+    text-shadow: 0 0 5px rgba(79, 195, 247, 0.3);
+}
+
+.source-link:focus {
+    outline: 2px solid #4fc3f7;
+    outline-offset: 2px;
+    border-radius: 3px;
+}
+
+.source-link:active {
+    color: #0288d1 !important;
+}
+
+/* ================================================
+   10. NAVEGACIÓN DEL CARRUSEL
+   ================================================ */
+
+/* Botones de navegación izquierda y derecha */
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    z-index: 200;
+}
+
+.carousel-nav:hover {
+    background: rgba(79, 195, 247, 0.3);
+    border-color: rgba(79, 195, 247, 0.6);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 0 20px rgba(79, 195, 247, 0.4);
+}
+
+/* Posicionamiento de botones */
+.prev-btn {
+    left: -70px;
+}
+
+.next-btn {
+    right: -70px;
+}
+
+/* Indicadores de posición (puntos) */
+.carousel-indicators {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 100;
+}
+
+.indicator {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator:hover {
+    background: rgba(79, 195, 247, 0.5);
+    border-color: rgba(79, 195, 247, 0.8);
+    transform: scale(1.2);
+}
+
+.indicator.active {
+    background: rgba(79, 195, 247, 0.8);
+    border-color: rgba(79, 195, 247, 1);
+    transform: scale(1.3);
+    box-shadow: 0 0 15px rgba(79, 195, 247, 0.6);
+}
+
+/* Contador de personajes */
+.character-counter {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 8px 15px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+}
+
+/* ================================================
+   11. INSTRUCCIONES Y ELEMENTOS INFORMATIVOS
+   ================================================ */
+
+.instructions {
+    text-align: center;
+    margin-top: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    animation: fadeInUp 1s ease-out 0.5s both;
+}
+
+.instructions p {
+    margin: 8px 0;
+    color: #b0bec5;
+    font-size: 1rem;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================================================
+   12. ANIMACIONES Y EFECTOS ESPECIALES
+   ================================================ */
+
+/* Efecto de aparición escalonada para elementos */
+.character-slide:nth-child(1) { animation-delay: 0.1s; }
+.character-slide:nth-child(2) { animation-delay: 0.2s; }
+.character-slide:nth-child(3) { animation-delay: 0.3s; }
+.character-slide:nth-child(4) { animation-delay: 0.4s; }
+
+/* Efecto de pulso para elementos importantes */
+@keyframes pulse {
+    0%, 100% { opacity: 0.8; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+}
+
+/* Animación de entrada suave */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* ================================================
+   13. DISEÑO RESPONSIVE
+   ================================================ */
+
+/* Tablets (1024px y menos) */
+@media (max-width: 1024px) {
+    .page-header {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .page-title {
+        font-size: 2.2rem;
+    }
+    
+    .prev-btn {
+        left: -25px;
+    }
+    
+    .next-btn {
+        right: -25px;
+    }
+    
+    .carousel-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    .speech-bubble {
+        width: 320px;
+    }
+
+    .character-video-element {
+        width: 250px;
+        height: 250px;
+    }
+
+    .character-container {
+        gap: 15px;
+    }
+
+    .sound-button {
+        width: 60px;
+        height: 60px;
+    }
+
+    .sound-icon {
+        font-size: 1.8rem;
+    }
+
+    .sound-waves {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/* Móviles (768px y menos) */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .page-title {
+        font-size: 1.8rem;
+    }
+    
+    .page-subtitle {
+        font-size: 1rem;
+    }
+    
+    .carousel-wrapper {
+        padding: 20px 15px;
+    }
+    
+    .carousel-inner {
+        height: 540px;
+    }
+    
+    .character-video-element {
+        width: 220px;
+        height: 220px;
+    }
+    
+    .speech-bubble {
+        width: 290px;
+    }
+    
+    .bubble-content {
+        padding: 15px;
+    }
+    
+    .bubble-content p {
+        font-size: 0.9rem;
+    }
+    
+    .prev-btn {
+        left: 10px;
+    }
+    
+    .next-btn {
+        right: 10px;
+    }
+    
+    .character-counter {
+        top: 15px;
+        right: 15px;
+        font-size: 0.9rem;
+        padding: 6px 12px;
+    }
+    
+    .carousel-indicators {
+        bottom: -40px;
+    }
+    
+    .instructions {
+        padding: 20px;
+        margin-top: 30px;
+    }
+    
+    .instructions p {
+        font-size: 0.9rem;
+    }
+
+    .character-container {
+        gap: 15px;
+        flex-direction: column;
+        height: auto;
+        align-items: center;
+    }
+
+    .sound-button {
+        width: 55px;
+        height: 55px;
+        margin-top: 10px;
+    }
+
+    .sound-icon {
+        font-size: 1.6rem;
+    }
+
+    .sound-waves {
+        width: 55px;
+        height: 55px;
+    }
+    
+    .bubble-source {
+        margin-top: 12px;
+        padding: 6px 12px;
+    }
+    
+    .bubble-source p {
+        font-size: 0.8rem;
+    }
+}
+
+/* Móviles pequeños (480px y menos) */
+@media (max-width: 480px) {
+    .page-header {
+        padding: 20px;
+    }
+    
+    .back-button {
+        padding: 12px 18px;
+        font-size: 0.9rem;
+    }
+    
+    .page-title {
+        font-size: 1.5rem;
+    }
+    
+    .carousel-inner {
+        height: 480px;
+    }
+    
+    .character-video-element {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .speech-bubble {
+        width: 260px;
+    }
+    
+    .bubble-content {
+        padding: 12px;
+    }
+    
+    .bubble-content p {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+    
+    .carousel-indicators {
+        bottom: -35px;
+        gap: 12px;
+    }
+    
+    .indicator {
+        width: 12px;
+        height: 12px;
+    }
+
+    .sound-button {
+        width: 50px;
+        height: 50px;
+        margin-top: 15px;
+    }
+
+    .sound-icon {
+        font-size: 1.4rem;
+    }
+
+    .sound-waves {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .bubble-source {
+        margin-top: 10px;
+        padding: 6px 12px;
+    }
+    
+    .bubble-source p {
+        font-size: 0.75rem;
+    }
+}
+
+/* ================================================
+   14. ACCESIBILIDAD
+   ================================================ */
+
+/* Focus styles para navegación por teclado */
+.back-button:focus,
+.carousel-nav:focus,
+.indicator:focus,
+.sound-button:focus {
+    outline: 2px solid #4fc3f7;
+    outline-offset: 2px;
+}
+
+.character-video:focus {
+    outline: 3px solid #4fc3f7;
+    outline-offset: 5px;
+    border-radius: 20px;
+}
+
+/* Alto contraste */
+@media (prefers-contrast: high) {
+    .speech-bubble,
+    .carousel-wrapper,
+    .page-header,
+    .instructions {
+        border-width: 3px;
+    }
+    
+    .carousel-nav,
+    .indicator,
+    .back-button,
+    .sound-button {
+        border-width: 3px;
+    }
+}
+
+/* Texto más grande para usuarios que lo necesiten */
+@media (prefers-font-size: large) {
+    .bubble-content p,
+    .instructions p {
+        font-size: 1.1rem;
+    }
+}
+
+/* Soporte para usuarios que prefieren menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+    .character-video,
+    .sound-button,
+    .sound-waves {
+        animation: none;
+    }
+    
+    .speech-bubble {
+        transition: opacity 0.3s ease;
+    }
+    
+    .star,
+    .shooting-star {
+        animation: none;
+    }
+}
+
+/* ================================================
+   15. ESTADOS DE CARGA Y ERROR
+   ================================================ */
+
+/* Placeholder mientras carga el video */
+.character-video-element:not([src]) {
+    background: linear-gradient(45deg, #333, #555);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.character-video-element:not([src])::after {
+    content: "Cargando video...";
+    color: white;
+    font-size: 1rem;
+}
+
+/* Estilo cuando el video no se puede cargar */
+.character-video-element:invalid {
+    background: linear-gradient(45deg, #666, #888);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.character-video-element:invalid::after {
+    content: "Video no disponible";
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+/* Estados de error para audios */
+.sound-button.audio-error {
+    background: linear-gradient(135deg, #757575, #424242);
+    border-color: rgba(255, 255, 255, 0.2);
+    cursor: not-allowed;
+}
+
+.sound-button.audio-error .sound-icon {
+    opacity: 0.5;
+}
+
+.sound-button.audio-loading {
+    background: linear-gradient(135deg, #ffb74d, #ff9800);
+    animation: audioLoading 1.5s ease-in-out infinite;
+}
+
+@keyframes audioLoading {
+    0%, 100% { 
+        opacity: 0.8; 
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 1; 
+        transform: scale(1.05);
+    }
+}
+
+/* ================================================
+   16. ENLACES EN GLOBOS DE TEXTO
+   ================================================ */
+
+.bubble-link {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #4fc3f7, #29b6f6);
+    color: white !important;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    text-align: center;
+    min-width: 180px;
+}
+
+.bubble-link:hover {
+    background: linear-gradient(135deg, #29b6f6, #0288d1);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(41, 182, 246, 0.4);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.bubble-link:focus {
+    outline: 3px solid #ffab00;
+    outline-offset: 3px;
+}
+
+.bubble-link:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(41, 182, 246, 0.3);
+}
+
+/* Responsive para enlaces */
+@media (max-width: 480px) {
+    .bubble-link {
+        padding: 10px 16px;
+        font-size: 0.85rem;
+        min-width: 150px;
+    }
+}
+
+/* ================================================
+   17. TÍTULO DINÁMICO DEL DATO CURIOSO
+   ================================================ */
+
+.current-topic-header {
+    text-align: center;
+    margin-bottom: 30px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    border-radius: 15px;
+    padding: 15px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.current-topic-title {
+    color: #4fc3f7;
+    font-size: 1.4rem;
+    margin: 0;
+    font-weight: 600;
+    transition: all 0.5s ease;
+    text-shadow: 0 0 10px rgba(79, 195, 247, 0.3);
+}
+
+/* Responsive para título dinámico */
+@media (max-width: 768px) {
+    .current-topic-title {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .current-topic-header {
+        padding: 12px 15px;
+    }
+    
+    .current-topic-title {
+        font-size: 1.1rem;
+    }
+}
+
+/* ================================================
+   18. EFECTOS ESPECIALES ADICIONALES PARA AUDIO
+   ================================================ */
+
+/* Indicador visual cuando se reproduce audio */
+.sound-button.playing {
+    background: linear-gradient(135deg, #4caf50, #388e3c);
+    animation: audioPlaying 0.8s ease-in-out infinite alternate;
+}
+
+.sound-button.playing .sound-waves {
+    opacity: 1;
+    transform: scale(2);
+    animation: playingWaves 1s ease-in-out infinite;
+}
+
+@keyframes audioPlaying {
+    0% { 
+        box-shadow: 0 8px 25px rgba(76, 175, 80, 0.6);
+    }
+    100% { 
+        box-shadow: 0 12px 35px rgba(76, 175, 80, 0.8);
+    }
+}
+
+@keyframes playingWaves {
+    0%, 100% { 
+        transform: scale(2); 
+        opacity: 0.8;
+    }
+    50% { 
+        transform: scale(2.5); 
+        opacity: 0.4;
+    }
+}
+
+/* Efecto de éxito al reproducir audio */
+.sound-button.audio-success {
+    background: linear-gradient(135deg, #66bb6a, #4caf50);
+    animation: audioSuccess 0.6s ease-out;
+}
+
+@keyframes audioSuccess {
+    0% { 
+        transform: scale(1);
+    }
+    50% { 
+        transform: scale(1.2);
+        box-shadow: 0 15px 40px rgba(76, 175, 80, 0.7);
+    }
+    100% { 
+        transform: scale(1);
+        box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+    }
+}

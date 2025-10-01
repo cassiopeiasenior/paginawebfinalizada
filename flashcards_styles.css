@@ -1,0 +1,560 @@
+/* ===========================
+   ESTILOS GENERALES Y FONDO
+   =========================== */
+body {
+    background: url("assets/flashcards/imgfondo.jpeg") center/cover no-repeat;
+    padding: 30px;
+    color: #fff;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* ===========================
+   CARRUSEL Y LAYOUT
+   =========================== */
+.carousel { 
+    margin: 0 auto; 
+    max-width: 1260px; 
+}
+
+.carousel-indicators { 
+    bottom: -40px; 
+}
+
+.carousel-indicators li { 
+    width: 12px; 
+    height: 12px; 
+    border-radius: 50%; 
+    border: 2px solid #fff; 
+    background: transparent; 
+    margin: 4px; 
+}
+
+.carousel-indicators .active { 
+    background: #fff; 
+    border-color: #fff; 
+}
+
+.carousel-control.left, 
+.carousel-control.right { 
+    width: 50px; 
+}
+
+.carousel-control .glyphicon { 
+    font-size: 22px; 
+    color: #fff; 
+}
+
+/* Layout de slides */
+.carousel-inner .item { 
+    padding: 20px 0; 
+}
+
+.cards-wrapper { 
+    display: flex; 
+    justify-content: space-between; 
+    gap: 20px; 
+}
+
+/* ===========================
+   TARJETA (FLASHCARD) GENERAL
+   =========================== */
+.card {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    height: 520px;
+    margin: 0;
+    perspective: 1200px;
+    cursor: pointer;
+    flex: 1 1 0;
+    transform-style: preserve-3d;
+}
+
+/* Cada "face" ocupa todo el contenedor */
+.card .face {
+    position: absolute;
+    width: 100%; 
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform .6s;
+}
+
+/* Front / back transform para flip */
+.card .front { 
+    transform: rotateY(0deg); 
+}
+
+.card .back { 
+    transform: rotateY(180deg); 
+    background: rgba(3,35,54,0.95); 
+    padding: 18px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    text-align: center; 
+}
+
+/* Flip */
+.card.flip .front { 
+    transform: rotateY(180deg); 
+}
+
+.card.flip .back { 
+    transform: rotateY(360deg); 
+}
+
+/* ===========================
+   MEDIA (IMAGEN / VIDEO) FRONTAL
+   =========================== */
+/* Imágenes y videos ocupan todo el frente (por debajo del título) */
+.card .front img,
+.card .front video {
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* Técnica static -> gif (ej. Ilari) */
+.card .front .static-img { 
+    display: block; 
+    z-index: 0; 
+}
+
+.card .front .gif-img { 
+    display: none; 
+    z-index: 0; 
+}
+
+/* Al pasar el mouse por la tarjeta, swap static -> gif */
+.card:hover .front .static-img { 
+    display: none; 
+}
+
+.card:hover .front .gif-img { 
+    display: block; 
+}
+
+/* ===========================
+   TÍTULO FRONTAL (BARRA INFERIOR)
+   =========================== */
+.card .front h3 {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.65);
+    color: #fff;
+    padding: 12px;
+    text-align: center;
+    z-index: 3;
+    margin: 0; /* Eliminar margen por defecto */
+}
+
+/* ===========================
+   ESTILOS ESPECIALES POR PERSONAJE
+   =========================== */
+
+/* ILARI */
+.card-ilari .front {
+    background: url("assets/flashcards/frente/imgfrenteilari.jpg") center/cover no-repeat;
+}
+
+.card-ilari .back {
+    background: linear-gradient(to top, rgba(3, 83, 0, 0.7), rgba(3, 54, 3, 0.95)),
+                url("assets/flashcards/trasera/imgtraserailari.jpg") center/cover no-repeat;
+    color: #fff;
+}
+
+/* FIBA */
+.card-fiba .front {
+    background: url("assets/flashcards/frente/imgfrentefiba.jpg") center/cover no-repeat;
+}
+
+.card-fiba .back {
+    background: linear-gradient(to top, rgba(3, 83, 0, 0.7), rgba(3, 54, 3, 0.95)),
+                url("assets/flashcards/trasera/imgtraserailari.jpg") center/cover no-repeat;
+    color: #fff;
+}
+
+/* ORIÓN */
+.card-orion .front {
+    background: url("assets/flashcards/frente/imgfrenteorion.jpg") center/cover no-repeat;
+}
+
+.card-orion .back {
+    background: linear-gradient(to top, rgba(20, 20, 80, 0.7), rgba(10, 10, 50, 0.7)),
+                url("assets/flashcards/trasera/imgtraseraorion.jpg") center/cover no-repeat;
+    color: #fff;
+}
+
+/* NEREA */
+.card-nerea .front {
+    background: url("assets/flashcards/frente/imgfrentenerea.jpeg") center/cover no-repeat;
+}
+
+.card-nerea .back {
+    background: linear-gradient(to top, rgba(0, 80, 80, 0.7), rgba(0, 60, 60, 0.7)),
+                url("assets/flashcards/trasera/imgtraseranerea.jpeg") center/cover no-repeat;
+    color: #fff;
+}
+
+/* CASSIA */
+.card-cassia .front {
+    background: url("assets/flashcards/frente/imgfrentecassia.jpeg") center/cover no-repeat;
+}
+
+.card-cassia .back {
+    background: linear-gradient(to top, rgba(34, 139, 34, 0.6), rgba(0, 100, 0, 0.6)),
+                url("assets/flashcards/trasera/imgtraseracassia.jpeg") center/cover no-repeat;
+    color: #fff;
+}
+
+/* GAIA */
+.card-gaia .front {
+    background: url("assets/flashcards/frente/imgfrentegaia.jpg") center/cover no-repeat;
+}
+
+.card-gaia .back {
+    background: linear-gradient(to top, rgba(139, 69, 19, 0.5), rgba(101, 67, 33, 0.5)),
+                url("assets/flashcards/trasera/imgtraseragaia.jpg") center/cover no-repeat;
+    color: #fff;
+}
+
+/* DENEB */
+.card-deneb .front {
+    background: url("assets/flashcards/frente/imgfrentedeneb.jpeg") center/cover no-repeat;
+}
+
+.card-deneb .back {
+    background: linear-gradient(to top, rgba(75, 0, 130, 0.6), rgba(25, 25, 112, 0.6)),
+                url("assets/flashcards/trasera/imgtraseradeneb.jpeg") center/cover no-repeat;
+    color: #fff;
+}
+
+/* SOMBRA SOLAR */
+.card-sombra .front {
+    background: url("assets/flashcards/frente/imgfrentesombrasolar.jpeg") center/cover no-repeat;
+    color: #000;
+}
+
+.card-sombra .back {
+    background: linear-gradient(to top, rgba(128, 0, 0, 0.7), rgba(0, 0, 0, 0.95)),
+                url("assets/flashcards/trasera/imgtraserasombrasolar.jpeg") center/cover no-repeat;
+    color: #fff;
+}
+
+/* PERSONAJE 9 (SOHO) */
+.card-personaje9 .front {
+    background: url("assets/flashcards/frente/imgfrentesoho.jpeg") center/cover no-repeat;
+}
+
+.card-personaje9 .back {
+    background: linear-gradient(to top, rgba(128, 0, 128, 0.3), rgba(113, 88, 113, 0.5)),
+                url("assets/flashcards/trasera/imgtraserasoho.jpeg") center/cover no-repeat;
+    color: #fff;
+}
+
+/* ===========================
+   CÍRCULOS (BOTONES) - OCULTOS POR DEFECTO
+   =========================== */
+.circulos-container {
+    display: none;         /* oculto por defecto */
+    justify-content: center;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.circulos-container.visible {
+    display: flex;         /* visible cuando se añade .visible */
+}
+
+/* Estilo de los botones-círculo */
+.circulo {
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Transición suave para hover */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efectos hover para círculos */
+.circulo:hover { 
+    background-color: #b300b3; 
+    transform: translateY(-3px) scale(1.05); /* Efecto más dramático */
+    border-color: #ffcc00;
+    box-shadow: 0 5px 15px rgba(179, 0, 179, 0.4);
+}
+
+/* Iconos de los círculos */
+.circulo:nth-child(1) {
+    background: url("assets/flashcards/icons/sonido.png") center/cover no-repeat;
+}
+
+.circulo:nth-child(2) {
+    background: url("assets/flashcards/icons/lenguajedesenas.png") center/cover no-repeat;
+}
+
+.circulo:nth-child(3) {
+    background: url("assets/flashcards/icons/papercraft.png") center/cover no-repeat;
+}
+
+/* Mantener iconos visibles al hacer hover */
+.circulo:hover:nth-child(1) {
+    background: #ffffff url("assets/flashcards/icons/sonido.png") center/cover no-repeat;
+}
+
+.circulo:hover:nth-child(2) {
+    background: #ffffff url("assets/flashcards/icons/lenguajedesenas.png") center/cover no-repeat;
+}
+
+.circulo:hover:nth-child(3) {
+    background: #ffffff url("assets/flashcards/icons/papercraft.png") center/cover no-repeat;
+}
+
+/* ===========================
+   BOTÓN ABRIR (EN LA BACK)
+   =========================== */
+.btn-abrir {
+    background: #ffcc00;
+    color: #000;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Transición suave para hover */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efectos hover para botón abrir */
+.btn-abrir:hover { 
+    background: #ffaa00; 
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 4px 12px rgba(255, 170, 0, 0.4);
+}
+
+/* Efecto de brillo en hover */
+.btn-abrir:hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shine 0.6s ease-in-out;
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* ===========================
+   ANIMACIONES ADICIONALES
+   =========================== */
+
+/* Animación sutil para cuando aparecen los círculos */
+.circulos-container.visible .circulo {
+    animation: bounceIn 0.4s ease forwards;
+}
+
+.circulos-container.visible .circulo:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.circulos-container.visible .circulo:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.circulos-container.visible .circulo:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) translateY(20px);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.1) translateY(-5px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Animación para el flip de las cartas */
+.card {
+    transition: transform 0.1s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Elevación sutil al hacer hover */
+}
+
+/* ===========================
+   INDICADORES VISUALES PARA AUDIO
+   =========================== */
+
+/* Pulso sutil para elementos con audio hover */
+.btn-abrir[data-hover-audio],
+.circulo[data-hover-audio] {
+    position: relative;
+}
+
+.btn-abrir[data-hover-audio]::after,
+.circulo[data-hover-audio]::after {
+    content: '🔊';
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    font-size: 12px;
+    opacity: 0.6;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* Mostrar indicador más claramente en hover */
+.btn-abrir[data-hover-audio]:hover::after,
+.circulo[data-hover-audio]:hover::after {
+    opacity: 1;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+@media (max-width: 900px) {
+    .cards-wrapper { 
+        justify-content: center; 
+    }
+    
+    .card { 
+        max-width: 85%; 
+    }
+}
+
+@media (max-width: 520px) {
+    .card { 
+        max-width: 95%; 
+        height: 460px; 
+    }
+    
+    .carousel-control.left, 
+    .carousel-control.right { 
+        display: none; 
+    }
+    
+    .carousel-indicators { 
+        bottom: -50px; 
+    }
+    
+    /* Ajustar tamaño de círculos en móvil */
+    .circulo {
+        width: 35px;
+        height: 35px;
+    }
+    
+    /* Ajustar padding del botón en móvil */
+    .btn-abrir {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+/* ===========================
+   MEJORAS DE ACCESIBILIDAD
+   =========================== */
+
+/* Focus visible para navegación con teclado */
+.btn-abrir:focus,
+.circulo:focus {
+    outline: 2px solid #ffcc00;
+    outline-offset: 2px;
+}
+
+/* Mejorar contraste en modo de alto contraste */
+@media (prefers-contrast: high) {
+    .card .back {
+        background: rgba(0, 0, 0, 0.9) !important;
+        border: 2px solid #fff;
+    }
+    
+    .circulo {
+        border: 3px solid #fff;
+    }
+    
+    .btn-abrir {
+        border: 2px solid #000;
+    }
+}
+
+/* Respetar preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+    .card .face,
+    .circulo,
+    .btn-abrir {
+        transition: none;
+    }
+    
+    .card:hover {
+        transform: none;
+    }
+    
+    .circulo:hover {
+        transform: none;
+    }
+    
+    .btn-abrir:hover {
+        transform: none;
+    }
+    
+    /* Animations disabled for reduced motion preference */
+    /* No nested @keyframes allowed in CSS */
+}
+
+/* ===========================
+   COMENTARIOS PARA PERSONALIZACIÓN
+   =========================== */
+
+/*
+ARCHIVOS DE AUDIO HOVER NECESARIOS:
+- assets/audio/hover-abrir.mp3 (para todos los botones "Abrir")
+- assets/audio/hover-sonido.mp3 (para el primer círculo - audio)
+- assets/audio/hover-senas.mp3 (para el segundo círculo - lenguaje de señas)
+- assets/audio/hover-papercraft.mp3 (para el tercer círculo - papercraft)
+
+PERSONALIZACIÓN DE COLORES POR PERSONAJE:
+- Cambiar los gradientes en las secciones de cada personaje
+- Los colores actuales reflejan la personalidad de cada uno
+- Se puede ajustar la opacidad de los overlays modificando los valores rgba()
+
+EFECTOS ADICIONALES:
+- Los efectos hover son sutiles para no distraer
+- Se pueden intensificar cambiando los valores de transform y box-shadow
+- Las animaciones respetan las preferencias de accesibilidad del usuario
+*/
