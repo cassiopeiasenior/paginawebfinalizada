@@ -550,6 +550,10 @@ body {
     .mobile-slide {
         display: none !important;
     }
+    
+    .carousel-indicators .mobile-only {
+        display: none !important;
+    }
 }
 
 /* Mostrar solo en móviles */
@@ -571,13 +575,22 @@ body {
     .cards-wrapper {
         justify-content: center;
         gap: 15px;
+        flex-wrap: nowrap;
     }
     
     /* Las tarjetas ocupan más espacio */
     .card {
         max-width: 48%;
+        min-width: 48%;
         height: 500px;
         flex: 0 0 48%;
+    }
+    
+    /* Para slides con una sola tarjeta (SOHO) */
+    .mobile-slide .cards-wrapper .card:only-child {
+        max-width: 70%;
+        min-width: 70%;
+        flex: 0 0 70%;
     }
     
     /* Mejorar legibilidad */
@@ -600,8 +613,15 @@ body {
 @media (max-width: 520px) {
     .card {
         max-width: 47%;
+        min-width: 47%;
         height: 460px;
         flex: 0 0 47%;
+    }
+    
+    .mobile-slide .cards-wrapper .card:only-child {
+        max-width: 85%;
+        min-width: 85%;
+        flex: 0 0 85%;
     }
     
     .carousel-control.left,
@@ -627,25 +647,3 @@ body {
         font-size: 0.9rem;
     }
 }
-
-/* ===========================
-   COMENTARIOS PARA PERSONALIZACIÓN
-   =========================== */
-
-/*
-ARCHIVOS DE AUDIO HOVER NECESARIOS:
-- assets/audio/hover-abrir.mp3 (para todos los botones "Abrir")
-- assets/audio/hover-sonido.mp3 (para el primer círculo - audio)
-- assets/audio/hover-senas.mp3 (para el segundo círculo - lenguaje de señas)
-- assets/audio/hover-papercraft.mp3 (para el tercer círculo - papercraft)
-
-PERSONALIZACIÓN DE COLORES POR PERSONAJE:
-- Cambiar los gradientes en las secciones de cada personaje
-- Los colores actuales reflejan la personalidad de cada uno
-- Se puede ajustar la opacidad de los overlays modificando los valores rgba()
-
-EFECTOS ADICIONALES:
-- Los efectos hover son sutiles para no distraer
-- Se pueden intensificar cambiando los valores de transform y box-shadow
-- Las animaciones respetan las preferencias de accesibilidad del usuario
-*/
