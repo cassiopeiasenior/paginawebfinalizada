@@ -19,7 +19,7 @@ Diseño responsivo y efectos espaciales
 
 body {
     font-family: 'Arial', sans-serif;
-    background: url('assets/glosario/fondoglosario.jpeg') no-repeat center center fixed;
+    background: url('assets/glosario/imgfondoglosario.jpeg');
     min-height: 100vh;
     color: white;
     overflow-x: hidden;
