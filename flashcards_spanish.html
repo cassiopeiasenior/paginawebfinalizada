@@ -20,50 +20,43 @@
                 style="display: inline-block; background: linear-gradient(45deg, #171c1f, #230029); color: white; text-decoration: none; padding: 12px 25px; border-radius: 25px; font-weight: bold;">←
                 Volver al Portal Espacial</a>
         </div>
+        
         <div id="theCarousel" class="carousel slide" data-ride="carousel" data-interval="4000">
 
-            <!-- Indicadores -->
+            <!-- Indicadores - Ahora 5 slides para móvil -->
             <ol class="carousel-indicators">
                 <li data-target="#theCarousel" data-slide-to="0" class="active"></li>
                 <li data-target="#theCarousel" data-slide-to="1"></li>
                 <li data-target="#theCarousel" data-slide-to="2"></li>
+                <li data-target="#theCarousel" data-slide-to="3" class="mobile-only"></li>
+                <li data-target="#theCarousel" data-slide-to="4" class="mobile-only"></li>
             </ol>
 
             <!-- Slides -->
             <div class="carousel-inner" role="listbox">
 
-                <!-- ITEM 1 (tarjetas 1-3) -->
+                <!-- SLIDE 1: Ilari, Fiba, Orion -->
                 <div class="item active">
                     <div class="cards-wrapper">
 
-                        <!-- FLASHCARD ILARI (especial) -->
+                        <!-- FLASHCARD ILARI -->
                         <div class="card card-ilari">
-                            <!-- FRONT con imagen estática + GIF (swap al hover) -->
                             <div class="face front">
                                 <img src="assets/flashcards/personajes/imgilari.png" alt="Ilari" class="static-img">
                                 <video autoplay loop muted class="gif-img">
                                     <source src="assets/flashcards/gifs/vidilari.mp4" type="video/mp4">
-                                    Tu navegador no soporta la etiqueta de video.
                                 </video>
                                 <h3>Ilari</h3>
                             </div>
-
-                            <!-- BACK con descripción y círculos ocultos -->
                             <div class="face back">
                                 <h3>Ilari</h3>
                                 <p>
                                     ¡Hola! Me llamo Ilari, tengo 14 años y soy de la región más fría de Colombia: la
-                                    Andina; el
-                                    significado de mi nombre en lengua quechua es primer rayo de sol, representa la luz
-                                    naciente, y de
-                                    alguna forma siento que también me define a mí, me gusta tomar la iniciativa y
-                                    ayudar a que los demás
-                                    den lo mejor de sí, y aunque no poseo un poder sobrenatural, siempre estoy dispuesta
-                                    a entregar todo
-                                    sin importar la prueba, ¡rendirse no está en mi vocabulario!
+                                    Andina; el significado de mi nombre en lengua quechua es primer rayo de sol, representa la luz
+                                    naciente, y de alguna forma siento que también me define a mí, me gusta tomar la iniciativa y
+                                    ayudar a que los demás den lo mejor de sí, y aunque no poseo un poder sobrenatural, siempre estoy dispuesta
+                                    a entregar todo sin importar la prueba, ¡rendirse no está en mi vocabulario!
                                 </p>
-
-                                <!-- Círculos (inicialmente ocultos) -->
                                 <div class="circulos-container" id="circulos-ilari">
                                     <button class="circulo" aria-label="Audio"
                                         data-hover-audio="assets/flashcards/audio/audioraudio.mp3"></button>
@@ -72,8 +65,6 @@
                                     <button class="circulo" aria-label="Papercraft"
                                         data-hover-audio="assets/flashcards/audio/audiopapercraft.mp3"></button>
                                 </div>
-
-                                <!-- Botón que muestra/oculta los círculos -->
                                 <button class="btn-abrir" data-target="circulos-ilari"
                                     data-hover-audio="assets/flashcards/audio/audioabrir.mp3">Abrir</button>
                             </div>
@@ -85,7 +76,6 @@
                                 <img src="assets/flashcards/personajes/imgfiba.png" alt="Fiba" class="static-img">
                                 <video autoplay loop muted class="gif-img">
                                     <source src="assets/flashcards/gifs/vidfiba.mp4" type="video/mp4">
-                                    Tu navegador no soporta la etiqueta de video.
                                 </video>
                                 <h3>Fiba</h3>
                             </div>
@@ -93,17 +83,11 @@
                                 <h3>Fiba</h3>
                                 <p>
                                     Emm... hola, mi nombre es Fiba, soy hermano de Ilari, tengo 10 años y a diferencia
-                                    de mi hermana, no
-                                    hablo mucho, prefiero observar; tengo un poder sobrenatural, me gusta llamarlo "oído
-                                    del cielo",
-                                    gracias a él puedo escuchar lo que el resto no percibe, noto tormentas solares antes
-                                    de que ocurran, y
-                                    a veces, mis amigos dicen que mis palabras parecen profecías, lo que no saben es que
-                                    siempre busco
-                                    protegerlos con mis advertencias...
+                                    de mi hermana, no hablo mucho, prefiero observar; tengo un poder sobrenatural, me gusta llamarlo "oído
+                                    del cielo", gracias a él puedo escuchar lo que el resto no percibe, noto tormentas solares antes
+                                    de que ocurran, y a veces, mis amigos dicen que mis palabras parecen profecías, lo que no saben es que
+                                    siempre busco protegerlos con mis advertencias...
                                 </p>
-
-                                <!-- Círculos (inicialmente ocultos) -->
                                 <div class="circulos-container" id="circulos-fiba">
                                     <button class="circulo" aria-label="Audio"
                                         data-hover-audio="assets/flashcards/audio/audioraudio.mp3"></button>
@@ -112,20 +96,17 @@
                                     <button class="circulo" aria-label="Papercraft"
                                         data-hover-audio="assets/flashcards/audio/audiopapercraft.mp3"></button>
                                 </div>
-
-                                <!-- Botón que muestra/oculta los círculos -->
                                 <button class="btn-abrir" data-target="circulos-fiba"
                                     data-hover-audio="assets/flashcards/audio/audioabrir.mp3">Abrir</button>
                             </div>
                         </div>
 
-                        <!-- FLASHCARD ORIÓN -->
-                        <div class="card card-orion">
+                        <!-- FLASHCARD ORIÓN (Desktop) -->
+                        <div class="card card-orion desktop-only">
                             <div class="face front">
                                 <img src="assets/flashcards/personajes/imgorion.png" alt="Orión" class="static-img">
                                 <video autoplay loop muted class="gif-img">
                                     <source src="assets/flashcards/gifs/vidorion.mp4" type="video/mp4">
-                                    Tu navegador no soporta la etiqueta de video.
                                 </video>
                                 <h3>Orión</h3>
                             </div>
@@ -133,19 +114,12 @@
                                 <h3>Orión</h3>
                                 <p>
                                     Si, antes de que te lo preguntes, mi nombre es Orión, como la constelación guía de
-                                    los navegantes, ese
-                                    soy yo; tengo 14 años y provengo del pacífico colombiano, mi poder es la
-                                    comunicación marítima, soy
-                                    capaz de entenderme con las olas, las escucho, las respeto, y ellas me obedecen como
-                                    fieles
-                                    compañeras, me ayudan a salvar embarcaciones en peligro y moverlas hacia rutas
-                                    seguras; pero espera,
-                                    por que de noche soy todavía mas increíble, ya que el reflejo estelar potencia mi
-                                    poder, que puedo
-                                    decir, soy genial.
+                                    los navegantes, ese soy yo; tengo 14 años y provengo del pacífico colombiano, mi poder es la
+                                    comunicación marítima, soy capaz de entenderme con las olas, las escucho, las respeto, y ellas me
+                                    obedecen como fieles compañeras, me ayudan a salvar embarcaciones en peligro y moverlas hacia rutas
+                                    seguras; pero espera, por que de noche soy todavía mas increíble, ya que el reflejo estelar potencia
+                                    mi poder, que puedo decir, soy genial.
                                 </p>
-
-                                <!-- Círculos (inicialmente ocultos) -->
                                 <div class="circulos-container" id="circulos-orion">
                                     <button class="circulo" aria-label="Audio"
                                         data-hover-audio="assets/flashcards/audio/audioraudio.mp3"></button>
@@ -154,8 +128,6 @@
                                     <button class="circulo" aria-label="Papercraft"
                                         data-hover-audio="assets/flashcards/audio/audiopapercraft.mp3"></button>
                                 </div>
-
-                                <!-- Botón que muestra/oculta los círculos -->
                                 <button class="btn-abrir" data-target="circulos-orion"
                                     data-hover-audio="assets/flashcards/audio/audioabrir.mp3">Abrir</button>
                             </div>
@@ -164,16 +136,48 @@
                     </div>
                 </div>
 
-                <!-- ITEM 2 (tarjetas 4-6) -->
+                <!-- SLIDE 2: Orion (mobile), Nerea, Cassia (desktop) -->
                 <div class="item">
                     <div class="cards-wrapper">
+
+                        <!-- FLASHCARD ORIÓN (Mobile) -->
+                        <div class="card card-orion mobile-only">
+                            <div class="face front">
+                                <img src="assets/flashcards/personajes/imgorion.png" alt="Orión" class="static-img">
+                                <video autoplay loop muted class="gif-img">
+                                    <source src="assets/flashcards/gifs/vidorion.mp4" type="video/mp4">
+                                </video>
+                                <h3>Orión</h3>
+                            </div>
+                            <div class="face back">
+                                <h3>Orión</h3>
+                                <p>
+                                    Si, antes de que te lo preguntes, mi nombre es Orión, como la constelación guía de
+                                    los navegantes, ese soy yo; tengo 14 años y provengo del pacífico colombiano, mi poder es la
+                                    comunicación marítima, soy capaz de entenderme con las olas, las escucho, las respeto, y ellas me
+                                    obedecen como fieles compañeras, me ayudan a salvar embarcaciones en peligro y moverlas hacia rutas
+                                    seguras; pero espera, por que de noche soy todavía mas increíble, ya que el reflejo estelar potencia
+                                    mi poder, que puedo decir, soy genial.
+                                </p>
+                                <div class="circulos-container" id="circulos-orion-mobile">
+                                    <button class="circulo" aria-label="Audio"
+                                        data-hover-audio="assets/flashcards/audio/audioraudio.mp3"></button>
+                                    <button class="circulo" aria-label="Lenguaje de señas"
+                                        data-hover-audio="assets/flashcards/audio/audiolsenas.mp3"></button>
+                                    <button class="circulo" aria-label="Papercraft"
+                                        data-hover-audio="assets/flashcards/audio/audiopapercraft.mp3"></button>
+                                </div>
+                                <button class="btn-abrir" data-target="circulos-orion-mobile"
+                                    data-hover-audio="assets/flashcards/audio/audioabrir.mp3">Abrir</button>
+                            </div>
+                        </div>
+
                         <!-- FLASHCARD NEREA -->
                         <div class="card card-nerea">
                             <div class="face front">
                                 <img src="assets/flashcards/personajes/imgnerea.png" alt="Nerea" class="static-img">
                                 <video autoplay loop muted class="gif-img">
                                     <source src="assets/flashcards/gifs/vidnerea.mp4" type="video/mp4">
-                                    Tu navegador no soporta la etiqueta de video.
                                 </video>
                                 <h3>Nerea</h3>
                             </div>
@@ -181,19 +185,12 @@
                                 <h3>Nerea</h3>
                                 <p>
                                     Hola, soy Nerea, de la costa caribe, donde las olas narran historias y el viento
-                                    lleva consigo los
-                                    secretos mas antiguos; si te suena conocido mi nombre es porque viene de las
-                                    nereidas, las ninfas
-                                    marinas de la mitología griega, me gusta pensar que tenemos mucho en común, ya que,
-                                    como ellas, yo
-                                    también tengo una conexión especial con el mar, puedo manejar las brisas y los
-                                    vientos marinos, con mi
-                                    voz el aire obedece y dejar de ser sofocante, el mar responde a mi calma y cuando lo
-                                    escucho con
-                                    atención, siento que somos uno solo.
+                                    lleva consigo los secretos mas antiguos; si te suena conocido mi nombre es porque viene de las
+                                    nereidas, las ninfas marinas de la mitología griega, me gusta pensar que tenemos mucho en común, ya
+                                    que, como ellas, yo también tengo una conexión especial con el mar, puedo manejar las brisas y los
+                                    vientos marinos, con mi voz el aire obedece y dejar de ser sofocante, el mar responde a mi calma y
+                                    cuando lo escucho con atención, siento que somos uno solo.
                                 </p>
-
-                                <!-- Círculos (inicialmente ocultos) -->
                                 <div class="circulos-container" id="circulos-nerea">
                                     <button class="circulo" aria-label="Audio"
                                         data-hover-audio="assets/flashcards/audio/audioraudio.mp3"></button>
@@ -202,20 +199,17 @@
                                     <button class="circulo" aria-label="Papercraft"
                                         data-hover-audio="assets/flashcards/audio/audiopapercraft.mp3"></button>
                                 </div>
-
-                                <!-- Botón que muestra/oculta los círculos -->
                                 <button class="btn-abrir" data-target="circulos-nerea"
                                     data-hover-audio="assets/flashcards/audio/audioabrir.mp3">Abrir</button>
                             </div>
                         </div>
 
-                        <!-- FLASHCARD CASSIA -->
-                        <div class="card card-cassia">
+                        <!-- FLASHCARD CASSIA (Desktop) -->
+                        <div class="card card-cassia desktop-only">
                             <div class="face front">
                                 <img src="assets/flashcards/personajes/imgcassia.png" alt="Cassia" class="static-img">
                                 <video autoplay loop muted class="gif-img">
                                     <source src="assets/flashcards/gifs/vidcassia.mp4" type="video/mp4">
-                                    Tu navegador no soporta la etiqueta de video.
                                 </video>
                                 <h3>Cassia</h3>
                             </div>
@@ -223,17 +217,11 @@
                                 <h3>Cassia</h3>
                                 <p>
                                     El pulmón del mundo es mi hogar, donde llevo conviviendo en paz con la naturaleza
-                                    desde hace 11 años,
-                                    contemplando las maravillas de mi tierra; las plantas me permiten entender el
-                                    leguaje oculto de la
-                                    selva, me revelan su energía y cuando las toco, puedo sanar sus heridas y ayudarlas
-                                    a que broten con
-                                    mas fuerza, eso me recuerda al origen de mi nombre, una planta curativa; yo creo que
-                                    mi misión en el
-                                    mundo es simple: proteger la vida en cualquiera de sus formas.
+                                    desde hace 11 años, contemplando las maravillas de mi tierra; las plantas me permiten entender el
+                                    leguaje oculto de la selva, me revelan su energía y cuando las toco, puedo sanar sus heridas y
+                                    ayudarlas a que broten con mas fuerza, eso me recuerda al origen de mi nombre, una planta curativa; yo
+                                    creo que mi misión en el mundo es simple: proteger la vida en cualquiera de sus formas.
                                 </p>
-
-                                <!-- Círculos (inicialmente ocultos) -->
                                 <div class="circulos-container" id="circulos-cassia">
                                     <button class="circulo" aria-label="Audio"
                                         data-hover-audio="assets/flashcards/audio/audiosonido.mp3"></button>
@@ -242,9 +230,45 @@
                                     <button class="circulo" aria-label="Papercraft"
                                         data-hover-audio="assets/flashcards/audio/audiopapercraft.mp3"></button>
                                 </div>
-
-                                <!-- Botón que muestra/oculta los círculos -->
                                 <button class="btn-abrir" data-target="circulos-cassia"
+                                    data-hover-audio="assets/flashcards/audio/audioabrir.mp3">Abrir</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- SLIDE 3: Cassia (mobile), Gaia, Deneb (desktop) -->
+                <div class="item">
+                    <div class="cards-wrapper">
+
+                        <!-- FLASHCARD CASSIA (Mobile) -->
+                        <div class="card card-cassia mobile-only">
+                            <div class="face front">
+                                <img src="assets/flashcards/personajes/imgcassia.png" alt="Cassia" class="static-img">
+                                <video autoplay loop muted class="gif-img">
+                                    <source src="assets/flashcards/gifs/vidcassia.mp4" type="video/mp4">
+                                </video>
+                                <h3>Cassia</h3>
+                            </div>
+                            <div class="face back">
+                                <h3>Cassia</h3>
+                                <p>
+                                    El pulmón del mundo es mi hogar, donde llevo conviviendo en paz con la naturaleza
+                                    desde hace 11 años, contemplando las maravillas de mi tierra; las plantas me permiten entender el
+                                    leguaje oculto de la selva, me revelan su energía y cuando las toco, puedo sanar sus heridas y
+                                    ayudarlas a que broten con mas fuerza, eso me recuerda al origen de mi nombre, una planta curativa; yo
+                                    creo que mi misión en el mundo es simple: proteger la vida en cualquiera de sus formas.
+                                </p>
+                                <div class="circulos-container" id="circulos-cassia-mobile">
+                                    <button class="circulo" aria-label="Audio"
+                                        data-hover-audio="assets/flashcards/audio/audiosonido.mp3"></button>
+                                    <button class="circulo" aria-label="Lenguaje de señas"
+                                        data-hover-audio="assets/flashcards/audio/audiolsenas.mp3"></button>
+                                    <button class="circulo" aria-label="Papercraft"
+                                        data-hover-audio="assets/flashcards/audio/audiopapercraft.mp3"></button>
+                                </div>
+                                <button class="btn-abrir" data-target="circulos-cassia-mobile"
                                     data-hover-audio="assets/flashcards/audio/audioabrir.mp3">Abrir</button>
                             </div>
                         </div>
@@ -255,7 +279,6 @@
                                 <img src="assets/flashcards/personajes/imggaia.png" alt="Gaia" class="static-img">
                                 <video autoplay loop muted class="gif-img">
                                     <source src="assets/flashcards/gifs/vidgaia.mp4" type="video/mp4">
-                                    Tu navegador no soporta la etiqueta de video.
                                 </video>
                                 <h3>Gaia</h3>
                             </div>
@@ -263,17 +286,11 @@
                                 <h3>Gaia</h3>
                                 <p>
                                     ¡Hola, yo soy Gaia! provengo del Orínoco colombiano y tengo 13 años; que puedo decir
-                                    de mí, soy una
-                                    persona muy fuerte, encanta competir y ser la mejor, pero definitivamente, lo que
-                                    más resalta en mí,
-                                    es la increíble habilidad que tengo para hablar con los animales, puedo entender lo
-                                    que sienten, y
-                                    ayudarlos en caso de ser necesario, sé que a veces puedo parecer seria o aburrida,
-                                    pero soy una
-                                    persona de lo más amable, ¡de verdad!
+                                    de mí, soy una persona muy fuerte, encanta competir y ser la mejor, pero definitivamente, lo que
+                                    más resalta en mí, es la increíble habilidad que tengo para hablar con los animales, puedo entender lo
+                                    que sienten, y ayudarlos en caso de ser necesario, sé que a veces puedo parecer seria o aburrida,
+                                    pero soy una persona de lo más amable, ¡de verdad!
                                 </p>
-
-                                <!-- Círculos (inicialmente ocultos) -->
                                 <div class="circulos-container" id="circulos-gaia">
                                     <button class="circulo" aria-label="Audio"
                                         data-hover-audio="assets/flashcards/audio/audioraudio.mp3"></button>
@@ -282,25 +299,17 @@
                                     <button class="circulo" aria-label="Papercraft"
                                         data-hover-audio="assets/flashcards/audio/audiopapercraft.mp3"></button>
                                 </div>
-
-                                <!-- Botón que muestra/oculta los círculos -->
                                 <button class="btn-abrir" data-target="circulos-gaia"
                                     data-hover-audio="assets/flashcards/audio/audioabrir.mp3">Abrir</button>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <!-- ITEM 3 (tarjetas 7-9) -->
-                <div class="item">
-                    <div class="cards-wrapper">
-                        <!-- FLASHCARD DENEB -->
-                        <div class="card card-deneb">
+                        <!-- FLASHCARD DENEB (Desktop) -->
+                        <div class="card card-deneb desktop-only">
                             <div class="face front">
                                 <img src="assets/flashcards/personajes/imgdeneb.png" alt="Deneb" class="static-img">
                                 <video autoplay loop muted class="gif-img">
                                     <source src="assets/flashcards/gifs/viddeneb.mp4" type="video/mp4">
-                                    Tu navegador no soporta la etiqueta de video.
                                 </video>
                                 <h3>Deneb</h3>
                             </div>
@@ -313,8 +322,6 @@
                                     imán! jaja; además puedo encender y apagar la televisión con mi mente! y de vez en
                                     cuando interfiero con las señales de radio y GPS. que puedo decir, soy increíble.
                                 </p>
-
-                                <!-- Círculos (inicialmente ocultos) -->
                                 <div class="circulos-container" id="circulos-deneb">
                                     <button class="circulo" aria-label="Audio"
                                         data-hover-audio="assets/flashcards/audio/audioraudio.mp3"></button>
@@ -323,9 +330,45 @@
                                     <button class="circulo" aria-label="Papercraft"
                                         data-hover-audio="assets/flashcards/audio/audiopapercraft.mp3"></button>
                                 </div>
-
-                                <!-- Botón que muestra/oculta los círculos -->
                                 <button class="btn-abrir" data-target="circulos-deneb"
+                                    data-hover-audio="assets/flashcards/audio/audioabrir.mp3">Abrir</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- SLIDE 4 (Mobile only): Deneb, Sombra Solar -->
+                <div class="item mobile-slide">
+                    <div class="cards-wrapper">
+
+                        <!-- FLASHCARD DENEB (Mobile) -->
+                        <div class="card card-deneb">
+                            <div class="face front">
+                                <img src="assets/flashcards/personajes/imgdeneb.png" alt="Deneb" class="static-img">
+                                <video autoplay loop muted class="gif-img">
+                                    <source src="assets/flashcards/gifs/viddeneb.mp4" type="video/mp4">
+                                </video>
+                                <h3>Deneb</h3>
+                            </div>
+                            <div class="face back">
+                                <h3>Deneb</h3>
+                                <p>
+                                    Hola, me llamo Deneb, y sé que probablemente no lo sepas, pero ese también es el
+                                    nombre de una estrella en la constelación Cisne, la más brillante de todas, como yo;
+                                    en fin, mi poder me permite manipular campos eléctricos y magnéticos, ¡soy como un
+                                    imán! jaja; además puedo encender y apagar la televisión con mi mente! y de vez en
+                                    cuando interfiero con las señales de radio y GPS. que puedo decir, soy increíble.
+                                </p>
+                                <div class="circulos-container" id="circulos-deneb-mobile">
+                                    <button class="circulo" aria-label="Audio"
+                                        data-hover-audio="assets/flashcards/audio/audioraudio.mp3"></button>
+                                    <button class="circulo" aria-label="Lenguaje de señas"
+                                        data-hover-audio="assets/flashcards/audio/audiolsenas.mp3"></button>
+                                    <button class="circulo" aria-label="Papercraft"
+                                        data-hover-audio="assets/flashcards/audio/audiopapercraft.mp3"></button>
+                                </div>
+                                <button class="btn-abrir" data-target="circulos-deneb-mobile"
                                     data-hover-audio="assets/flashcards/audio/audioabrir.mp3">Abrir</button>
                             </div>
                         </div>
@@ -333,11 +376,10 @@
                         <!-- FLASHCARD SOMBRA SOLAR -->
                         <div class="card card-sombra">
                             <div class="face front">
-                                <img src="assets/flashcards/personajes/imgsombrasolar.png" alt="Fiba"
+                                <img src="assets/flashcards/personajes/imgsombrasolar.png" alt="Sombra Solar"
                                     class="static-img">
                                 <video autoplay loop muted class="gif-img">
                                     <source src="assets/flashcards/gifs/vidsombrasolar.mp4" type="video/mp4">
-                                    Tu navegador no soporta la etiqueta de video.
                                 </video>
                                 <h3>Sombra Solar</h3>
                             </div>
@@ -345,17 +387,11 @@
                                 <h3>Sombra Solar</h3>
                                 <p>
                                     Soy la sombra solar, muchos me ven como una amenaza porque nací debido al
-                                    desequilibrio del sol,
-                                    dicen que soy oscuro, misterioso y malvado; genero tormentas solares y problemas en
-                                    el clima espacial
-                                    por donde quiera que pase, pero, lo que nadie nota, es que en realidad no soy malo,
-                                    solo estoy herido,
-                                    se que mi fuerza puede desatar caos y causar miedo, pero, en el fondo solo quiero
-                                    ser escuchado y
-                                    comprendido.
+                                    desequilibrio del sol, dicen que soy oscuro, misterioso y malvado; genero tormentas solares y problemas
+                                    en el clima espacial por donde quiera que pase, pero, lo que nadie nota, es que en realidad no soy
+                                    malo, solo estoy herido, se que mi fuerza puede desatar caos y causar miedo, pero, en el fondo solo
+                                    quiero ser escuchado y comprendido.
                                 </p>
-
-                                <!-- Círculos (inicialmente ocultos) -->
                                 <div class="circulos-container" id="circulos-sombra">
                                     <button class="circulo" aria-label="Audio"
                                         data-hover-audio="assets/flashcards/audio/audioraudio.mp3"></button>
@@ -364,50 +400,36 @@
                                     <button class="circulo" aria-label="Papercraft"
                                         data-hover-audio="assets/flashcards/audio/audiopapercraft.mp3"></button>
                                 </div>
-
-                                <!-- Botón que muestra/oculta los círculos -->
                                 <button class="btn-abrir" data-target="circulos-sombra"
-                                    data-hover-audio="assets/audio/audioabrir.mp3">Abrir</button>
+                                    data-hover-audio="assets/flashcards/audio/audioabrir.mp3">Abrir</button>
                             </div>
                         </div>
 
-                        <!-- FLASHCARD PERSONAJE 9 -->
-                        <div class="card card-personaje9">
+                    </div>
+                </div>
+
+                <!-- SLIDE 5 (Mobile only): SOHO solo -->
+                <div class="item mobile-slide">
+                    <div class="cards-wrapper">
+
+                        <!-- FLASHCARD SOHO -->
+                        <div class="card card-personaje9" style="margin: 0 auto;">
                             <div class="face front">
-                                <img src="assets/flashcards/personajes/imgsoho.png" alt="Fiba" class="static-img">
+                                <img src="assets/flashcards/personajes/imgsoho.png" alt="SOHO" class="static-img">
                                 <video autoplay loop muted class="gif-img">
                                     <source src="assets/flashcards/gifs/vidsoho.mp4" type="video/mp4">
-                                    Tu navegador no soporta la etiqueta de video.
                                 </video>
                                 <h3>SOHO</h3>
                             </div>
                             <div class="face back">
                                 <h3>SOHO</h3>
                                 <p>
-                                    Mi nombre es SOHO, si
-                                    te lo preguntas, esas
-                                    son las siglas en inglés
-                                    del El Observatorio
-                                    Heliosférico y Solar,
-                                    soy el encargado de
-                                    vigilar sin descanso al
-                                    sol desde el espacio,
-                                    mis creadores
-                                    pensaron que viviría tan
-                                    solo dos años, pero ya
-                                    pasaron más de 30 y
-                                    me mantengo firme en
-                                    mi misión: informar a la
-                                    tierra sobre la actividad
-                                    solar para que esté
-                                    preparada si se
-                                    presenta el peligro; no
-                                    hay de qué
-                                    preocuparse ¡SOHO
-                                    puede verlo todo!
+                                    Mi nombre es SOHO, si te lo preguntas, esas son las siglas en inglés del El
+                                    Observatorio Heliosférico y Solar, soy el encargado de vigilar sin descanso al sol desde el espacio,
+                                    mis creadores pensaron que viviría tan solo dos años, pero ya pasaron más de 30 y me mantengo firme en
+                                    mi misión: informar a la tierra sobre la actividad solar para que esté preparada si se presenta el
+                                    peligro; no hay de qué preocuparse ¡SOHO puede verlo todo!
                                 </p>
-
-                                <!-- Círculos (inicialmente ocultos) -->
                                 <div class="circulos-container" id="circulos-personaje9">
                                     <button class="circulo" aria-label="Audio"
                                         data-hover-audio="assets/flashcards/audio/audioraudio.mp3"></button>
@@ -416,8 +438,6 @@
                                     <button class="circulo" aria-label="Papercraft"
                                         data-hover-audio="assets/flashcards/audio/audiopapercraft.mp3"></button>
                                 </div>
-
-                                <!-- Botón que muestra/oculta los círculos -->
                                 <button class="btn-abrir" data-target="circulos-personaje9"
                                     data-hover-audio="assets/flashcards/audio/audioabrir.mp3">Abrir</button>
                             </div>
@@ -449,83 +469,35 @@
         // SISTEMA DE AUDIO HOVER
         // ===========================
 
-        // Precarga de audios para mejor rendimiento
-        const hoverAudios = {
-            'abrir': null,
-            'sonido': null,
-            'senas': null,
-            'papercraft': null
-        };
-
-        // Función para precargar audios (opcional - mejora la experiencia)
-        function preloadHoverAudios() {
-            try {
-                hoverAudios.abrir = new Audio('assets/flashcards/audio/audioabrir.mp3');
-                hoverAudios.sonido = new Audio('assets/flashcards/audio/audiosonido.mp3');
-                hoverAudios.senas = new Audio('assets/flashcards/audio/audiolsenas.mp3');
-                hoverAudios.papercraft = new Audio('assets/flashcards/audio/audiopapercraft.mp3');
-
-                // Configurar volumen y propiedades
-                Object.values(hoverAudios).forEach(audio => {
-                    if (audio) {
-                        audio.volume = 0.3; // Volumen suave para hover
-                        audio.preload = 'auto';
-                    }
-                });
-
-                console.log('✅ Audios hover precargados correctamente');
-            } catch (error) {
-                console.log('⚠️ Los archivos de audio hover no están disponibles aún');
-            }
-        }
-
-        // Función para reproducir audio hover
         function playHoverAudio(audioPath) {
             if (!audioPath) return;
-
             try {
                 const audio = new Audio(audioPath);
-                audio.volume = 0.3; // Volumen suave
-                audio.currentTime = 0; // Reiniciar si ya se había reproducido
-
-                // Reproducir con promesa para manejo de errores
+                audio.volume = 0.3;
+                audio.currentTime = 0;
                 const playPromise = audio.play();
                 if (playPromise !== undefined) {
                     playPromise.catch(error => {
-                        // Silenciosamente manejar error - el audio simplemente no se reproduce
                         console.log('Audio hover no disponible:', audioPath.split('/').pop());
                     });
                 }
             } catch (error) {
-                // Error silencioso - la funcionalidad principal sigue funcionando
                 console.log('Error reproduciendo audio hover:', error);
             }
         }
 
-        // Agregar event listeners para hover en botones "Abrir"
-        document.querySelectorAll('.btn-abrir').forEach(btn => {
+        document.querySelectorAll('.btn-abrir, .circulo').forEach(btn => {
             btn.addEventListener('mouseenter', function () {
                 const audioPath = this.getAttribute('data-hover-audio');
                 playHoverAudio(audioPath);
             });
         });
-
-        // Agregar event listeners para hover en círculos
-        document.querySelectorAll('.circulo').forEach(btn => {
-            btn.addEventListener('mouseenter', function () {
-                const audioPath = this.getAttribute('data-hover-audio');
-                playHoverAudio(audioPath);
-            });
-        });
-
-        // Precargar audios cuando la página esté lista (opcional)
-        document.addEventListener('DOMContentLoaded', preloadHoverAudios);
 
         // ===========================
         // FUNCIONALIDAD ORIGINAL
         // ===========================
 
-        // Flip de tarjetas (click para girar). Evitar flip si el target es botón o enlace.
+        // Flip de tarjetas
         document.querySelectorAll('.card').forEach(card => {
             card.addEventListener('click', function (e) {
                 const tag = e.target.tagName.toLowerCase();
@@ -534,39 +506,25 @@
             });
         });
 
-        // Pausa del carrusel al pasar mouse
-        // Configuración del carrusel según el dispositivo
+        // Configuración del carrusel según dispositivo
         if (window.innerWidth <= 768) {
-            // En móviles: desactivar auto-avance
-            $('#theCarousel').carousel({
-                interval: false,  // Desactiva el avance automático
-                pause: "hover"
-            });
+            $('#theCarousel').carousel({ interval: false, pause: "hover" });
         } else {
-            // En escritorio: mantener auto-avance
-            $('#theCarousel').carousel({
-                interval: 4000,
-                pause: "hover"
-            });
+            $('#theCarousel').carousel({ interval: 4000, pause: "hover" });
         }
 
-        // Reconfigurar si cambia el tamaño de la pantalla
         $(window).on('resize', function () {
             if (window.innerWidth <= 768) {
-                $('#theCarousel').carousel({
-                    interval: false
-                });
+                $('#theCarousel').carousel({ interval: false });
             } else {
-                $('#theCarousel').carousel({
-                    interval: 4000
-                });
+                $('#theCarousel').carousel({ interval: 4000 });
             }
         });
 
-        // Mostrar/Ocultar círculos al presionar Abrir (usa data-target = id del contenedor)
+        // Mostrar/Ocultar círculos
         document.querySelectorAll('.btn-abrir').forEach(btn => {
             btn.addEventListener('click', function (e) {
-                e.stopPropagation(); // evitar que el click burbujee y active el flip
+                e.stopPropagation();
                 const targetId = this.getAttribute('data-target');
                 const circulos = document.getElementById(targetId);
                 if (!circulos) return;
@@ -578,279 +536,35 @@
         // FUNCIONALIDADES POR PERSONAJE
         // ===========================
 
-        // ILARI - Personaje de los Andes
-        document.querySelectorAll('#circulos-ilari .circulo').forEach((btn, index) => {
-            btn.addEventListener('click', function (e) {
-                e.stopPropagation();
+        const personajes = ['ilari', 'fiba', 'orion', 'orion-mobile', 'nerea', 'cassia', 'cassia-mobile', 'gaia', 'deneb', 'deneb-mobile', 'sombra', 'personaje9'];
 
-                switch (index) {
-                    case 0: // Botón de audio
-                        const audioIlari = new Audio('assets/flashcards/audio/audioprueba.mp3');
-                        audioIlari.play().catch(() => {
-                            console.log('Audio de Ilari no disponible');
-                            // Fallback: mostrar mensaje
-                            alert('🔊 Reproduciendo descripción de Ilari: "¡Hola! Soy Ilari, el primer rayo de sol de los Andes..."');
-                        });
-                        break;
+        personajes.forEach(personaje => {
+            document.querySelectorAll(`#circulos-${personaje} .circulo`).forEach((btn, index) => {
+                btn.addEventListener('click', function (e) {
+                    e.stopPropagation();
 
-                    case 1: // Lenguaje de señas
-                        window.open('https://www.youtube.com/results?search_query=lenguaje+señas+colombia+ilari', '_blank');
-                        break;
-
-                    case 2: // Papercraft
-                        window.open('assets/pdfs/papercraft-ilari.pdf', '_blank');
-                        break;
-                }
+                    switch (index) {
+                        case 0: // Audio
+                            const audio = new Audio('assets/flashcards/audio/audioprueba.mp3');
+                            audio.play().catch(() => console.log(`Audio de ${personaje} no disponible`));
+                            break;
+                        case 1: // Lenguaje de señas / Info
+                            if (personaje.includes('sombra')) {
+                                window.open('https://www.nasa.gov/feature/goddard/2016/understanding-space-weather', '_blank');
+                            } else if (personaje.includes('personaje9')) {
+                                window.open('https://soho.nascom.nasa.gov/', '_blank');
+                            } else {
+                                window.open('https://www.youtube.com/results?search_query=lenguaje+señas+colombia', '_blank');
+                            }
+                            break;
+                        case 2: // Papercraft
+                            const cleanName = personaje.replace('-mobile', '');
+                            window.open(`assets/pdfs/papercraft-${cleanName}.pdf`, '_blank');
+                            break;
+                    }
+                });
             });
         });
-
-        // FIBA - Hermano de Ilari con poder de "oído del cielo"
-        document.querySelectorAll('#circulos-fiba .circulo').forEach((btn, index) => {
-            btn.addEventListener('click', function (e) {
-                e.stopPropagation();
-
-                switch (index) {
-                    case 0: // Audio
-                        const audioFiba = new Audio('assets/flashcards/audio/audioprueba.mp3');
-                        audioFiba.play().catch(() => {
-                            console.log('Audio de Fiba no disponible');
-                            alert('🔊 Fiba susurra: "Puedo escuchar las tormentas solares que se acercan..."');
-                        });
-                        break;
-
-                    case 1: // Info sobre tormentas solares
-                        window.open('https://www.nasa.gov/solar-storms', '_blank');
-                        break;
-
-                    case 2: // Papercraft
-                        window.open('assets/pdfs/papercraft-fiba.pdf', '_blank');
-                        break;
-                }
-            });
-        });
-
-        // ORIÓN - Comunicación marítima del Pacífico
-        document.querySelectorAll('#circulos-orion .circulo').forEach((btn, index) => {
-            btn.addEventListener('click', function (e) {
-                e.stopPropagation();
-
-                switch (index) {
-                    case 0: // Audio
-                        const audioOrion = new Audio('assets/flashcards/audio/flashcards/audioprueba.mp3');
-                        audioOrion.play().catch(() => {
-                            console.log('Audio de Orión no disponible');
-                            alert('🌊 Orión dice: "Soy como la constelación, guío a los navegantes por el Pacífico colombiano"');
-                        });
-                        break;
-
-                    case 1: // Info sobre constelación Orión
-                        window.open('https://es.wikipedia.org/wiki/Ori%C3%B3n_(constelaci%C3%B3n)', '_blank');
-                        break;
-
-                    case 2: // Papercraft
-                        window.open('assets/pdfs/papercraft-orion.pdf', '_blank');
-                        break;
-                }
-            });
-        });
-
-        // NEREA - Ninfas marinas del Caribe
-        document.querySelectorAll('#circulos-nerea .circulo').forEach((btn, index) => {
-            btn.addEventListener('click', function (e) {
-                e.stopPropagation();
-
-                switch (index) {
-                    case 0: // Audio
-                        const audioNerea = new Audio('assets/flashcards/audio/audioprueba.mp3');
-                        audioNerea.play().catch(() => {
-                            console.log('Audio de Nerea no disponible');
-                            alert('🌬️ Nerea canta: "Las brisas del Caribe obedecen a mi voz y calman las tormentas"');
-                        });
-                        break;
-
-                    case 1: // Info sobre nereidas
-                        window.open('https://es.wikipedia.org/wiki/Nereida', '_blank');
-                        break;
-
-                    case 2: // Papercraft
-                        window.open('assets/pdfs/papercraft-nerea.pdf', '_blank');
-                        break;
-                }
-            });
-        });
-
-        // CASSIA - Guardiana de la selva amazónica
-        document.querySelectorAll('#circulos-cassia .circulo').forEach((btn, index) => {
-            btn.addEventListener('click', function (e) {
-                e.stopPropagation();
-
-                switch (index) {
-                    case 0: // Audio
-                        const audioCassia = new Audio('assets/flashcards/audio/audioprueba.mp3');
-                        audioCassia.play().catch(() => {
-                            console.log('Audio de Cassia no disponible');
-                            alert('🌿 Cassia susurra: "Las plantas me revelan los secretos de la selva amazónica"');
-                        });
-                        break;
-
-                    case 1: // Info sobre plantas medicinales
-                        window.open('https://www.worldwildlife.org/places/amazon', '_blank');
-                        break;
-
-                    case 2: // Papercraft
-                        window.open('assets/pdfs/papercraft-cassia.pdf', '_blank');
-                        break;
-                }
-            });
-        });
-
-        // GAIA - Comunicadora con animales del Orinoco
-        document.querySelectorAll('#circulos-gaia .circulo').forEach((btn, index) => {
-            btn.addEventListener('click', function (e) {
-                e.stopPropagation();
-
-                switch (index) {
-                    case 0: // Audio
-                        const audioGaia = new Audio('assets/flashcards/audio/audioprueba.mp3');
-                        audioGaia.play().catch(() => {
-                            console.log('Audio de Gaia no disponible');
-                            alert('🦜 Gaia dice: "Los animales del Orinoco me cuentan sus secretos y yo los protejo"');
-                        });
-                        break;
-
-                    case 1: // Info sobre fauna del Orinoco
-                        window.open('https://es.wikipedia.org/wiki/Orinoquia', '_blank');
-                        break;
-
-                    case 2: // Papercraft
-                        window.open('assets/pdfs/papercraft-gaia.pdf', '_blank');
-                        break;
-                }
-            });
-        });
-
-        // DENEB - Estrella guía nocturna
-        document.querySelectorAll('#circulos-deneb .circulo').forEach((btn, index) => {
-            btn.addEventListener('click', function (e) {
-                e.stopPropagation();
-
-                switch (index) {
-                    case 0: // Audio
-                        const audioDeneb = new Audio('assets/flashcards/audio/audioprueba.mp3');
-                        audioDeneb.play().catch(() => {
-                            console.log('Audio de Deneb no disponible');
-                            alert('⭐ Deneb brilla: "Soy la estrella más brillante del Cisne, guío en la oscuridad"');
-                        });
-                        break;
-
-                    case 1: // Info sobre la estrella Deneb
-                        window.open('https://es.wikipedia.org/wiki/Deneb', '_blank');
-                        break;
-
-                    case 2: // Papercraft
-                        window.open('assets/pdfs/papercraft-deneb.pdf', '_blank');
-                        break;
-                }
-            });
-        });
-
-        // SOMBRA SOLAR - Antagonista incomprendido
-        document.querySelectorAll('#circulos-sombra .circulo').forEach((btn, index) => {
-            btn.addEventListener('click', function (e) {
-                e.stopPropagation();
-
-                switch (index) {
-                    case 0: // Audio
-                        const audioSombra = new Audio('assets/flashcards/audio/audioprueba.mp3');
-                        audioSombra.play().catch(() => {
-                            console.log('Audio de Sombra Solar no disponible');
-                            alert('🌑 Sombra Solar lamenta: "No soy malvado... solo estoy herido y quiero ser comprendido"');
-                        });
-                        break;
-
-                    case 1: // Info sobre tormentas solares
-                        window.open('https://www.nasa.gov/feature/goddard/2016/understanding-space-weather', '_blank');
-                        break;
-
-                    case 2: // Papercraft
-                        window.open('assets/pdfs/papercraft-sombra-solar.pdf', '_blank');
-                        break;
-                }
-            });
-        });
-
-        // SOHO - Observatorio espacial
-        document.querySelectorAll('#circulos-personaje9 .circulo').forEach((btn, index) => {
-            btn.addEventListener('click', function (e) {
-                e.stopPropagation();
-
-                switch (index) {
-                    case 0: // Audio
-                        const audioSOHO = new Audio('assets/flashcards/audio/audioprueba.mp3');
-                        audioSOHO.play().catch(() => {
-                            console.log('Audio de SOHO no disponible');
-                            alert('🛰️ SOHO informa: "Llevo 30 años vigilando el Sol para proteger la Tierra"');
-                        });
-                        break;
-
-                    case 1: // Página oficial de SOHO
-                        window.open('https://soho.nascom.nasa.gov/', '_blank');
-                        break;
-
-                    case 2: // Papercraft
-                        window.open('assets/pdfs/papercraft-soho.pdf', '_blank');
-                        break;
-                }
-            });
-        });
-
-        // ===========================
-        // FUNCIONES AUXILIARES
-        // ===========================
-
-        // Función para reproducir audio con manejo de errores mejorado
-        function playCharacterAudio(audioPath, fallbackMessage) {
-            const audio = new Audio(audioPath);
-
-            audio.play().catch(error => {
-                console.log(`Audio no disponible: ${audioPath}`);
-
-                // Mostrar mensaje de fallback más elegante
-                const notification = document.createElement('div');
-                notification.innerHTML = fallbackMessage;
-                notification.style.cssText = `
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: rgba(0,0,0,0.8);
-      color: white;
-      padding: 15px;
-      border-radius: 10px;
-      z-index: 9999;
-      max-width: 300px;
-      animation: fadeIn 0.3s ease;
-    `;
-
-                // Añadir animación CSS
-                const style = document.createElement('style');
-                style.textContent = `
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(-20px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-    `;
-                document.head.appendChild(style);
-
-                document.body.appendChild(notification);
-
-                // Remover después de 3 segundos
-                setTimeout(() => {
-                    notification.remove();
-                    style.remove();
-                }, 3000);
-            });
-        }
-
     </script>
 </body>
 
