@@ -326,8 +326,8 @@ body.modal-open {
         width: 100px;
         height: 100px;
         position: absolute;
-        top: -287px;
-        right: 1100px;
+        top: -175px;
+        left: 20px;
         z-index: 15;
     }
 

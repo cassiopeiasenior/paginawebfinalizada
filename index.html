@@ -49,96 +49,97 @@
                     </div>
                 </div>
 
-                <div class="center-image main-highlight" id="centerImage">
-                    <img src="assets/fondoportada.jpg" alt="Imagen Central" id="centerImg">
+                <div class="center-image main-highlight" id="centerImage" <div class="center-placeholder">
+                    <div class="placeholder-icon">🌎</div>
                 </div>
+            </div>
 
-                <!-- COLUMNA DERECHA: 3 círculos -->
-                <div class="right-circles">
-                    <!-- Sección 3: Configuración (arriba) -->
-                    <div class="section-circle section-3" data-section="3" onclick="selectSection(3)">
-                        <div class="section-content">
-                            <div class="section-icon">⚙️</div>
-                            <h3>Settings</h3>
-                        </div>
-                    </div>
-
-                    <!-- Sección 4: Material de Inclusión (medio) -->
-                    <div class="section-circle section-4" data-section="4" onclick="selectSection(4)">
-                        <div class="section-content">
-                            <div class="section-icon">🌍</div>
-                            <h3>Inclusive
-                                Logbook</h3>
-                        </div>
-                    </div>
-
-                    <!-- Sección 5: Datos Curiosos (abajo) -->
-                    <div class="section-circle section-5" data-section="5" onclick="selectSection(5)">
-                        <div class="section-content">
-                            <div class="section-icon">☁️</div>
-                            <h3>Curious
-                                Facts
-                            </h3>
-                            <a href="datoscuriosos_english.html" class="section-link"></a>
-                        </div>
+            <!-- COLUMNA DERECHA: 3 círculos -->
+            <div class="right-circles">
+                <!-- Sección 3: Configuración (arriba) -->
+                <div class="section-circle section-3" data-section="3" onclick="selectSection(3)">
+                    <div class="section-content">
+                        <div class="section-icon">⚙️</div>
+                        <h3>Settings</h3>
                     </div>
                 </div>
 
+                <!-- Sección 4: Material de Inclusión (medio) -->
+                <div class="section-circle section-4" data-section="4" onclick="selectSection(4)">
+                    <div class="section-content">
+                        <div class="section-icon">🌍</div>
+                        <h3>Inclusive
+                            Logbook</h3>
+                    </div>
+                </div>
+
+                <!-- Sección 5: Datos Curiosos (abajo) -->
+                <div class="section-circle section-5" data-section="5" onclick="selectSection(5)">
+                    <div class="section-content">
+                        <div class="section-icon">☁️</div>
+                        <h3>Curious
+                            Facts
+                        </h3>
+                        <a href="datoscuriosos_english.html" class="section-link"></a>
+                    </div>
+                </div>
             </div>
 
-            <!-- Controles de navegación -->
-            <div class="navigation-controls">
-                <button class="nav-btn nav-prev" onclick="previousSection()">❮</button>
-                <button class="nav-btn nav-next" onclick="nextSection()">❯</button>
-            </div>
-
-            <!-- Indicadores de sección -->
-            <div class="section-indicators">
-                <span class="indicator active" data-section="1" onclick="goToSection(1)"></span>
-                <span class="indicator" data-section="2" onclick="goToSection(2)"></span>
-                <span class="indicator" data-section="3" onclick="goToSection(3)"></span>
-                <span class="indicator" data-section="4" onclick="goToSection(4)"></span>
-                <span class="indicator" data-section="5" onclick="goToSection(5)"></span>
-            </div>
         </div>
 
-        <!-- Modal de Información de Sección -->
-        <div class="section-modal" id="sectionModal">
-            <div class="modal-overlay" onclick="closeSectionModal()"></div>
-            <div class="modal-content section-modal-content">
-                <div class="modal-header">
-                    <h3 id="sectionModalTitle">Título de Sección</h3>
-                    <button class="close-btn" onclick="closeSectionModal()">×</button>
-                </div>
-                <div class="modal-body">
-                    <p id="sectionModalContent">Contenido de la sección...</p>
-                    <div id="sectionModalActions"></div>
-                </div>
-            </div>
+        <!-- Controles de navegación -->
+        <div class="navigation-controls">
+            <button class="nav-btn nav-prev" onclick="previousSection()">❮</button>
+            <button class="nav-btn nav-next" onclick="nextSection()">❯</button>
         </div>
 
-        <!-- Modal de Material de Inclusión -->
-        <div class="inclusion-modal" id="inclusionModal">
-            <div class="modal-overlay" onclick="closeInclusionModal()"></div>
-            <div class="modal-content inclusion-modal-content">
-                <div class="modal-header">
-                    <h3>🌍 Inclusive Logbook</h3>
-                    <button class="close-btn" onclick="closeInclusionModal()">×</button>
-                </div>
-                <div class="modal-body">
-                    <div class="inclusion-buttons">
-                        <button class="inclusion-btn" onclick="alert('Funcionalidad de Lenguaje Braille próximamente')">
-                            <div class="icon">⠃</div>
-                            <div class="text">Braille Language</div>
-                        </button>
-                        <a href="glosario_english.html" class="inclusion-btn">
-                            <div class="icon">👋</div>
-                            <div class="text">Sign Language</div>
-                        </a>
-                    </div>
+        <!-- Indicadores de sección -->
+        <div class="section-indicators">
+            <span class="indicator active" data-section="1" onclick="goToSection(1)"></span>
+            <span class="indicator" data-section="2" onclick="goToSection(2)"></span>
+            <span class="indicator" data-section="3" onclick="goToSection(3)"></span>
+            <span class="indicator" data-section="4" onclick="goToSection(4)"></span>
+            <span class="indicator" data-section="5" onclick="goToSection(5)"></span>
+        </div>
+    </div>
+
+    <!-- Modal de Información de Sección -->
+    <div class="section-modal" id="sectionModal">
+        <div class="modal-overlay" onclick="closeSectionModal()"></div>
+        <div class="modal-content section-modal-content">
+            <div class="modal-header">
+                <h3 id="sectionModalTitle">Título de Sección</h3>
+                <button class="close-btn" onclick="closeSectionModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <p id="sectionModalContent">Contenido de la sección...</p>
+                <div id="sectionModalActions"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Material de Inclusión -->
+    <div class="inclusion-modal" id="inclusionModal">
+        <div class="modal-overlay" onclick="closeInclusionModal()"></div>
+        <div class="modal-content inclusion-modal-content">
+            <div class="modal-header">
+                <h3>🌍 Inclusive Logbook</h3>
+                <button class="close-btn" onclick="closeInclusionModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="inclusion-buttons">
+                    <button class="inclusion-btn" onclick="alert('Funcionalidad de Lenguaje Braille próximamente')">
+                        <div class="icon">⠃</div>
+                        <div class="text">Braille Language</div>
+                    </button>
+                    <a href="glosario_english.html" class="inclusion-btn">
+                        <div class="icon">👋</div>
+                        <div class="text">Sign Language</div>
+                    </a>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <!-- Modal de Configuración de Idioma -->
