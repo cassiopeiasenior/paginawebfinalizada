@@ -2,7 +2,8 @@
 ================================================
 PORTAL ESPACIAL - FORMATO PAINT
 ================================================
-2 círculos izquierda | Portada centro | 3 círculos derecha
+2 círculos izquierda | Portada centro | 2 círculos derecha
+Settings arriba izquierda | Who Are We abajo centro
 ================================================
 */
 
@@ -12,9 +13,8 @@ PORTAL ESPACIAL - FORMATO PAINT
     box-sizing: border-box;
 }
 
-
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Comic Sans', sans-serif;
     background: #0c0c2e;
     min-height: 100vh;
     overflow-x: hidden;
@@ -35,7 +35,6 @@ body {
     opacity: 0;
     transition: opacity 0.5s ease;
 }
-
 
 /* Mostrar video solo en español */
 body.lang-es #video-background {
@@ -87,7 +86,6 @@ body.modal-open {
         opacity: 0.3;
         transform: scale(0.8);
     }
-
     100% {
         opacity: 1;
         transform: scale(1.2);
@@ -109,15 +107,12 @@ body.modal-open {
         transform: translateX(-100px) translateY(100px);
         opacity: 0;
     }
-
     10% {
         opacity: 1;
     }
-
     90% {
         opacity: 1;
     }
-
     100% {
         transform: translateX(100vw) translateY(-100px);
         opacity: 0;
@@ -170,7 +165,6 @@ body.modal-open {
     from {
         filter: brightness(1);
     }
-
     to {
         filter: brightness(1.3);
     }
@@ -181,7 +175,6 @@ body.modal-open {
         opacity: 0;
         transform: translateY(-50px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
@@ -191,10 +184,11 @@ body.modal-open {
 .circular-container {
     flex-grow: 1;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     position: relative;
-    padding: 80px 40px;
+    padding: 80px 40px 40px;
     min-height: 700px;
 }
 
@@ -219,7 +213,7 @@ body.modal-open {
 .right-circles {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 60px;
     justify-content: center;
 }
 
@@ -286,13 +280,10 @@ body.modal-open {
 }
 
 @keyframes pulse-ring {
-
-    0%,
-    100% {
+    0%, 100% {
         transform: scale(1);
         opacity: 0.3;
     }
-
     50% {
         transform: scale(1.1);
         opacity: 0.1;
@@ -311,33 +302,16 @@ body.modal-open {
     border-color: rgba(76, 175, 80, 0.4);
 }
 
-/* Derecha: Configuración (azul) */
-/* Derecha: Configuración (azul) - MODIFICADO */
-/* Derecha: Configuración (azul) - Posición absoluta en esquina superior derecha */
-/* Derecha: Configuración (azul) */
+/* Settings (azul) - Posición absoluta en esquina superior izquierda */
 .section-3 {
     background: linear-gradient(135deg, rgba(33, 150, 243, 0.2), rgba(33, 150, 243, 0.1));
     border-color: rgba(33, 150, 243, 0.4);
-}
-
-/* Solo en pantallas grandes, posicionar en esquina */
-@media (min-width: 1025px) {
-    .section-3 {
-        width: 100px;
-        height: 100px;
-        position: absolute;
-        top: -175px;
-        left: 20px;
-        z-index: 15;
-    }
-
-    .section-3 .section-icon {
-        font-size: 1.5rem;
-    }
-
-    .section-3 .section-content h3 {
-        font-size: 0.75rem;
-    }
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: -170px;
+    left: 0;
+    z-index: 15;
 }
 
 .section-3 .section-icon {
@@ -352,7 +326,6 @@ body.modal-open {
 .section-4 {
     background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(76, 175, 80, 0.1));
     border-color: rgba(76, 175, 80, 0.4);
-
 }
 
 /* Derecha: Datos Curiosos (verde) */
@@ -475,7 +448,7 @@ body.modal-open {
 
 .section-indicators {
     position: absolute;
-    bottom: -90px;
+    bottom: -180px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -504,6 +477,166 @@ body.modal-open {
     border-color: rgba(79, 195, 247, 1);
     transform: scale(1.3);
     box-shadow: 0 0 15px rgba(79, 195, 247, 0.6);
+}
+
+/* Contenedor inferior izquierdo - Rectangular */
+.bottom-left-container {
+    position: absolute;
+    bottom: -80px;
+    left: 40px;
+    width: 280px;
+    height: 180px;
+    z-index: 15;
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(156, 39, 176, 0.2), rgba(156, 39, 176, 0.1));
+    border: 3px solid rgba(156, 39, 176, 0.4);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.image-placeholder:hover {
+    transform: translateY(-5px);
+    border-color: rgba(156, 39, 176, 0.6);
+    box-shadow: 0 15px 40px rgba(156, 39, 176, 0.3);
+}
+
+.image-placeholder span {
+    font-size: 3rem;
+    filter: drop-shadow(0 0 10px rgba(156, 39, 176, 0.5));
+}
+
+.image-placeholder p {
+    color: #ce93d8;
+    font-size: 1rem;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(156, 39, 176, 0.6);
+    margin: 0;
+}
+
+/* Contenedor inferior derecho - Circular + Who We Are */
+.bottom-right-container {
+    position: absolute;
+    bottom: -190px;
+    right: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    z-index: 15;
+}
+
+.circle-image-placeholder {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.circle-image-placeholder:hover {
+    transform: scale(1.05);
+    border-color: rgba(255, 152, 0, 0.6);
+    box-shadow: 0 15px 40px rgba(255, 152, 0, 0.3);
+}
+
+.circle-image-placeholder span {
+    font-size: 3rem;
+    filter: drop-shadow(0 0 10px rgba(255, 152, 0, 0.5));
+}
+
+.circle-image-placeholder p {
+    color: #ffb74d;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 152, 0, 0.6);
+    margin: 0;
+}
+
+/* Botón Who We Are */
+.who-we-are-btn {
+    padding: 15px 30px;
+    background: linear-gradient(135deg, rgba(79, 195, 247, 0.3), rgba(79, 195, 247, 0.2));
+    border: 2px solid rgba(79, 195, 247, 0.5);
+    border-radius: 30px;
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.who-we-are-btn:hover {
+    background: linear-gradient(135deg, rgba(79, 195, 247, 0.4), rgba(79, 195, 247, 0.3));
+    border-color: rgba(79, 195, 247, 0.7);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(79, 195, 247, 0.4);
+}
+
+.who-icon {
+    font-size: 1.5rem;
+    filter: drop-shadow(0 0 10px rgba(79, 195, 247, 0.6));
+}
+
+.who-text {
+    color: #4fc3f7;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(79, 195, 247, 0.8);
+}
+
+/* Modal About */
+.about-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.about-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.about-modal-content {
+    max-width: 700px;
+    border-color: rgba(79, 195, 247, 0.5);
+}
+
+.about-modal .modal-header {
+    background: rgba(79, 195, 247, 0.2);
+    border-bottom: 1px solid rgba(79, 195, 247, 0.3);
+}
+
+.about-modal .modal-header h3 {
+    color: #4fc3f7;
+    text-shadow: 0 0 10px rgba(79, 195, 247, 0.6);
 }
 
 .section-modal,
@@ -569,7 +702,6 @@ body.modal-open {
         opacity: 0;
         transform: translateY(-50px) scale(0.9);
     }
-
     100% {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -846,12 +978,9 @@ body.modal-open {
 }
 
 @keyframes float-icon {
-
-    0%,
-    100% {
+    0%, 100% {
         transform: translateY(0px);
     }
-
     50% {
         transform: translateY(-5px);
     }
@@ -889,7 +1018,7 @@ body.modal-open {
     }
 
     .right-circles {
-        gap: 35px;
+        gap: 50px;
     }
 
     .center-image {
@@ -931,7 +1060,7 @@ body.modal-open {
 
     .right-circles {
         flex-direction: column;
-        gap: 25px;
+        gap: 30px;
         justify-content: center;
     }
 
@@ -948,7 +1077,7 @@ body.modal-open {
     .section-3 {
         position: relative !important;
         top: auto !important;
-        right: auto !important;
+        left: auto !important;
         width: 140px !important;
         height: 140px !important;
     }
@@ -979,7 +1108,22 @@ body.modal-open {
     .subtitle {
         font-size: 0.95rem;
     }
+
+    .about-section {
+        margin: 50px auto 30px;
+        padding: 30px 20px;
+        max-width: 90%;
+    }
+    
+    .about-title {
+        font-size: 1.5rem;
+    }
+    
+    .about-text {
+        font-size: 0.95rem;
+    }
 }
+
 @media (max-width: 480px) {
     .circular-container {
         padding: 40px 15px;
@@ -1038,6 +1182,19 @@ body.modal-open {
     .story-btn .btn-icon,
     .inclusion-btn .icon {
         font-size: 2rem;
+    }
+
+    .about-section {
+        margin: 40px auto 20px;
+        padding: 25px 15px;
+    }
+    
+    .about-title {
+        font-size: 1.3rem;
+    }
+    
+    .about-text {
+        font-size: 0.85rem;
     }
 }
 

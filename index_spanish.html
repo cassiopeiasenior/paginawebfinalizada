@@ -14,6 +14,7 @@
     <video id="video-background" autoplay muted loop playsinline>
         <source src="assets/videofondo.mp4" type="video/mp4">
     </video>
+
     <!-- Contenedor principal -->
     <div class="container">
         <!-- Sección del título -->
@@ -22,9 +23,16 @@
             <p class="subtitle">Explora los maravillosos misterios del clima espacial</p>
         </div>
 
-        <!-- Contenedor del círculo principal (sin rotación) -->
-        <!-- Contenedor del círculo principal (sin rotación) -->
+        <!-- Contenedor del círculo principal -->
         <div class="circular-container">
+            <!-- Settings en esquina superior izquierda -->
+            <div class="section-circle section-3" data-section="3" onclick="selectSection(3)">
+                <div class="section-content">
+                    <div class="section-icon">⚙️</div>
+                    <h3>Ajustes</h3>
+                </div>
+            </div>
+
             <div class="main-circle" id="mainCircle">
 
                 <!-- COLUMNA IZQUIERDA: 2 círculos -->
@@ -48,29 +56,19 @@
                 </div>
 
                 <!-- CENTRO: Imagen principal -->
-                <div class="center-image main-highlight" id="centerImage"
+                <div class="center-image main-highlight" id="centerImage">
                     <div class="center-placeholder">
                         <div class="placeholder-icon">🌎</div>
                     </div>
                 </div>
 
-                <!-- COLUMNA DERECHA: 3 círculos -->
+                <!-- COLUMNA DERECHA: 2 círculos -->
                 <div class="right-circles">
-                    <!-- Sección 3: Configuración (arriba) -->
-                    <div class="section-circle section-3" data-section="3" onclick="selectSection(3)">
-                        <div class="section-content">
-                            <div class="section-icon">⚙️</div>
-                            <h3>Ajustes</h3>
-                        </div>
-                    </div>
-
-                    <!-- Sección 4: Material de Inclusión (medio) -->
+                    <!-- Sección 4: Bitácora Inclusiva (arriba) -->
                     <div class="section-circle section-4" data-section="4" onclick="selectSection(4)">
                         <div class="section-content">
                             <div class="section-icon">🌍</div>
-                            <h3>Bitácora
-                                Inclusiva
-                            </h3>
+                            <h3>Bitácora Inclusiva</h3>
                         </div>
                     </div>
 
@@ -83,59 +81,95 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
-            <!-- Controles de navegación -->
-            <div class="navigation-controls">
-                <button class="nav-btn nav-prev" onclick="previousSection()">❮</button>
-                <button class="nav-btn nav-next" onclick="nextSection()">❯</button>
+            <!-- Contenedor inferior izquierdo (rectangular) -->
+            <div class="bottom-left-container">
+                <div class="bottom-left-container">
+                    <img src="assets/logohumboldt.png" alt="Imagen decorativa"
+                        style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+                </div>
             </div>
 
-            <!-- Indicadores de sección -->
-            <div class="section-indicators">
-                <span class="indicator active" data-section="1" onclick="goToSection(1)"></span>
-                <span class="indicator" data-section="2" onclick="goToSection(2)"></span>
-                <span class="indicator" data-section="3" onclick="goToSection(3)"></span>
-                <span class="indicator" data-section="4" onclick="goToSection(4)"></span>
-                <span class="indicator" data-section="5" onclick="goToSection(5)"></span>
+            <!-- Contenedor inferior derecho (circular) -->
+            <div class="bottom-right-container">
+                <div class="circle-image-placeholder">
+                    <img src="assets/logocassiopeiaseniorsf.png" alt="Imagen decorativa"
+                        style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                </div>
+                <!-- Who We Are - clickeable -->
+                <button class="who-we-are-btn" onclick="openAboutModal()">
+                    <span class="who-icon">👥</span>
+                    <span class="who-text">¿Quiénes Somos?</span>
+                </button>
             </div>
         </div>
 
-        <!-- Modal de Información de Sección -->
-        <div class="section-modal" id="sectionModal">
-            <div class="modal-overlay" onclick="closeSectionModal()"></div>
-            <div class="modal-content section-modal-content">
-                <div class="modal-header">
-                    <h3 id="sectionModalTitle">Título de Sección</h3>
-                    <button class="close-btn" onclick="closeSectionModal()">×</button>
-                </div>
-                <div class="modal-body">
-                    <p id="sectionModalContent">Contenido de la sección...</p>
-                    <div id="sectionModalActions"></div>
-                </div>
-            </div>
+        <!-- Controles de navegación -->
+        <div class="navigation-controls">
+            <button class="nav-btn nav-prev" onclick="previousSection()">❮</button>
+            <button class="nav-btn nav-next" onclick="nextSection()">❯</button>
         </div>
 
-        <!-- Modal de Material de Inclusión -->
-        <div class="inclusion-modal" id="inclusionModal">
-            <div class="modal-overlay" onclick="closeInclusionModal()"></div>
-            <div class="modal-content inclusion-modal-content">
-                <div class="modal-header">
-                    <h3>🌍 Bitácora Inclusiva</h3>
-                    <button class="close-btn" onclick="closeInclusionModal()">×</button>
-                </div>
-                <div class="modal-body">
-                    <div class="inclusion-buttons">
-                        <button class="inclusion-btn" onclick="alert('Funcionalidad de Lenguaje Braille próximamente')">
-                            <div class="icon">⠃</div>
-                            <div class="text">Lenguaje Braille</div>
-                        </button>
-                        <a href="glosario_spanish.html" class="inclusion-btn">
-                            <div class="icon">👋</div>
-                            <div class="text">Lenguaje de Señas</div>
-                        </a>
-                    </div>
+        <!-- Indicadores de sección -->
+        <div class="section-indicators">
+            <span class="indicator active" data-section="1" onclick="goToSection(1)"></span>
+            <span class="indicator" data-section="2" onclick="goToSection(2)"></span>
+            <span class="indicator" data-section="3" onclick="goToSection(3)"></span>
+            <span class="indicator" data-section="4" onclick="goToSection(4)"></span>
+            <span class="indicator" data-section="5" onclick="goToSection(5)"></span>
+        </div>
+    </div>
+
+    <!-- Modal de Información de Sección -->
+    <div class="section-modal" id="sectionModal">
+        <div class="modal-overlay" onclick="closeSectionModal()"></div>
+        <div class="modal-content section-modal-content">
+            <div class="modal-header">
+                <h3 id="sectionModalTitle">Título de Sección</h3>
+                <button class="close-btn" onclick="closeSectionModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <p id="sectionModalContent">Contenido de la sección...</p>
+                <div id="sectionModalActions"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Quiénes Somos -->
+    <div class="about-modal" id="aboutModal">
+        <div class="modal-overlay" onclick="closeAboutModal()"></div>
+        <div class="modal-content about-modal-content">
+            <div class="modal-header">
+                <h3>👥 ¿Quiénes Somos?</h3>
+                <button class="close-btn" onclick="closeAboutModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <p>[Espacio reservado para contenido - Próximamente se agregará información sobre el equipo y el
+                    proyecto. Esta sección incluirá detalles sobre nuestra misión, visión y las personas detrás del
+                    Portal Espacial.]</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Material de Inclusión -->
+    <div class="inclusion-modal" id="inclusionModal">
+        <div class="modal-overlay" onclick="closeInclusionModal()"></div>
+        <div class="modal-content inclusion-modal-content">
+            <div class="modal-header">
+                <h3>🌍 Bitácora Inclusiva</h3>
+                <button class="close-btn" onclick="closeInclusionModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="inclusion-buttons">
+                    <button class="inclusion-btn" onclick="alert('Funcionalidad de Lenguaje Braille próximamente')">
+                        <div class="icon">⠃</div>
+                        <div class="text">Lenguaje Braille</div>
+                    </button>
+                    <a href="glosario_spanish.html" class="inclusion-btn">
+                        <div class="icon">👋</div>
+                        <div class="text">Lenguaje de Señas</div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -184,17 +218,10 @@
     </div>
 
     <script>
-        /*
-        ================================================
-        PORTAL ESPACIAL - JAVASCRIPT
-        ================================================
-        */
-
         let currentSection = 1;
         let totalSections = 5;
         let pendingLanguage = null;
 
-        // Contenido de cada sección para los modales
         const sectionData = {
             1: {
                 title: "Cuento Espacial",
@@ -237,7 +264,6 @@
             }
         };
 
-        // ===== FUNCIONES DE INICIALIZACIÓN =====
         document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 initializePortal();
@@ -259,13 +285,11 @@
 
             if (centerImg && placeholder) {
                 centerImg.onload = function () {
-                    console.log('✅ Imagen cargada exitosamente');
                     centerImg.style.display = 'block';
                     placeholder.style.display = 'none';
                 };
 
                 centerImg.onerror = function () {
-                    console.log('❌ Error cargando imagen, mostrando placeholder');
                     centerImg.style.display = 'none';
                     placeholder.style.display = 'flex';
                 };
@@ -279,8 +303,6 @@
                 }
             }
         }
-
-        // ===== NAVEGACIÓN ENTRE SECCIONES =====
 
         function previousSection() {
             currentSection = currentSection === 1 ? totalSections : currentSection - 1;
@@ -330,8 +352,6 @@
             }
         }
 
-        // ===== GESTIÓN DE MODALES =====
-
         function openSectionModal(sectionNumber) {
             const modal = document.getElementById('sectionModal');
             const title = document.getElementById('sectionModalTitle');
@@ -347,7 +367,6 @@
 
             let actionsHtml = '';
 
-            // Si tiene botones personalizados (como en el cuento)
             if (data.buttons && data.buttons.length > 0) {
                 actionsHtml = '<div class="story-buttons">';
                 data.buttons.forEach(button => {
@@ -359,13 +378,9 @@
                     `;
                 });
                 actionsHtml += '</div>';
-            }
-            // Si tiene un enlace simple
-            else if (data.link) {
+            } else if (data.link) {
                 actionsHtml = `<a href="${data.link}" class="modal-action-btn">${data.linkText || 'Ver más'}</a>`;
-            }
-            // Si tiene una acción (como abrir otro modal)
-            else if (data.linkText && data.action) {
+            } else if (data.linkText && data.action) {
                 actionsHtml = `<button class="modal-action-btn" onclick="${data.action}(); closeSectionModal();">${data.linkText}</button>`;
             }
 
@@ -377,6 +392,22 @@
 
         function closeSectionModal() {
             const modal = document.getElementById('sectionModal');
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.classList.remove('modal-open');
+            }
+        }
+
+        function openAboutModal() {
+            const modal = document.getElementById('aboutModal');
+            if (modal) {
+                modal.classList.add('show');
+                document.body.classList.add('modal-open');
+            }
+        }
+
+        function closeAboutModal() {
+            const modal = document.getElementById('aboutModal');
             if (modal) {
                 modal.classList.remove('show');
                 document.body.classList.remove('modal-open');
@@ -398,8 +429,6 @@
                 document.body.classList.remove('modal-open');
             }
         }
-
-        // ===== EFECTOS VISUALES DE ESTRELLAS =====
 
         function createStars() {
             const starsContainer = document.getElementById('starsContainer');
@@ -435,8 +464,6 @@
                 }
             }, 4000);
         }
-
-        // ===== SISTEMA DE CONFIGURACIÓN E IDIOMAS =====
 
         function openConfigModal() {
             const modal = document.getElementById('configModal');
@@ -487,7 +514,6 @@
 
         function switchLanguage(lang) {
             localStorage.setItem('portal-language', lang);
-            console.log(`Cambiando idioma a: ${lang}`);
 
             if (lang === 'en') {
                 window.location.href = 'index.html';
@@ -510,8 +536,6 @@
             updateLanguageInterface(savedLang);
         }
 
-        // ===== CONTROLES Y EVENT LISTENERS =====
-
         function setupEventListeners() {
             document.addEventListener('keydown', (e) => {
                 switch (e.key) {
@@ -526,6 +550,7 @@
                         closeLanguageWarning();
                         closeSectionModal();
                         closeInclusionModal();
+                        closeAboutModal();
                         break;
                     case '1':
                     case '2':
@@ -568,11 +593,11 @@
                     closeLanguageWarning();
                     closeSectionModal();
                     closeInclusionModal();
+                    closeAboutModal();
                 }
             });
         }
 
-        // Exponer funciones globales
         window.previousSection = previousSection;
         window.nextSection = nextSection;
         window.selectSection = selectSection;
@@ -586,7 +611,8 @@
         window.showLanguageWarning = showLanguageWarning;
         window.closeLanguageWarning = closeLanguageWarning;
         window.confirmLanguageChange = confirmLanguageChange;
-
+        window.openAboutModal = openAboutModal;
+        window.closeAboutModal = closeAboutModal;
     </script>
 </body>
 

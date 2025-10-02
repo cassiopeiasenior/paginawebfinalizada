@@ -37,7 +37,7 @@ SECCIONES:
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Comic Sans', sans-serif;
     /* LUGAR PARA IMAGEN DE FONDO: Cambiar esta línea por tu imagen */
     background: url("assets/datoscuriosos/fondodatoscuriosos.jpeg") no-repeat center center fixed;
     /* Para cambiar la imagen de fondo, reemplaza la URL de arriba por tu imagen:

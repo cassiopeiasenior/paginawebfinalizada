@@ -4,11 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Space Portal
-    </title>
+    <title>Space Portal</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-
 
 <body class="lang-en">
     <!-- Fondo animado de estrellas -->
@@ -16,22 +14,30 @@
     <video id="video-background" autoplay muted loop playsinline>
         <source src="assets/videofondoingles.mp4" type="video/mp4">
     </video>
+
     <!-- Contenedor principal -->
     <div class="container">
         <!-- Sección del título -->
         <div class="title-section">
-            <h1 class="title">🌟 Space Portal </Portal> 🌟</h1>
+            <h1 class="title">🌟 Space Portal 🌟</h1>
             <p class="subtitle">Explore the wonderful mysteries of space weather</p>
         </div>
 
-        <!-- Contenedor del círculo principal (sin rotación) -->
-        <!-- Contenedor del círculo principal (sin rotación) -->
+        <!-- Contenedor del círculo principal -->
         <div class="circular-container">
+            <!-- Settings en esquina superior izquierda -->
+            <div class="section-circle section-3" data-section="3" onclick="selectSection(3)">
+                <div class="section-content">
+                    <div class="section-icon">⚙️</div>
+                    <h3>Settings</h3>
+                </div>
+            </div>
+
             <div class="main-circle" id="mainCircle">
 
                 <!-- COLUMNA IZQUIERDA: 2 círculos -->
                 <div class="left-circles">
-                    <!-- Sección 1: Cuento (arriba) -->
+                    <!-- Sección 1: Story (arriba) -->
                     <div class="section-circle section-1 active" data-section="1" onclick="selectSection(1)">
                         <div class="section-content">
                             <div class="section-icon">📖</div>
@@ -49,42 +55,53 @@
                     </div>
                 </div>
 
-                <div class="center-image main-highlight" id="centerImage" <div class="center-placeholder">
-                    <div class="placeholder-icon">🌎</div>
-                </div>
-            </div>
-
-            <!-- COLUMNA DERECHA: 3 círculos -->
-            <div class="right-circles">
-                <!-- Sección 3: Configuración (arriba) -->
-                <div class="section-circle section-3" data-section="3" onclick="selectSection(3)">
-                    <div class="section-content">
-                        <div class="section-icon">⚙️</div>
-                        <h3>Settings</h3>
+                <!-- CENTRO: Imagen principal -->
+                <div class="center-image main-highlight" id="centerImage">
+                    <div class="center-placeholder">
+                        <div class="placeholder-icon">🌎</div>
                     </div>
                 </div>
 
-                <!-- Sección 4: Material de Inclusión (medio) -->
-                <div class="section-circle section-4" data-section="4" onclick="selectSection(4)">
-                    <div class="section-content">
-                        <div class="section-icon">🌍</div>
-                        <h3>Inclusive
-                            Logbook</h3>
+                <!-- COLUMNA DERECHA: 2 círculos -->
+                <div class="right-circles">
+                    <!-- Sección 4: Inclusive Logbook (arriba) -->
+                    <div class="section-circle section-4" data-section="4" onclick="selectSection(4)">
+                        <div class="section-content">
+                            <div class="section-icon">🌍</div>
+                            <h3>Inclusive Logbook</h3>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Sección 5: Datos Curiosos (abajo) -->
-                <div class="section-circle section-5" data-section="5" onclick="selectSection(5)">
-                    <div class="section-content">
-                        <div class="section-icon">☁️</div>
-                        <h3>Curious
-                            Facts
-                        </h3>
-                        <a href="datoscuriosos_english.html" class="section-link"></a>
+                    <!-- Sección 5: Curious Facts (abajo) -->
+                    <div class="section-circle section-5" data-section="5" onclick="selectSection(5)">
+                        <div class="section-content">
+                            <div class="section-icon">☁️</div>
+                            <h3>Curious Facts</h3>
+                            <a href="datoscuriosos_english.html" class="section-link"></a>
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Contenedor inferior izquierdo (rectangular) -->
+            <!-- Contenedor inferior izquierdo (rectangular) -->
+            <div class="bottom-left-container">
+                <img src="assets/logohumboldt.png" alt="Imagen decorativa"
+                    style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+            </div>
+
+            <!-- Contenedor inferior derecho (circular) -->
+            <div class="bottom-right-container">
+                <div class="circle-image-placeholder">
+                    <img src="assets/logocassiopeiaseniorsf.png" alt="Imagen decorativa"
+                        style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                </div>
+                <!-- Who We Are - clickeable -->
+                <button class="who-we-are-btn" onclick="openAboutModal()">
+                    <span class="who-icon">👥</span>
+                    <span class="who-text">Who Are We?</span>
+                </button>
+            </div>
         </div>
 
         <!-- Controles de navegación -->
@@ -108,12 +125,28 @@
         <div class="modal-overlay" onclick="closeSectionModal()"></div>
         <div class="modal-content section-modal-content">
             <div class="modal-header">
-                <h3 id="sectionModalTitle">Título de Sección</h3>
+                <h3 id="sectionModalTitle">Section Title</h3>
                 <button class="close-btn" onclick="closeSectionModal()">×</button>
             </div>
             <div class="modal-body">
-                <p id="sectionModalContent">Contenido de la sección...</p>
+                <p id="sectionModalContent">Section content...</p>
                 <div id="sectionModalActions"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Who Are We -->
+    <div class="about-modal" id="aboutModal">
+        <div class="modal-overlay" onclick="closeAboutModal()"></div>
+        <div class="modal-content about-modal-content">
+            <div class="modal-header">
+                <h3>👥 Who Are We?</h3>
+                <button class="close-btn" onclick="closeAboutModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <p>[Reserved space for content - Information about the team and project will be added soon. This section
+                    will include details about our mission, vision, and the people behind this Space Portal project.]
+                </p>
             </div>
         </div>
     </div>
@@ -128,7 +161,7 @@
             </div>
             <div class="modal-body">
                 <div class="inclusion-buttons">
-                    <button class="inclusion-btn" onclick="alert('Funcionalidad de Lenguaje Braille próximamente')">
+                    <button class="inclusion-btn" onclick="alert('Braille Language functionality coming soon')">
                         <div class="icon">⠃</div>
                         <div class="text">Braille Language</div>
                     </button>
@@ -139,7 +172,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
 
     <!-- Modal de Configuración de Idioma -->
@@ -153,7 +185,7 @@
             <div class="modal-body">
                 <div class="language-selector">
                     <div class="language-buttons">
-                        <button class="lang-btn active" data-lang="en"> <!-- ✅ Inglés activo -->
+                        <button class="lang-btn active" data-lang="en">
                             <span class="flag">🇺🇸</span>
                             <span class="lang-text">English</span>
                         </button>
@@ -185,17 +217,10 @@
     </div>
 
     <script>
-        /*
-        ================================================
-        PORTAL ESPACIAL - JAVASCRIPT
-        ================================================
-        */
-
         let currentSection = 1;
         let totalSections = 5;
         let pendingLanguage = null;
 
-        // Contenido de cada sección para los modales
         const sectionData = {
             1: {
                 title: "Story",
@@ -207,10 +232,10 @@
                 color: "#4fc3f7"
             },
             2: {
-                title: "Flashcards Espaciales",
-                content: "Aprende datos fascinantes sobre el universo con nuestras tarjetas interactivas. Perfecto para expandir tu conocimiento sobre el cosmos.",
+                title: "Space Flashcards",
+                content: "Learn fascinating facts about the universe with our interactive cards. Perfect for expanding your knowledge about the cosmos.",
                 link: "flashcards_english.html",
-                linkText: "Explorar Flashcards",
+                linkText: "Explore Flashcards",
                 color: "#e1bee7"
             },
             3: {
@@ -222,11 +247,11 @@
                 color: "#ff9800"
             },
             4: {
-                title: "Inclusion Material",
+                title: "Inclusive Material",
                 content: "",
                 link: null,
                 action: "openInclusionModal",
-                linkText: "Ver Opciones",
+                linkText: "View Options",
                 color: "#ffc107"
             },
             5: {
@@ -238,7 +263,6 @@
             }
         };
 
-        // ===== FUNCIONES DE INICIALIZACIÓN =====
         document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 initializePortal();
@@ -251,7 +275,7 @@
         function initializePortal() {
             setActiveSection(currentSection);
             checkCustomImage();
-            console.log('Portal Espacial inicializado');
+            console.log('Space Portal initialized');
         }
 
         function checkCustomImage() {
@@ -260,13 +284,11 @@
 
             if (centerImg && placeholder) {
                 centerImg.onload = function () {
-                    console.log('✅ Imagen cargada exitosamente');
                     centerImg.style.display = 'block';
                     placeholder.style.display = 'none';
                 };
 
                 centerImg.onerror = function () {
-                    console.log('❌ Error cargando imagen, mostrando placeholder');
                     centerImg.style.display = 'none';
                     placeholder.style.display = 'flex';
                 };
@@ -280,8 +302,6 @@
                 }
             }
         }
-
-        // ===== NAVEGACIÓN ENTRE SECCIONES =====
 
         function previousSection() {
             currentSection = currentSection === 1 ? totalSections : currentSection - 1;
@@ -331,8 +351,6 @@
             }
         }
 
-        // ===== GESTIÓN DE MODALES =====
-
         function openSectionModal(sectionNumber) {
             const modal = document.getElementById('sectionModal');
             const title = document.getElementById('sectionModalTitle');
@@ -348,7 +366,6 @@
 
             let actionsHtml = '';
 
-            // Si tiene botones personalizados (como en el cuento)
             if (data.buttons && data.buttons.length > 0) {
                 actionsHtml = '<div class="story-buttons">';
                 data.buttons.forEach(button => {
@@ -360,13 +377,9 @@
                     `;
                 });
                 actionsHtml += '</div>';
-            }
-            // Si tiene un enlace simple
-            else if (data.link) {
-                actionsHtml = `<a href="${data.link}" class="modal-action-btn">${data.linkText || 'Ver más'}</a>`;
-            }
-            // Si tiene una acción (como abrir otro modal)
-            else if (data.linkText && data.action) {
+            } else if (data.link) {
+                actionsHtml = `<a href="${data.link}" class="modal-action-btn">${data.linkText || 'See more'}</a>`;
+            } else if (data.linkText && data.action) {
                 actionsHtml = `<button class="modal-action-btn" onclick="${data.action}(); closeSectionModal();">${data.linkText}</button>`;
             }
 
@@ -378,6 +391,22 @@
 
         function closeSectionModal() {
             const modal = document.getElementById('sectionModal');
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.classList.remove('modal-open');
+            }
+        }
+
+        function openAboutModal() {
+            const modal = document.getElementById('aboutModal');
+            if (modal) {
+                modal.classList.add('show');
+                document.body.classList.add('modal-open');
+            }
+        }
+
+        function closeAboutModal() {
+            const modal = document.getElementById('aboutModal');
             if (modal) {
                 modal.classList.remove('show');
                 document.body.classList.remove('modal-open');
@@ -399,8 +428,6 @@
                 document.body.classList.remove('modal-open');
             }
         }
-
-        // ===== EFECTOS VISUALES DE ESTRELLAS =====
 
         function createStars() {
             const starsContainer = document.getElementById('starsContainer');
@@ -436,8 +463,6 @@
                 }
             }, 4000);
         }
-
-        // ===== SISTEMA DE CONFIGURACIÓN E IDIOMAS =====
 
         function openConfigModal() {
             const modal = document.getElementById('configModal');
@@ -488,10 +513,9 @@
 
         function switchLanguage(lang) {
             localStorage.setItem('portal-language', lang);
-            console.log(`Cambiando idioma a: ${lang}`);
 
             if (lang === 'es') {
-                window.location.href = 'index_spanish.html';  // ✅ Redirige a español
+                window.location.href = 'index_spanish.html';
             } else if (lang === 'en') {
                 updateLanguageInterface('en');
             }
@@ -507,11 +531,9 @@
         }
 
         function loadLanguagePreference() {
-            const savedLang = localStorage.getItem('portal-language') || 'en';  // ✅ 'en' por defecto
+            const savedLang = localStorage.getItem('portal-language') || 'en';
             updateLanguageInterface(savedLang);
         }
-
-        // ===== CONTROLES Y EVENT LISTENERS =====
 
         function setupEventListeners() {
             document.addEventListener('keydown', (e) => {
@@ -527,6 +549,7 @@
                         closeLanguageWarning();
                         closeSectionModal();
                         closeInclusionModal();
+                        closeAboutModal();
                         break;
                     case '1':
                     case '2':
@@ -569,11 +592,11 @@
                     closeLanguageWarning();
                     closeSectionModal();
                     closeInclusionModal();
+                    closeAboutModal();
                 }
             });
         }
 
-        // Exponer funciones globales
         window.previousSection = previousSection;
         window.nextSection = nextSection;
         window.selectSection = selectSection;
@@ -587,7 +610,8 @@
         window.showLanguageWarning = showLanguageWarning;
         window.closeLanguageWarning = closeLanguageWarning;
         window.confirmLanguageChange = confirmLanguageChange;
-
+        window.openAboutModal = openAboutModal;
+        window.closeAboutModal = closeAboutModal;
     </script>
 </body>
 
