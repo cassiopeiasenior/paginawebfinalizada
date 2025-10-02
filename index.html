@@ -84,7 +84,6 @@
             </div>
 
             <!-- Contenedor inferior izquierdo (rectangular) -->
-            <!-- Contenedor inferior izquierdo (rectangular) -->
             <div class="bottom-left-container">
                 <img src="assets/logohumboldt.png" alt="Imagen decorativa"
                     style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
@@ -161,7 +160,7 @@
             </div>
             <div class="modal-body">
                 <div class="inclusion-buttons">
-                    <button class="inclusion-btn" onclick="alert('Braille Language functionality coming soon')">
+                    <button class="inclusion-btn" onclick="openVocabModal()">
                         <div class="icon">⠃</div>
                         <div class="text">Braille Language</div>
                     </button>
@@ -169,6 +168,29 @@
                         <div class="icon">👋</div>
                         <div class="text">Sign Language</div>
                     </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Braille Language -->
+    <div class="vocab-modal" id="vocabModal">
+        <div class="modal-overlay" onclick="closeVocabModal()"></div>
+        <div class="modal-content vocab-modal-content">
+            <div class="modal-header">
+                <h3>⠃ Braille Language</h3>
+                <button class="close-btn" onclick="closeVocabModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="vocab-buttons">
+                    <button class="vocab-btn" onclick="alert('Sound Narrative coming soon')">
+                        <div class="icon">🔊</div>
+                        <div class="text">Sound Narrative</div>
+                    </button>
+                    <button class="vocab-btn" onclick="alert('Braille Cards coming soon')">
+                        <div class="icon">📄</div>
+                        <div class="text">Braille Cards to Print</div>
+                    </button>
                 </div>
             </div>
         </div>
@@ -429,6 +451,23 @@
             }
         }
 
+        function openVocabModal() {
+            closeInclusionModal();
+            const modal = document.getElementById('vocabModal');
+            if (modal) {
+                modal.classList.add('show');
+                document.body.classList.add('modal-open');
+            }
+        }
+
+        function closeVocabModal() {
+            const modal = document.getElementById('vocabModal');
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.classList.remove('modal-open');
+            }
+        }
+
         function createStars() {
             const starsContainer = document.getElementById('starsContainer');
             if (!starsContainer) return;
@@ -550,6 +589,7 @@
                         closeSectionModal();
                         closeInclusionModal();
                         closeAboutModal();
+                        closeVocabModal();
                         break;
                     case '1':
                     case '2':
@@ -593,10 +633,13 @@
                     closeSectionModal();
                     closeInclusionModal();
                     closeAboutModal();
+                    closeVocabModal();
                 }
             });
         }
 
+        window.openVocabModal = openVocabModal;
+        window.closeVocabModal = closeVocabModal;
         window.previousSection = previousSection;
         window.nextSection = nextSection;
         window.selectSection = selectSection;
