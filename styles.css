@@ -483,12 +483,11 @@ body.modal-open {
 .bottom-left-container {
     position: absolute;
     bottom: -80px;
-    left: 40px;
-    width: 280px;
-    height: 180px;
+    left: 87px;
+    width: 180px;  /* Cambiar de 280px a 180px */
+    height: 180px; /* Cambiar de 180px a 180px */
     z-index: 15;
 }
-
 .image-placeholder {
     width: 100%;
     height: 100%;
@@ -527,8 +526,8 @@ body.modal-open {
 /* Contenedor inferior derecho - Circular + Who We Are */
 .bottom-right-container {
     position: absolute;
-    bottom: -190px;
-    right: 40px;
+    bottom: -150px;  /* Asegúrate que sea igual al izquierdo */
+    right: 110px;
     display: flex;
     flex-direction: column;
     align-items: center;
