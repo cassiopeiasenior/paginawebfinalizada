@@ -549,7 +549,6 @@ body {
         gap: 15px !important;
         flex-wrap: nowrap !important;
     }
-    
     .card {
         max-width: 48% !important;
         min-width: 48% !important;
@@ -575,5 +574,102 @@ body {
     .item:last-child .card:only-child {
         max-width: 85% !important;
         min-width: 85% !important;
+    }
+}
+
+/* ===========================
+   MODAL LENGUAJE DE SEÑAS
+   =========================== */
+.modal-lsenas {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content-lsenas {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    margin: 5% auto;
+    padding: 30px;
+    border: 2px solid #ffcc00;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 10px 40px rgba(255, 204, 0, 0.3);
+    animation: slideDown 0.4s ease;
+}
+
+.modal-content-lsenas h2 {
+    color: #ffcc00;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.close-lsenas {
+    color: #ffcc00;
+    float: right;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    line-height: 20px;
+}
+
+.close-lsenas:hover,
+.close-lsenas:focus {
+    color: #fff;
+    transform: rotate(90deg);
+}
+
+.video-container-lsenas {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* Ratio 16:9 */
+    background: #000;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.video-container-lsenas video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive para modal */
+@media (max-width: 768px) {
+    .modal-content-lsenas {
+        width: 95%;
+        margin: 10% auto;
+        padding: 20px;
+    }
+    
+    .modal-content-lsenas h2 {
+        font-size: 22px;
     }
 }
