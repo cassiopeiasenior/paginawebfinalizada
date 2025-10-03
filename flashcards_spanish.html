@@ -382,210 +382,191 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script>
-        // Audio hover system
-        function playHoverAudio(audioPath) {
-            if (!audioPath) return;
-            try {
-                const audio = new Audio(audioPath);
-                audio.volume = 0.3;
-                audio.currentTime = 0;
-                const playPromise = audio.play();
-                if (playPromise !== undefined) {
-                    playPromise.catch(error => {
-                        console.log('Audio hover no disponible:', audioPath.split('/').pop());
-                    });
-                }
-            } catch (error) {
-                console.log('Error reproduciendo audio hover:', error);
-            }
-        }
-
-        document.querySelectorAll('.btn-abrir, .circulo').forEach(btn => {
-            btn.addEventListener('mouseenter', function () {
-                const audioPath = this.getAttribute('data-hover-audio');
-                playHoverAudio(audioPath);
-            });
-        });
-
-        // Flip de tarjetas
-        document.querySelectorAll('.card').forEach(card => {
-            card.addEventListener('click', function (e) {
-                const tag = e.target.tagName.toLowerCase();
-                if (tag === 'a' || tag === 'button') return;
-                this.classList.toggle('flip');
-            });
-        });
-
-        // Configuración del carrusel según dispositivo
-        if (window.innerWidth <= 768) {
-            $('#theCarousel').carousel({ interval: false, pause: "hover" });
-        } else {
-            $('#theCarousel').carousel({ interval: 4000, pause: "hover" });
-        }
-
-        $(window).on('resize', function () {
-            if (window.innerWidth <= 768) {
-                $('#theCarousel').carousel({ interval: false });
-            } else {
-                $('#theCarousel').carousel({ interval: 4000 });
-            }
-        });
-
-        // Mostrar/Ocultar círculos
-        document.querySelectorAll('.btn-abrir').forEach(btn => {
-            btn.addEventListener('click', function (e) {
-                e.stopPropagation();
-                const targetId = this.getAttribute('data-target');
-                const circulos = document.getElementById(targetId);
-                if (!circulos) return;
-                circulos.classList.toggle('visible');
-            });
-        });
-
-        // Funcionalidades por personaje
-        const personajes = ['ilari', 'fiba', 'orion', 'nerea', 'cassia', 'gaia', 'deneb', 'sombra', 'personaje9'];
-
-        personajes.forEach(personaje => {
-            document.querySelectorAll(`#circulos-${personaje} .circulo`).forEach((btn, index) => {
-                btn.addEventListener('click', function (e) {
-                    e.stopPropagation();
-
-                    switch (index) {
-                        case 0: // Audio
-                            const audio = new Audio('assets/flashcards/audio/audioprueba.mp3');
-                            audio.play().catch(() => console.log(`Audio de ${personaje} no disponible`));
-                            break;
-                        case 1: // Lenguaje de señas / Info
-                            if (personaje === 'sombra') {
-                                window.open('https://www.nasa.gov/feature/goddard/2016/understanding-space-weather', '_blank');
-                            } else if (personaje === 'personaje9') {
-                                window.open('https://soho.nascom.nasa.gov/', '_blank');
-                            } else {
-                                window.open('https://www.youtube.com/results?search_query=lenguaje+señas+colombia', '_blank');
-                            }
-                            break;
-                        case 2: // Papercraft
-                            window.open(`assets/pdfs/papercraft-${personaje}.pdf`, '_blank');
-                            break;
-                    }
+    // ========================
+    // AUDIO HOVER (cuando paso el mouse)
+    // ========================
+    function playHoverAudio(audioPath) {
+        if (!audioPath) return;
+        try {
+            const audio = new Audio(audioPath);
+            audio.volume = 0.3;
+            audio.currentTime = 0;
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.log('Audio hover no disponible:', audioPath.split('/').pop());
                 });
-            });
-        });
-
-        // Reorganización para móviles
-        function reorganizeCarouselForMobile() {
-            const isMobile = window.innerWidth <= 768;
-            const carousel = $('#theCarousel');
-
-            if (isMobile && !carousel.data('mobile-reorganized')) {
-                carousel.data('mobile-reorganized', true);
-                carousel.carousel('pause');
-
-                const carouselInner = $('.carousel-inner');
-                const mobileSlides = `
-                    <div class="item active">
-                        <div class="cards-wrapper">
-                            ${$('.card-ilari').first().prop('outerHTML')}
-                            ${$('.card-fiba').first().prop('outerHTML')}
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="cards-wrapper">
-                            ${$('.card-orion').first().prop('outerHTML')}
-                            ${$('.card-nerea').first().prop('outerHTML')}
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="cards-wrapper">
-                            ${$('.card-cassia').first().prop('outerHTML')}
-                            ${$('.card-gaia').first().prop('outerHTML')}
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="cards-wrapper">
-                            ${$('.card-deneb').first().prop('outerHTML')}
-                            ${$('.card-sombra').first().prop('outerHTML')}
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="cards-wrapper">
-                            ${$('.card-personaje9').first().prop('outerHTML')}
-                        </div>
-                    </div>
-                `;
-
-                carouselInner.html(mobileSlides);
-
-                const indicators = $('.carousel-indicators');
-                indicators.html(`
-                    <li data-target="#theCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#theCarousel" data-slide-to="1"></li>
-                    <li data-target="#theCarousel" data-slide-to="2"></li>
-                    <li data-target="#theCarousel" data-slide-to="3"></li>
-                    <li data-target="#theCarousel" data-slide-to="4"></li>
-                `);
-
-                carousel.carousel({ interval: false, pause: "hover" });
-                reapplyEventListeners();
-            } else if (!isMobile && carousel.data('mobile-reorganized')) {
-                location.reload();
             }
+        } catch (error) {
+            console.log('Error reproduciendo audio hover:', error);
         }
+    }
 
-        function reapplyEventListeners() {
-            $('.card').off('click').on('click', function (e) {
-                const tag = e.target.tagName.toLowerCase();
-                if (tag === 'a' || tag === 'button') return;
-                $(this).toggleClass('flip');
-            });
+    document.querySelectorAll('.btn-abrir, .circulo').forEach(btn => {
+        btn.addEventListener('mouseenter', function () {
+            const audioPath = this.getAttribute('data-hover-audio');
+            playHoverAudio(audioPath);
+        });
+    });
 
-            $('.btn-abrir').off('click').on('click', function (e) {
-                e.stopPropagation();
-                const targetId = $(this).data('target');
-                $('#' + targetId).toggleClass('visible');
-            });
+    // ========================
+    // Flip de tarjetas
+    // ========================
+    document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('click', function (e) {
+            const tag = e.target.tagName.toLowerCase();
+            // Evitar que botones o enlaces interfieran
+            if (tag === 'a' || tag === 'button' || e.target.classList.contains('btn-abrir')) return;
+            this.classList.toggle('flip');
+        });
+    });
 
-            $('.btn-abrir, .circulo').off('mouseenter').on('mouseenter', function () {
-                const audioPath = $(this).data('hover-audio');
-                if (audioPath) playHoverAudio(audioPath);
-            });
+    // ========================
+    // Configuración del carrusel según dispositivo
+    // ========================
+    if (window.innerWidth <= 768) {
+        $('#theCarousel').carousel({ interval: false, pause: "hover" });
+    } else {
+        $('#theCarousel').carousel({ interval: 4000, pause: "hover" });
+    }
 
-            $('.circulo').off('click').on('click', function (e) {
-                e.stopPropagation();
-                const parent = $(this).closest('.circulos-container');
-                const personaje = parent.attr('id').replace('circulos-', '');
-                const index = $(this).index();
-
-                switch (index) {
-                    case 0:
-                        const audio = new Audio('assets/flashcards/audio/audioprueba.mp3');
-                        audio.play().catch(() => console.log('Audio unavailable'));
-                        break;
-                    case 1:
-                        if (personaje === 'sombra') {
-                            window.open('https://www.nasa.gov/feature/goddard/2016/understanding-space-weather', '_blank');
-                        } else if (personaje === 'personaje9') {
-                            window.open('https://soho.nascom.nasa.gov/', '_blank');
-                        } else {
-                            window.open('https://www.youtube.com/results?search_query=sign+language', '_blank');
-                        }
-                        break;
-                    case 2:
-                        window.open(`assets/pdfs/papercraft-${personaje}.pdf`, '_blank');
-                        break;
-                }
-            });
+    $(window).on('resize', function () {
+        if (window.innerWidth <= 768) {
+            $('#theCarousel').carousel({ interval: false });
+        } else {
+            $('#theCarousel').carousel({ interval: 4000 });
         }
+    });
 
-        $(document).ready(function () {
-            setTimeout(reorganizeCarouselForMobile, 100);
+    // ========================
+    // Mostrar/Ocultar círculos
+    // ========================
+    document.querySelectorAll('.btn-abrir').forEach(btn => {
+        btn.addEventListener('click', function (e) {
+            e.stopPropagation(); // Evita que active el flip
+            const targetId = this.getAttribute('data-target');
+            const circulos = document.getElementById(targetId);
+            if (!circulos) return;
+            circulos.classList.toggle('visible');
         });
+    });
 
-        $(window).on('resize', function () {
-            clearTimeout(window.resizeTimer);
-            window.resizeTimer = setTimeout(reorganizeCarouselForMobile, 250);
+    // ========================
+    // Audios de personajes
+    // ========================
+    const audiosPersonajes = {
+        ilari: "assets/flashcards/audio/ilari.mp3",
+        fiba: "assets/flashcards/descripcion/fibaingles.m4a",
+        orion: "assets/flashcards/audio/orion.mp3",
+        nerea: "assets/flashcards/audio/nerea.mp3",
+        cassia: "assets/flashcards/audio/cassia.mp3",
+        gaia: "assets/flashcards/descripcion/gaiaespanol.m4a",
+        deneb: "assets/flashcards/audio/deneb.mp3",
+        sombra: "assets/flashcards/audio/sombra.mp3",
+        personaje9: "assets/flashcards/audio/soho.mp3"
+    };
+
+    // ========================
+    // Eventos de los círculos
+    // ========================
+    document.querySelectorAll('.circulo').forEach(circulo => {
+        circulo.addEventListener('click', function (e) {
+            e.stopPropagation();
+            const parent = this.closest('.circulos-container');
+            const personaje = parent.id.replace('circulos-', '');
+            const index = Array.from(this.parentNode.children).indexOf(this);
+
+            switch (index) {
+                case 0: // Audio personaje
+                    const personajeAudio = audiosPersonajes[personaje];
+                    if (personajeAudio) {
+                        const audio = new Audio(personajeAudio);
+                        audio.play().catch(() => console.log(`Audio de ${personaje} no disponible`));
+                    }
+                    break;
+                case 1: // Lenguaje de señas / Info
+                    if (personaje === 'sombra') {
+                        window.open('https://www.nasa.gov/feature/goddard/2016/understanding-space-weather', '_blank');
+                    } else if (personaje === 'personaje9') {
+                        window.open('https://soho.nascom.nasa.gov/', '_blank');
+                    } else {
+                        window.open('https://www.youtube.com/results?search_query=lenguaje+señas+colombia', '_blank');
+                    }
+                    break;
+                case 2: // Papercraft
+                    window.open(`assets/pdfs/papercraft-${personaje}.pdf`, '_blank');
+                    break;
+            }
         });
-    </script>
-</body>
+    });
 
-</html>
+    // ========================
+    // Reorganización para móviles
+    // ========================
+    function reorganizeCarouselForMobile() {
+        const isMobile = window.innerWidth <= 768;
+        const carousel = $('#theCarousel');
+
+        if (isMobile && !carousel.data('mobile-reorganized')) {
+            carousel.data('mobile-reorganized', true);
+            carousel.carousel('pause');
+
+            const carouselInner = $('.carousel-inner');
+            const mobileSlides = `
+                <div class="item active">
+                    <div class="cards-wrapper">
+                        ${$('.card-ilari').first().prop('outerHTML')}
+                        ${$('.card-fiba').first().prop('outerHTML')}
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="cards-wrapper">
+                        ${$('.card-orion').first().prop('outerHTML')}
+                        ${$('.card-nerea').first().prop('outerHTML')}
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="cards-wrapper">
+                        ${$('.card-cassia').first().prop('outerHTML')}
+                        ${$('.card-gaia').first().prop('outerHTML')}
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="cards-wrapper">
+                        ${$('.card-deneb').first().prop('outerHTML')}
+                        ${$('.card-sombra').first().prop('outerHTML')}
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="cards-wrapper">
+                        ${$('.card-personaje9').first().prop('outerHTML')}
+                    </div>
+                </div>
+            `;
+
+            carouselInner.html(mobileSlides);
+
+            const indicators = $('.carousel-indicators');
+            indicators.html(`
+                <li data-target="#theCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#theCarousel" data-slide-to="1"></li>
+                <li data-target="#theCarousel" data-slide-to="2"></li>
+                <li data-target="#theCarousel" data-slide-to="3"></li>
+                <li data-target="#theCarousel" data-slide-to="4"></li>
+            `);
+
+            carousel.carousel({ interval: false, pause: "hover" });
+        } else if (!isMobile && carousel.data('mobile-reorganized')) {
+            location.reload();
+        }
+    }
+
+    $(document).ready(function () {
+        setTimeout(reorganizeCarouselForMobile, 100);
+    });
+
+    $(window).on('resize', function () {
+        clearTimeout(window.resizeTimer);
+        window.resizeTimer = setTimeout(reorganizeCarouselForMobile, 250);
+    });
+</script>
