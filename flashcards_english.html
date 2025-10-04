@@ -16,9 +16,9 @@
     <div class="container">
 
         <div style="text-align: center; margin: 20px 0;">
-            <a href="index.html"
-                style="display: inline-block; background: linear-gradient(45deg, #171c1f, #230029); color: white; text-decoration: none; padding: 12px 25px; border-radius: 25px; font-weight: bold;">←
-                Back To Space Portal</a>
+            <a href="index.html" class="back-to-home">
+                <span class="home-icon">🏠</span>
+            </a>
         </div>
 
         <div id="theCarousel" class="carousel slide" data-ride="carousel" data-interval="4000">
@@ -378,203 +378,203 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script>
-    // ========================
-    // AUDIO HOVER (when mouse over)
-    // ========================
-    function playHoverAudio(audioPath) {
-        if (!audioPath) return;
-        try {
-            const audio = new Audio(audioPath);
-            audio.volume = 0.3;
-            audio.currentTime = 0;
-            const playPromise = audio.play();
-            if (playPromise !== undefined) {
-                playPromise.catch(error => {
-                    console.log('Hover audio not available:', audioPath.split('/').pop());
-                });
+        // ========================
+        // AUDIO HOVER (when mouse over)
+        // ========================
+        function playHoverAudio(audioPath) {
+            if (!audioPath) return;
+            try {
+                const audio = new Audio(audioPath);
+                audio.volume = 0.3;
+                audio.currentTime = 0;
+                const playPromise = audio.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        console.log('Hover audio not available:', audioPath.split('/').pop());
+                    });
+                }
+            } catch (error) {
+                console.log('Error playing hover audio:', error);
             }
-        } catch (error) {
-            console.log('Error playing hover audio:', error);
         }
-    }
 
-    document.querySelectorAll('.btn-abrir, .circulo').forEach(btn => {
-        btn.addEventListener('mouseenter', function () {
-            const audioPath = this.getAttribute('data-hover-audio');
-            playHoverAudio(audioPath);
+        document.querySelectorAll('.btn-abrir, .circulo').forEach(btn => {
+            btn.addEventListener('mouseenter', function () {
+                const audioPath = this.getAttribute('data-hover-audio');
+                playHoverAudio(audioPath);
+            });
         });
-    });
 
-    // ========================
-    // Card flip
-    // ========================
-    document.querySelectorAll('.card').forEach(card => {
-        card.addEventListener('click', function (e) {
-            const tag = e.target.tagName.toLowerCase();
-            if (tag === 'a' || tag === 'button' || e.target.classList.contains('btn-abrir')) return;
-            this.classList.toggle('flip');
+        // ========================
+        // Card flip
+        // ========================
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', function (e) {
+                const tag = e.target.tagName.toLowerCase();
+                if (tag === 'a' || tag === 'button' || e.target.classList.contains('btn-abrir')) return;
+                this.classList.toggle('flip');
+            });
         });
-    });
 
-    // ========================
-    // Carousel configuration by device
-    // ========================
-    if (window.innerWidth <= 768) {
-        $('#theCarousel').carousel({ interval: false, pause: "hover" });
-    } else {
-        $('#theCarousel').carousel({ interval: 4000, pause: "hover" });
-    }
-
-    $(window).on('resize', function () {
+        // ========================
+        // Carousel configuration by device
+        // ========================
         if (window.innerWidth <= 768) {
-            $('#theCarousel').carousel({ interval: false });
+            $('#theCarousel').carousel({ interval: false, pause: "hover" });
         } else {
-            $('#theCarousel').carousel({ interval: 4000 });
+            $('#theCarousel').carousel({ interval: 4000, pause: "hover" });
         }
-    });
 
-    // ========================
-    // Show/Hide circles
-    // ========================
-    document.querySelectorAll('.btn-abrir').forEach(btn => {
-        btn.addEventListener('click', function (e) {
-            e.stopPropagation();
-            const targetId = this.getAttribute('data-target');
-            const circulos = document.getElementById(targetId);
-            if (!circulos) return;
-            circulos.classList.toggle('visible');
-        });
-    });
-
-    // ========================
-    // Character audios
-    // ========================
-    const audiosPersonajes = {
-        ilari: "assets/flashcards/audio/ilari.mp3",
-        fiba: "assets/flashcards/descripcion/fibaingles.m4a",
-        orion: "assets/flashcards/audio/orion.mp3",
-        nerea: "assets/flashcards/descripcion/nereaingles.m4a",
-        cassia: "assets/flashcards/audio/cassia.mp3",
-        gaia: "assets/flashcards/descripcion/gaiaingles.m4a",
-        deneb: "assets/flashcards/descripcion/denebingles.m4a",
-        sombra: "assets/flashcards/audio/sombra.mp3",
-        personaje9: "assets/flashcards/audio/soho.mp3"
-    };
-
-    // ========================
-    // SIGN LANGUAGE MODAL - Configuration
-    // ========================
-    const videosLenguajeSenas = {
-        ilari: "assets/flashcards/lenguajesenas/ilari-lsenas.mp4",
-        fiba: "assets/flashcards/lenguajesenas/fiba-lsenas.mp4",
-        orion: "assets/flashcards/lenguajesenas/orion-lsenas.mp4",
-        nerea: "assets/flashcards/lenguajesenas/nerea-lsenas.mp4",
-        cassia: "assets/flashcards/lenguajesenas/cassia-lsenas.mp4",
-        gaia: "assets/flashcards/lenguajesenas/gaia-lsenas.mp4",
-        deneb: "assets/flashcards/lenguajesenas/deneb-lsenas.mp4"
-    };
-
-    const nombresPersonajes = {
-        ilari: "Ilari - Sign Language",
-        fiba: "Fiba - Sign Language",
-        orion: "Orion - Sign Language",
-        nerea: "Nerea - Sign Language",
-        cassia: "Cassia - Sign Language",
-        gaia: "Gaia - Sign Language",
-        deneb: "Deneb - Sign Language"
-    };
-
-    function abrirModalLenguaje(personaje) {
-        const modal = document.getElementById('modalLenguaje');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalVideo = document.getElementById('modalVideo');
-        
-        modalTitle.textContent = nombresPersonajes[personaje] || personaje;
-        modalVideo.src = videosLenguajeSenas[personaje] || '';
-        
-        modal.style.display = 'block';
-        modalVideo.load();
-    }
-
-    // Close modal with X
-    const modal = document.getElementById('modalLenguaje');
-    const closeBtn = document.querySelector('.close-lsenas');
-
-    closeBtn.onclick = function() {
-        modal.style.display = 'none';
-        const video = document.getElementById('modalVideo');
-        video.pause();
-        video.currentTime = 0;
-    };
-
-    // Close modal clicking outside
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = 'none';
-            const video = document.getElementById('modalVideo');
-            video.pause();
-            video.currentTime = 0;
-        }
-    };
-
-    // Close modal with ESC key
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape' && modal.style.display === 'block') {
-            modal.style.display = 'none';
-            const video = document.getElementById('modalVideo');
-            video.pause();
-            video.currentTime = 0;
-        }
-    });
-
-    // ========================
-    // Circle button events
-    // ========================
-    document.querySelectorAll('.circulo').forEach(circulo => {
-        circulo.addEventListener('click', function (e) {
-            e.stopPropagation();
-            const parent = this.closest('.circulos-container');
-            const personaje = parent.id.replace('circulos-', '');
-            const index = Array.from(this.parentNode.children).indexOf(this);
-
-            switch (index) {
-                case 0: // Character audio
-                    const personajeAudio = audiosPersonajes[personaje];
-                    if (personajeAudio) {
-                        const audio = new Audio(personajeAudio);
-                        audio.play().catch(() => console.log(`Audio for ${personaje} not available`));
-                    }
-                    break;
-                case 1: // Sign language / Info
-                    if (personaje === 'sombra') {
-                        window.open('https://www.nasa.gov/feature/goddard/2016/understanding-space-weather', '_blank');
-                    } else if (personaje === 'personaje9') {
-                        window.open('https://soho.nascom.nasa.gov/', '_blank');
-                    } else {
-                        // Open modal for other characters
-                        abrirModalLenguaje(personaje);
-                    }
-                    break;
-                case 2: // Papercraft
-                    window.open(`assets/pdfs/papercraft-${personaje}.pdf`, '_blank');
-                    break;
+        $(window).on('resize', function () {
+            if (window.innerWidth <= 768) {
+                $('#theCarousel').carousel({ interval: false });
+            } else {
+                $('#theCarousel').carousel({ interval: 4000 });
             }
         });
-    });
 
-    // ========================
-    // Mobile reorganization
-    // ========================
-    function reorganizeCarouselForMobile() {
-        const isMobile = window.innerWidth <= 768;
-        const carousel = $('#theCarousel');
+        // ========================
+        // Show/Hide circles
+        // ========================
+        document.querySelectorAll('.btn-abrir').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                const targetId = this.getAttribute('data-target');
+                const circulos = document.getElementById(targetId);
+                if (!circulos) return;
+                circulos.classList.toggle('visible');
+            });
+        });
 
-        if (isMobile && !carousel.data('mobile-reorganized')) {
-            carousel.data('mobile-reorganized', true);
-            carousel.carousel('pause');
+        // ========================
+        // Character audios
+        // ========================
+        const audiosPersonajes = {
+            ilari: "assets/flashcards/descripcion/ilariingles.m4a",
+            fiba: "assets/flashcards/descripcion/fibaingles.m4a",
+            orion: "assets/flashcards/audio/orion.mp3",
+            nerea: "assets/flashcards/descripcion/nereaingles.m4a",
+            cassia: "assets/flashcards/audio/cassia.mp3",
+            gaia: "assets/flashcards/descripcion/gaiaingles.m4a",
+            deneb: "assets/flashcards/descripcion/denebingles.m4a",
+            sombra: "assets/flashcards/audio/sombra.mp3",
+            personaje9: "assets/flashcards/audio/soho.mp3"
+        };
 
-            const carouselInner = $('.carousel-inner');
-            const mobileSlides = `
+        // ========================
+        // SIGN LANGUAGE MODAL - Configuration
+        // ========================
+        const videosLenguajeSenas = {
+            ilari: "assets/flashcards/lenguajesenas/ilari-lsenas.mp4",
+            fiba: "assets/flashcards/lenguajesenas/fiba-lsenas.mp4",
+            orion: "assets/flashcards/lenguajesenas/orion-lsenas.mp4",
+            nerea: "assets/flashcards/lenguajesenas/nerea-lsenas.mp4",
+            cassia: "assets/flashcards/lenguajesenas/cassia-lsenas.mp4",
+            gaia: "assets/flashcards/lenguajesenas/gaia-lsenas.mp4",
+            deneb: "assets/flashcards/lenguajesenas/deneb-lsenas.mp4"
+        };
+
+        const nombresPersonajes = {
+            ilari: "Ilari - Sign Language",
+            fiba: "Fiba - Sign Language",
+            orion: "Orion - Sign Language",
+            nerea: "Nerea - Sign Language",
+            cassia: "Cassia - Sign Language",
+            gaia: "Gaia - Sign Language",
+            deneb: "Deneb - Sign Language"
+        };
+
+        function abrirModalLenguaje(personaje) {
+            const modal = document.getElementById('modalLenguaje');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalVideo = document.getElementById('modalVideo');
+
+            modalTitle.textContent = nombresPersonajes[personaje] || personaje;
+            modalVideo.src = videosLenguajeSenas[personaje] || '';
+
+            modal.style.display = 'block';
+            modalVideo.load();
+        }
+
+        // Close modal with X
+        const modal = document.getElementById('modalLenguaje');
+        const closeBtn = document.querySelector('.close-lsenas');
+
+        closeBtn.onclick = function () {
+            modal.style.display = 'none';
+            const video = document.getElementById('modalVideo');
+            video.pause();
+            video.currentTime = 0;
+        };
+
+        // Close modal clicking outside
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+                const video = document.getElementById('modalVideo');
+                video.pause();
+                video.currentTime = 0;
+            }
+        };
+
+        // Close modal with ESC key
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && modal.style.display === 'block') {
+                modal.style.display = 'none';
+                const video = document.getElementById('modalVideo');
+                video.pause();
+                video.currentTime = 0;
+            }
+        });
+
+        // ========================
+        // Circle button events
+        // ========================
+        document.querySelectorAll('.circulo').forEach(circulo => {
+            circulo.addEventListener('click', function (e) {
+                e.stopPropagation();
+                const parent = this.closest('.circulos-container');
+                const personaje = parent.id.replace('circulos-', '');
+                const index = Array.from(this.parentNode.children).indexOf(this);
+
+                switch (index) {
+                    case 0: // Character audio
+                        const personajeAudio = audiosPersonajes[personaje];
+                        if (personajeAudio) {
+                            const audio = new Audio(personajeAudio);
+                            audio.play().catch(() => console.log(`Audio for ${personaje} not available`));
+                        }
+                        break;
+                    case 1: // Sign language / Info
+                        if (personaje === 'sombra') {
+                            window.open('https://www.nasa.gov/feature/goddard/2016/understanding-space-weather', '_blank');
+                        } else if (personaje === 'personaje9') {
+                            window.open('https://soho.nascom.nasa.gov/', '_blank');
+                        } else {
+                            // Open modal for other characters
+                            abrirModalLenguaje(personaje);
+                        }
+                        break;
+                    case 2: // Papercraft
+                        window.open(`assets/pdfs/papercraft-${personaje}.pdf`, '_blank');
+                        break;
+                }
+            });
+        });
+
+        // ========================
+        // Mobile reorganization
+        // ========================
+        function reorganizeCarouselForMobile() {
+            const isMobile = window.innerWidth <= 768;
+            const carousel = $('#theCarousel');
+
+            if (isMobile && !carousel.data('mobile-reorganized')) {
+                carousel.data('mobile-reorganized', true);
+                carousel.carousel('pause');
+
+                const carouselInner = $('.carousel-inner');
+                const mobileSlides = `
                 <div class="item active">
                     <div class="cards-wrapper">
                         ${$('.card-ilari').first().prop('outerHTML')}
@@ -606,10 +606,10 @@
                 </div>
             `;
 
-            carouselInner.html(mobileSlides);
+                carouselInner.html(mobileSlides);
 
-            const indicators = $('.carousel-indicators');
-            indicators.html(`
+                const indicators = $('.carousel-indicators');
+                indicators.html(`
                 <li data-target="#theCarousel" data-slide-to="0" class="active"></li>
                 <li data-target="#theCarousel" data-slide-to="1"></li>
                 <li data-target="#theCarousel" data-slide-to="2"></li>
@@ -617,20 +617,21 @@
                 <li data-target="#theCarousel" data-slide-to="4"></li>
             `);
 
-            carousel.carousel({ interval: false, pause: "hover" });
-        } else if (!isMobile && carousel.data('mobile-reorganized')) {
-            location.reload();
+                carousel.carousel({ interval: false, pause: "hover" });
+            } else if (!isMobile && carousel.data('mobile-reorganized')) {
+                location.reload();
+            }
         }
-    }
 
-    $(document).ready(function () {
-        setTimeout(reorganizeCarouselForMobile, 100);
-    });
+        $(document).ready(function () {
+            setTimeout(reorganizeCarouselForMobile, 100);
+        });
 
-    $(window).on('resize', function () {
-        clearTimeout(window.resizeTimer);
-        window.resizeTimer = setTimeout(reorganizeCarouselForMobile, 250);
-    });
-</script>
+        $(window).on('resize', function () {
+            clearTimeout(window.resizeTimer);
+            window.resizeTimer = setTimeout(reorganizeCarouselForMobile, 250);
+        });
+    </script>
 </body>
+
 </html>
