@@ -22,146 +22,149 @@
         <!-- Header -->
         <div class="header">
             <h1>🔊 Narrativa Sonora 🔊</h1>
-            <p>Explora el universo a través del sonido. Descubre términos astronómicos explicados de manera accesible.
-            </p>
+            <p>Explora el universo a través del sonido. Descubre términos astronómicos explicados de manera accesible.</p>
+
+            <!-- Botón de instrucciones -->
+            <div class="instructions-container">
+                <button class="audio-btn instructions-btn" onclick="playInstructions()" id="instructionsBtn">
+                    <span class="play-icon">▶</span>
+                </button>
+                <span class="instructions-label">Instrucciones</span>
+            </div>
         </div>
 
         <!-- Grid de narrativas -->
         <div class="narrative-grid">
 
             <!-- Narrativa 1 -->
-            <div class="narrative-card">
+            <div class="narrative-card" data-hover-audio="assets/narrativasonora/audio/hover1.mp3">
                 <h3 class="narrative-title">Atmósfera</h3>
-                <div class="video-container">
-                    <iframe width="100%" height="100%" <iframe width="560" height="315"
-                        src="https://www.youtube.com/embed/giqsKD656TE?si=ETuixt6WuLDT8you&amp;end=35"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </iframe>
+                <div class="audio-container">
+                    <button class="audio-btn" onclick="playAudio(0)" id="audioBtn0">
+                        <span class="play-icon">▶</span>
+                    </button>
+                    <audio id="audio0" src="assets/narrativasonora/audio/audioatmosferaespanol.m4a"></audio>
                 </div>
             </div>
 
             <!-- Narrativa 2 -->
-            <div class="narrative-card">
+            <div class="narrative-card" data-hover-audio="assets/narrativasonora/audio/hover2.mp3">
                 <h3 class="narrative-title">Aurora Boreal</h3>
-                <div class="video-container">
-                    <iframe <iframe width="560" height="315"
-                        src="https://www.youtube.com/embed/dzmOsA9XnU8?si=ZYnYnwveDjYLST3t&amp;end=45"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </iframe>
+                <div class="audio-container">
+                    <button class="audio-btn" onclick="playAudio(1)" id="audioBtn1">
+                        <span class="play-icon">▶</span>
+                    </button>
+                    <audio id="audio1" src="assets/narrativasonora/audio/audioauroraespanol.m4a"></audio>
                 </div>
             </div>
 
             <!-- Narrativa 3 -->
-            <div class="narrative-card">
+            <div class="narrative-card" data-hover-audio="assets/narrativasonora/audio/hover3.mp3">
                 <h3 class="narrative-title">Clima Espacial</h3>
-                <div class="video-container">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/_e1F5eNhH1I?si=-ETGjURcX_-symrI"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div class="audio-container">
+                    <button class="audio-btn" onclick="playAudio(2)" id="audioBtn2">
+                        <span class="play-icon">▶</span>
+                    </button>
+                    <audio id="audio2" src="assets/narrativasonora/audio/audioclimaespacialespanol.m4a"></audio>
                 </div>
             </div>
 
             <!-- Narrativa 4 -->
-            <div class="narrative-card">
+            <div class="narrative-card" data-hover-audio="assets/narrativasonora/audio/hover4.mp3">
                 <h3 class="narrative-title">Eyección de Masa Coronal</h3>
-                <div class="video-container">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/ucwK36-a1T4?si=AC2Dcm7hRtbf5veK"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div class="audio-container">
+                    <button class="audio-btn" onclick="playAudio(3)" id="audioBtn3">
+                        <span class="play-icon">▶</span>
+                    </button>
+                    <audio id="audio3" src="assets/narrativasonora/audio/audioeyeccionespanol.m4a"></audio>
                 </div>
             </div>
 
             <!-- Narrativa 5 -->
-            <div class="narrative-card">
+            <div class="narrative-card" data-hover-audio="assets/narrativasonora/audio/hover5.mp3">
                 <h3 class="narrative-title">Heliósfera</h3>
-                <div class="video-container">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/bX8Jczb8OFc?si=pfamZb9MTincPg2_"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div class="audio-container">
+                    <button class="audio-btn" onclick="playAudio(4)" id="audioBtn4">
+                        <span class="play-icon">▶</span>
+                    </button>
+                    <audio id="audio4" src="assets/narrativasonora/audio/audioheliosferaespanol.m4a"></audio>
                 </div>
             </div>
 
             <!-- Narrativa 6 -->
-            <div class="narrative-card">
+            <div class="narrative-card" data-hover-audio="assets/narrativasonora/audio/hover6.mp3">
                 <h3 class="narrative-title">Órbita</h3>
-                <div class="video-container">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/SncMWSoyI6A?si=DE-Y7tnPpcsAaHY6"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div class="audio-container">
+                    <button class="audio-btn" onclick="playAudio(5)" id="audioBtn5">
+                        <span class="play-icon">▶</span>
+                    </button>
+                    <audio id="audio5" src="assets/narrativasonora/audio/audioorbitaespanol.m4a"></audio>
                 </div>
             </div>
 
             <!-- Narrativa 7 -->
-            <div class="narrative-card">
+            <div class="narrative-card" data-hover-audio="assets/narrativasonora/audio/hover7.mp3">
                 <h3 class="narrative-title">Llamarada Solar</h3>
-                <div class="video-container">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/rPWtnGuoPB0?si=P_9umrA4IozLCaY-"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div class="audio-container">
+                    <button class="audio-btn" onclick="playAudio(6)" id="audioBtn6">
+                        <span class="play-icon">▶</span>
+                    </button>
+                    <audio id="audio6" src="assets/narrativasonora/audio/audiollamaradasolarespanol.m4a"></audio>
                 </div>
             </div>
 
             <!-- Narrativa 8 -->
-            <div class="narrative-card">
+            <div class="narrative-card" data-hover-audio="assets/narrativasonora/audio/hover8.mp3">
                 <h3 class="narrative-title">Mancha Solar</h3>
-                <div class="video-container">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/GfZ9bgDSsaQ?si=YFp9V6Vk81gdwO0M"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div class="audio-container">
+                    <button class="audio-btn" onclick="playAudio(7)" id="audioBtn7">
+                        <span class="play-icon">▶</span>
+                    </button>
+                    <audio id="audio7" src="assets/narrativasonora/audio/audiomanchassolarespanol.m4a"></audio>
                 </div>
             </div>
 
             <!-- Narrativa 9 -->
-            <div class="narrative-card">
+            <div class="narrative-card" data-hover-audio="assets/narrativasonora/audio/hover9.mp3">
                 <h3 class="narrative-title">Radiación</h3>
-                <div class="video-container">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/A9eIVnjhroI?si=P5WzGSwIOz4DODe-"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div class="audio-container">
+                    <button class="audio-btn" onclick="playAudio(8)" id="audioBtn8">
+                        <span class="play-icon">▶</span>
+                    </button>
+                    <audio id="audio8" src="assets/narrativasonora/audio/audioradiacionespanol.m4a"></audio>
                 </div>
             </div>
 
             <!-- Narrativa 10 -->
-            <div class="narrative-card">
+            <div class="narrative-card" data-hover-audio="assets/narrativasonora/audio/hover10.mp3">
                 <h3 class="narrative-title">Satélite</h3>
-                <div class="video-container">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/dw23IXlg56c?si=ieLM6rn_etwLwj8k"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div class="audio-container">
+                    <button class="audio-btn" onclick="playAudio(9)" id="audioBtn9">
+                        <span class="play-icon">▶</span>
+                    </button>
+                    <audio id="audio9" src="assets/narrativasonora/audio/audiosateliteespanol.m4a"></audio>
                 </div>
             </div>
 
             <!-- Narrativa 11 -->
-            <div class="narrative-card">
+            <div class="narrative-card" data-hover-audio="assets/narrativasonora/audio/hover11.mp3">
                 <h3 class="narrative-title">Tormenta Solar</h3>
-                <div class="video-container">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/bzm5y_LtrrU?si=gCy6NIEmMBLXAPl-"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div class="audio-container">
+                    <button class="audio-btn" onclick="playAudio(10)" id="audioBtn10">
+                        <span class="play-icon">▶</span>
+                    </button>
+                    <audio id="audio10" src="assets/narrativasonora/audio/audiotormentaespanol.m4a"></audio>
                 </div>
             </div>
 
             <!-- Narrativa 12 -->
-            <div class="narrative-card">
+            <div class="narrative-card" data-hover-audio="assets/narrativasonora/audio/hover12.mp3">
                 <h3 class="narrative-title">Viento Solar</h3>
-                <div class="video-container">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/eyR52lPay6o?si=I3JC9GFBHiz3yU5S"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div class="audio-container">
+                    <button class="audio-btn" onclick="playAudio(11)" id="audioBtn11">
+                        <span class="play-icon">▶</span>
+                    </button>
+                    <audio id="audio11" src="assets/narrativasonora/audio/audiovientoespanol.m4a"></audio>
                 </div>
             </div>
 
@@ -172,6 +175,8 @@
         // ===== INICIALIZACIÓN =====
         document.addEventListener('DOMContentLoaded', () => {
             createStars();
+            initializeAudioPlayers();
+            addHoverSounds();
         });
 
         // ===== CREACIÓN DE ESTRELLAS =====
@@ -186,6 +191,152 @@
                 star.style.top = Math.random() * 100 + '%';
                 star.style.animationDelay = Math.random() * 3 + 's';
                 starsContainer.appendChild(star);
+            }
+        }
+
+        // ===== VARIABLES GLOBALES DE AUDIO =====
+        let currentAudio = null;
+        let currentBtn = null;
+        let instructionsAudio = null;
+        let hoverSounds = {};
+
+        // ===== INICIALIZAR REPRODUCTORES =====
+        function initializeAudioPlayers() {
+            // Crear elemento de audio para instrucciones
+            instructionsAudio = new Audio('assets/narrativasonora/audio/audiointroduccionespanol.m4a');
+
+            // Agregar listeners a todos los audios
+            for (let i = 0; i < 12; i++) {
+                const audio = document.getElementById(`audio${i}`);
+                const btn = document.getElementById(`audioBtn${i}`);
+
+                audio.addEventListener('ended', () => {
+                    btn.innerHTML = '<span class="play-icon">▶</span>';
+                    btn.classList.remove('playing');
+                });
+            }
+
+            // Listener para audio de instrucciones
+            instructionsAudio.addEventListener('ended', () => {
+                const btn = document.getElementById('instructionsBtn');
+                btn.innerHTML = '<span class="play-icon">▶</span>';
+                btn.classList.remove('playing');
+            });
+        }
+
+        // ===== AGREGAR SONIDOS DE HOVER =====
+        function addHoverSounds() {
+            // Agregar hover a todas las tarjetas con su propio audio
+            const narrativeCards = document.querySelectorAll('.narrative-card');
+
+            narrativeCards.forEach((card, index) => {
+                const hoverAudioSrc = card.getAttribute('data-hover-audio');
+                
+                // Crear un objeto Audio para cada tarjeta
+                if (hoverAudioSrc) {
+                    hoverSounds[index] = new Audio(hoverAudioSrc);
+                    hoverSounds[index].volume = 0.3;
+                }
+
+                card.addEventListener('mouseenter', () => {
+                    if (hoverSounds[index]) {
+                        playHoverSound(index);
+                    }
+                });
+            });
+
+            // Agregar hover al botón de instrucciones (puedes usar un hover específico)
+            const instructionsBtn = document.getElementById('instructionsBtn');
+            hoverSounds['instructions'] = new Audio('assets/narrativasonora/audio/hoverinstrucciones.mp3');
+            hoverSounds['instructions'].volume = 0.3;
+            
+            instructionsBtn.addEventListener('mouseenter', () => {
+                playHoverSound('instructions');
+            });
+
+            // Agregar hover al botón de regreso
+            const backBtn = document.querySelector('.back-btn');
+            hoverSounds['back'] = new Audio('assets/narrativasonora/audio/hoverback.mp3');
+            hoverSounds['back'].volume = 0.3;
+            
+            backBtn.addEventListener('mouseenter', () => {
+                playHoverSound('back');
+            });
+        }
+
+        // ===== REPRODUCIR SONIDO DE HOVER =====
+        function playHoverSound(key) {
+            if (hoverSounds[key]) {
+                hoverSounds[key].currentTime = 0;
+                hoverSounds[key].play().catch(error => {
+                    console.log('No se pudo reproducir el sonido hover:', error);
+                });
+            }
+        }
+
+        // ===== REPRODUCIR AUDIO DE INSTRUCCIONES =====
+        function playInstructions() {
+            const btn = document.getElementById('instructionsBtn');
+
+            // Detener cualquier audio que esté reproduciéndose
+            if (currentAudio && !currentAudio.paused) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+                if (currentBtn) {
+                    currentBtn.innerHTML = '<span class="play-icon">▶</span>';
+                    currentBtn.classList.remove('playing');
+                }
+            }
+
+            // Toggle del audio de instrucciones
+            if (instructionsAudio.paused) {
+                instructionsAudio.play();
+                btn.innerHTML = '<span class="pause-icon">⏸</span>';
+                btn.classList.add('playing');
+            } else {
+                instructionsAudio.pause();
+                instructionsAudio.currentTime = 0;
+                btn.innerHTML = '<span class="play-icon">▶</span>';
+                btn.classList.remove('playing');
+            }
+        }
+
+        // ===== REPRODUCIR AUDIO DE NARRATIVAS =====
+        function playAudio(index) {
+            const audio = document.getElementById(`audio${index}`);
+            const btn = document.getElementById(`audioBtn${index}`);
+
+            // Detener audio de instrucciones si está reproduciéndose
+            if (instructionsAudio && !instructionsAudio.paused) {
+                instructionsAudio.pause();
+                instructionsAudio.currentTime = 0;
+                const instructionsBtn = document.getElementById('instructionsBtn');
+                instructionsBtn.innerHTML = '<span class="play-icon">▶</span>';
+                instructionsBtn.classList.remove('playing');
+            }
+
+            // Si hay un audio reproduciéndose diferente, detenerlo
+            if (currentAudio && currentAudio !== audio && !currentAudio.paused) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+                currentBtn.innerHTML = '<span class="play-icon">▶</span>';
+                currentBtn.classList.remove('playing');
+            }
+
+            // Toggle del audio actual
+            if (audio.paused) {
+                audio.play();
+                btn.innerHTML = '<span class="pause-icon">⏸</span>';
+                btn.classList.add('playing');
+                currentAudio = audio;
+                currentBtn = btn;
+            } else {
+                audio.pause();
+                audio.currentTime = 0;
+                btn.innerHTML = '<span class="play-icon">▶</span>';
+                btn.classList.remove('playing');
+                currentAudio = null;
+                currentBtn = null;
             }
         }
     </script>
