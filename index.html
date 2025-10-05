@@ -40,7 +40,11 @@
                     <!-- Sección 1: Story (arriba) -->
                     <div class="section-circle section-1 active" data-section="1" onclick="selectSection(1)">
                         <div class="section-content">
-                            <div class="section-icon">📖</div>
+                            <div class="section-icon">
+                                <video class="section-video" autoplay muted loop playsinline>
+                                    <source src="assets/principal/vidintrocuento.mp4" type="video/mp4">
+                                </video>
+                            </div>
                             <h3>Story</h3>
                         </div>
                     </div>
@@ -48,7 +52,11 @@
                     <!-- Sección 2: Flashcards (abajo) -->
                     <div class="section-circle section-2" data-section="2" onclick="selectSection(2)">
                         <div class="section-content">
-                            <div class="section-icon">🎴</div>
+                            <div class="section-icon">
+                                <video class="section-video" autoplay muted loop playsinline>
+                                    <source src="assets/video-flashcards.mp4" type="video/mp4">
+                                </video>
+                            </div>
                             <h3>Flashcards</h3>
                             <a href="flashcards_english.html" class="section-link"></a>
                         </div>
@@ -67,7 +75,11 @@
                     <!-- Sección 4: Inclusive Logbook (arriba) -->
                     <div class="section-circle section-4" data-section="4" onclick="selectSection(4)">
                         <div class="section-content">
-                            <div class="section-icon">🌍</div>
+                            <div class="section-icon">
+                                <video class="section-video" autoplay muted loop playsinline>
+                                    <source src="assets/video-inclusive.mp4" type="video/mp4">
+                                </video>
+                            </div>
                             <h3>Inclusive Logbook</h3>
                         </div>
                     </div>
@@ -75,7 +87,11 @@
                     <!-- Sección 5: Curious Facts (abajo) -->
                     <div class="section-circle section-5" data-section="5" onclick="selectSection(5)">
                         <div class="section-content">
-                            <div class="section-icon">☁️</div>
+                            <div class="section-icon">
+                                <video class="section-video" autoplay muted loop playsinline>
+                                    <source src="assets/video-curious.mp4" type="video/mp4">
+                                </video>
+                            </div>
                             <h3>Curious Facts</h3>
                             <a href="datoscuriosos_english.html" class="section-link"></a>
                         </div>
@@ -83,17 +99,20 @@
                 </div>
             </div>
 
-            <!-- Contenedor inferior izquierdo (rectangular) -->
+            <!-- Contenedor inferior izquierdo (con logo y botón) -->
             <div class="bottom-left-container">
-                <img src="assets/logohumboldt.png" alt="Imagen decorativa"
-                    style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                <img src="assets/logohumboldt.png" alt="Imagen decorativa">
+                <!-- Botón Aplicando Nuestro Proyecto -->
+                <button class="project-btn" onclick="openProjectModal()">
+                    <span class="project-icon">🚀</span>
+                    <span class="project-text">Applying Our Project</span>
+                </button>
             </div>
 
             <!-- Contenedor inferior derecho (circular) -->
             <div class="bottom-right-container">
                 <div class="circle-image-placeholder">
-                    <img src="assets/logocassiopeiaseniorsf.png" alt="Imagen decorativa"
-                        style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                    <img src="assets/logocassiopeiaseniorsf.png" alt="Imagen decorativa">
                 </div>
                 <!-- Who We Are - clickeable -->
                 <button class="who-we-are-btn" onclick="openAboutModal()">
@@ -145,6 +164,24 @@
             <div class="modal-body">
                 <p>[Reserved space for content - Information about the team and project will be added soon. This section
                     will include details about our mission, vision, and the people behind this Space Portal project.]
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Aplicando Nuestro Proyecto -->
+    <div class="project-modal" id="projectModal">
+        <div class="modal-overlay" onclick="closeProjectModal()"></div>
+        <div class="modal-content project-modal-content">
+            <div class="modal-header">
+                <h3>🚀 Applying Our Project</h3>
+                <button class="close-btn" onclick="closeProjectModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <p>[Reserved space for content - Information about how to apply our project will be added soon. This
+                    section
+                    will include practical applications, implementation guides, and resources for educators and
+                    students.]
                 </p>
             </div>
         </div>
@@ -246,6 +283,29 @@
         </div>
     </div>
 
+    <!-- Modal Animated Story Options -->
+    <div class="animated-story-modal" id="animatedStoryModal">
+        <div class="modal-overlay" onclick="closeAnimatedStoryModal()"></div>
+        <div class="modal-content animated-story-modal-content">
+            <div class="modal-header">
+                <h3>🎨 Animated Story</h3>
+                <button class="close-btn" onclick="closeAnimatedStoryModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="story-version-buttons">
+                    <a href="https://www.youtube.com/watch?v=SBwpvaiPY0U" class="version-btn">
+                        <span class="btn-icon">⏱️</span>
+                        <span class="btn-text">Short Version</span>
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=S1rZiJ1_fcU&t=949s" class="version-btn">
+                        <span class="btn-icon">📽️</span>
+                        <span class="btn-text">Long Version</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Modal de Advertencia de Idioma -->
     <div class="warning-modal" id="languageWarningModal">
         <div class="modal-overlay" onclick="closeLanguageWarning()"></div>
@@ -273,8 +333,8 @@
                 title: "Story",
                 content: "",
                 buttons: [
-                    { text: "Read Story", link: "https://heyzine.com/flip-book/b8b4c4fd8b.html", icon: "📖" },
-                    { text: "View Animated Story", link: "cuento_ilustrado.html", icon: "🎨" }
+                    { text: "Read Story", link: "https://heyzine.com/flip-book/3b6466dc58.html", icon: "📖" },
+                    { text: "View Animated Story", action: "openAnimatedStoryModal", icon: "🎨" }
                 ],
                 color: "#4fc3f7"
             },
@@ -416,12 +476,21 @@
             if (data.buttons && data.buttons.length > 0) {
                 actionsHtml = '<div class="story-buttons">';
                 data.buttons.forEach(button => {
-                    actionsHtml += `
-                        <a href="${button.link}" class="story-btn">
-                            <span class="btn-icon">${button.icon}</span>
-                            <span class="btn-text">${button.text}</span>
-                        </a>
-                    `;
+                    if (button.action) {
+                        actionsHtml += `
+                            <button class="story-btn" onclick="${button.action}(); closeSectionModal();">
+                                <span class="btn-icon">${button.icon}</span>
+                                <span class="btn-text">${button.text}</span>
+                            </button>
+                        `;
+                    } else {
+                        actionsHtml += `
+                            <a href="${button.link}" class="story-btn">
+                                <span class="btn-icon">${button.icon}</span>
+                                <span class="btn-text">${button.text}</span>
+                            </a>
+                        `;
+                    }
                 });
                 actionsHtml += '</div>';
             } else if (data.link) {
@@ -460,6 +529,22 @@
             }
         }
 
+        function openProjectModal() {
+            const modal = document.getElementById('projectModal');
+            if (modal) {
+                modal.classList.add('show');
+                document.body.classList.add('modal-open');
+            }
+        }
+
+        function closeProjectModal() {
+            const modal = document.getElementById('projectModal');
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.classList.remove('modal-open');
+            }
+        }
+
         function openInclusionModal() {
             const modal = document.getElementById('inclusionModal');
             if (modal) {
@@ -487,6 +572,22 @@
 
         function closeVocabModal() {
             const modal = document.getElementById('vocabModal');
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.classList.remove('modal-open');
+            }
+        }
+
+        function openAnimatedStoryModal() {
+            const modal = document.getElementById('animatedStoryModal');
+            if (modal) {
+                modal.classList.add('show');
+                document.body.classList.add('modal-open');
+            }
+        }
+
+        function closeAnimatedStoryModal() {
+            const modal = document.getElementById('animatedStoryModal');
             if (modal) {
                 modal.classList.remove('show');
                 document.body.classList.remove('modal-open');
@@ -614,8 +715,10 @@
                         closeSectionModal();
                         closeInclusionModal();
                         closeAboutModal();
+                        closeProjectModal();
                         closeVocabModal();
                         closeBrailleCardsModal();
+                        closeAnimatedStoryModal();
                         break;
                     case '1':
                     case '2':
@@ -659,8 +762,10 @@
                     closeSectionModal();
                     closeInclusionModal();
                     closeAboutModal();
+                    closeProjectModal();
                     closeVocabModal();
                     closeBrailleCardsModal();
+                    closeAnimatedStoryModal();
                 }
             });
         }
@@ -682,6 +787,10 @@
         window.confirmLanguageChange = confirmLanguageChange;
         window.openAboutModal = openAboutModal;
         window.closeAboutModal = closeAboutModal;
+        window.openProjectModal = openProjectModal;
+        window.closeProjectModal = closeProjectModal;
+        window.openAnimatedStoryModal = openAnimatedStoryModal;
+        window.closeAnimatedStoryModal = closeAnimatedStoryModal;
 
         function openBrailleCardsModal() {
             closeVocabModal();
@@ -700,7 +809,6 @@
             }
         }
 
-        // Añadir al final donde están los window.openVocabModal, etc.
         window.openBrailleCardsModal = openBrailleCardsModal;
         window.closeBrailleCardsModal = closeBrailleCardsModal;
     </script>
