@@ -187,7 +187,7 @@
                         <div class="icon">🔊</div>
                         <div class="text">Narrativa Sonora</div>
                     </button>
-                    <button class="vocab-btn" onclick="alert('Fichas Braille próximamente')">
+                    <button class="vocab-btn" onclick="openBrailleCardsModal()">
                         <div class="icon">📄</div>
                         <div class="text">Fichas Braille para Imprimir</div>
                     </button>
@@ -234,6 +234,31 @@
             <div class="modal-footer">
                 <button class="btn-cancel" onclick="closeLanguageWarning()">Cancelar</button>
                 <button class="btn-confirm" id="confirmButton" onclick="confirmLanguageChange()">Continuar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Fichas Braille -->
+    <div class="braille-cards-modal" id="brailleCardsModal">
+        <div class="modal-overlay" onclick="closeBrailleCardsModal()"></div>
+        <div class="modal-content braille-cards-modal-content">
+            <div class="modal-header">
+                <h3>📄 Fichas Braille para Imprimir</h3>
+                <button class="close-btn" onclick="closeBrailleCardsModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="braille-cards-buttons">
+                    <button class="braille-card-btn"
+                        onclick="window.open('assets/braille/personajesbraille.pdf', '_blank')">
+                        <div class="icon">👥</div>
+                        <div class="text">Fichas Personajes</div>
+                    </button>
+                    <button class="braille-card-btn"
+                        onclick="window.open('assets/braille/vocabulariobraille.pdf', '_blank')">
+                        <div class="icon">📚</div>
+                        <div class="text">Fichas Vocabulario</div>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -590,6 +615,7 @@
                         closeInclusionModal();
                         closeAboutModal();
                         closeVocabModal();
+                        closeBrailleCardsModal();
                         break;
                     case '1':
                     case '2':
@@ -637,6 +663,27 @@
                 }
             });
         }
+
+        function openBrailleCardsModal() {
+            closeVocabModal();
+            const modal = document.getElementById('brailleCardsModal');
+            if (modal) {
+                modal.classList.add('show');
+                document.body.classList.add('modal-open');
+            }
+        }
+
+        function closeBrailleCardsModal() {
+            const modal = document.getElementById('brailleCardsModal');
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.classList.remove('modal-open');
+            }
+        }
+
+        // Añadir estas dos líneas al final donde están los demás window.xxx
+        window.openBrailleCardsModal = openBrailleCardsModal;
+        window.closeBrailleCardsModal = closeBrailleCardsModal;
 
         window.openVocabModal = openVocabModal;
         window.closeVocabModal = closeVocabModal;

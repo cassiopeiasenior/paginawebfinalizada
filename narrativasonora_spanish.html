@@ -31,15 +31,27 @@
                 </button>
                 <span class="instructions-label">Instrucciones</span>
             </div>
+
+            <!-- Selector de velocidad -->
+            <div class="speed-selector">
+                <label for="globalSpeed">Velocidad de Reproducción:</label>
+                <select id="globalSpeed" onchange="changeGlobalSpeed()">
+                    <option value="0.5">0.5x (Muy Lento)</option>
+                    <option value="0.75">0.75x (Lento)</option>
+                    <option value="1" selected>1x (Normal)</option>
+                    <option value="1.25">1.25x (Rápido)</option>
+                    <option value="1.5">1.5x (Muy Rápido)</option>
+                </select>
+            </div>
         </div>
 
         <!-- Grid de narrativas -->
         <div class="narrative-grid">
 
             <!-- Narrativa 1 -->
-            <div class="narrative-card" data-hover-audio="assets/narrativasonora/audio/hover1.mp3">
+            <div class="narrative-card" data-hover-audio="assets/narrativasonora/hover/atmosferaesp.m4a">
                 <h3 class="narrative-title">Atmósfera</h3>
-                <div class="audio-container" style="background-image: url('assets/narrativasonora/imagenes/atmosfera.jpg');">
+                <div class="audio-container" style="background-image: url('assets/narrativasonora/images/atmosfera.PNG');">
                     <button class="audio-btn" onclick="playAudio(0)" id="audioBtn0">
                         <span class="play-icon">▶</span>
                     </button>
@@ -48,9 +60,9 @@
             </div>
 
             <!-- Narrativa 2 -->
-            <div class="narrative-card" data-hover-audio="assets/narrativasonora/audio/hover2.mp3">
+            <div class="narrative-card" data-hover-audio="assets/narrativasonora/hover/auroraesp.m4a">
                 <h3 class="narrative-title">Aurora Boreal</h3>
-                <div class="audio-container" style="background-image: url('assets/narrativasonora/imagenes/aurora.jpg');">
+                <div class="audio-container" style="background-image: url('assets/narrativasonora/images/aurora.jpg'); background-position: center; background-size: cover;">
                     <button class="audio-btn" onclick="playAudio(1)" id="audioBtn1">
                         <span class="play-icon">▶</span>
                     </button>
@@ -59,9 +71,9 @@
             </div>
 
             <!-- Narrativa 3 -->
-            <div class="narrative-card" data-hover-audio="assets/narrativasonora/audio/hover3.mp3">
+            <div class="narrative-card" data-hover-audio="assets/narrativasonora/hover/climaespacialesp.m4a">
                 <h3 class="narrative-title">Clima Espacial</h3>
-                <div class="audio-container" style="background-image: url('assets/narrativasonora/imagenes/clima-espacial.jpg');">
+                <div class="audio-container" style="background-image: url('assets/narrativasonora/images/climaespacial.PNG');">
                     <button class="audio-btn" onclick="playAudio(2)" id="audioBtn2">
                         <span class="play-icon">▶</span>
                     </button>
@@ -70,9 +82,9 @@
             </div>
 
             <!-- Narrativa 4 -->
-            <div class="narrative-card" data-hover-audio="assets/narrativasonora/audio/hover4.mp3">
+            <div class="narrative-card" data-hover-audio="assets/narrativasonora/hover/eyeccionesp.m4a">
                 <h3 class="narrative-title">Eyección de Masa Coronal</h3>
-                <div class="audio-container" style="background-image: url('assets/narrativasonora/imagenes/eyeccion.jpg');">
+                <div class="audio-container" style="background-image: url('assets/narrativasonora/images/eyeccion.PNG');">
                     <button class="audio-btn" onclick="playAudio(3)" id="audioBtn3">
                         <span class="play-icon">▶</span>
                     </button>
@@ -81,9 +93,9 @@
             </div>
 
             <!-- Narrativa 5 -->
-            <div class="narrative-card" data-hover-audio="assets/narrativasonora/audio/hover5.mp3">
+            <div class="narrative-card" data-hover-audio="assets/narrativasonora/hover/heliosferaesp.m4a">
                 <h3 class="narrative-title">Heliósfera</h3>
-                <div class="audio-container" style="background-image: url('assets/narrativasonora/imagenes/heliosfera.jpg');">
+                <div class="audio-container" style="background-image: url('assets/narrativasonora/images/heliosfera.png');">
                     <button class="audio-btn" onclick="playAudio(4)" id="audioBtn4">
                         <span class="play-icon">▶</span>
                     </button>
@@ -92,9 +104,9 @@
             </div>
 
             <!-- Narrativa 6 -->
-            <div class="narrative-card" data-hover-audio="assets/narrativasonora/audio/hover6.mp3">
+            <div class="narrative-card" data-hover-audio="assets/narrativasonora/hover/orbitaesp.mp3">
                 <h3 class="narrative-title">Órbita</h3>
-                <div class="audio-container" style="background-image: url('assets/narrativasonora/imagenes/orbita.jpg');">
+                <div class="audio-container" style="background-image: url('assets/narrativasonora/images/orbita.JPG');">
                     <button class="audio-btn" onclick="playAudio(5)" id="audioBtn5">
                         <span class="play-icon">▶</span>
                     </button>
@@ -103,9 +115,9 @@
             </div>
 
             <!-- Narrativa 7 -->
-            <div class="narrative-card" data-hover-audio="assets/narrativasonora/audio/hover7.mp3">
+            <div class="narrative-card" data-hover-audio="assets/narrativasonora/hover/llamaradaesp.mp3">
                 <h3 class="narrative-title">Llamarada Solar</h3>
-                <div class="audio-container" style="background-image: url('assets/narrativasonora/imagenes/llamarada.jpg');">
+                <div class="audio-container" style="background-image: url('assets/narrativasonora/images/llamarada.png');">
                     <button class="audio-btn" onclick="playAudio(6)" id="audioBtn6">
                         <span class="play-icon">▶</span>
                     </button>
@@ -114,9 +126,9 @@
             </div>
 
             <!-- Narrativa 8 -->
-            <div class="narrative-card" data-hover-audio="assets/narrativasonora/audio/hover8.mp3">
+            <div class="narrative-card" data-hover-audio="assets/narrativasonora/hover/manchaesp.mp3">
                 <h3 class="narrative-title">Mancha Solar</h3>
-                <div class="audio-container" style="background-image: url('assets/narrativasonora/imagenes/mancha-solar.jpg');">
+                <div class="audio-container" style="background-image: url('assets/narrativasonora/images/manchasolar.png');">
                     <button class="audio-btn" onclick="playAudio(7)" id="audioBtn7">
                         <span class="play-icon">▶</span>
                     </button>
@@ -125,9 +137,9 @@
             </div>
 
             <!-- Narrativa 9 -->
-            <div class="narrative-card" data-hover-audio="assets/narrativasonora/audio/hover9.mp3">
+            <div class="narrative-card" data-hover-audio="assets/narrativasonora/hover/radiacionesp.mp3">
                 <h3 class="narrative-title">Radiación</h3>
-                <div class="audio-container" style="background-image: url('assets/narrativasonora/imagenes/radiacion.jpg');">
+                <div class="audio-container" style="background-image: url('assets/narrativasonora/images/radiacion.png');">
                     <button class="audio-btn" onclick="playAudio(8)" id="audioBtn8">
                         <span class="play-icon">▶</span>
                     </button>
@@ -136,9 +148,9 @@
             </div>
 
             <!-- Narrativa 10 -->
-            <div class="narrative-card" data-hover-audio="assets/narrativasonora/audio/hover10.mp3">
+            <div class="narrative-card" data-hover-audio="assets/narrativasonora/hover/sateliteesp.mp3">
                 <h3 class="narrative-title">Satélite</h3>
-                <div class="audio-container" style="background-image: url('assets/narrativasonora/imagenes/satelite.jpg');">
+                <div class="audio-container" style="background-image: url('assets/narrativasonora/images/satelite.png');">
                     <button class="audio-btn" onclick="playAudio(9)" id="audioBtn9">
                         <span class="play-icon">▶</span>
                     </button>
@@ -147,9 +159,9 @@
             </div>
 
             <!-- Narrativa 11 -->
-            <div class="narrative-card" data-hover-audio="assets/narrativasonora/audio/hover11.mp3">
+            <div class="narrative-card" data-hover-audio="assets/narrativasonora/hover/tormentaesp.mp3">
                 <h3 class="narrative-title">Tormenta Solar</h3>
-                <div class="audio-container" style="background-image: url('assets/narrativasonora/imagenes/tormenta.jpg');">
+                <div class="audio-container" style="background-image: url('assets/narrativasonora/images/tormentasolar.png');">
                     <button class="audio-btn" onclick="playAudio(10)" id="audioBtn10">
                         <span class="play-icon">▶</span>
                     </button>
@@ -158,9 +170,9 @@
             </div>
 
             <!-- Narrativa 12 -->
-            <div class="narrative-card" data-hover-audio="assets/narrativasonora/audio/hover12.mp3">
+            <div class="narrative-card" data-hover-audio="assets/narrativasonora/hover/vientoesp.mp3">
                 <h3 class="narrative-title">Viento Solar</h3>
-                <div class="audio-container" style="background-image: url('assets/narrativasonora/imagenes/viento-solar.jpg');">
+                <div class="audio-container" style="background-image: url('assets/narrativasonora/images/vientosolar.png');">
                     <button class="audio-btn" onclick="playAudio(11)" id="audioBtn11">
                         <span class="play-icon">▶</span>
                     </button>
@@ -172,6 +184,13 @@
     </div>
 
     <script>
+        // ===== VARIABLES GLOBALES DE AUDIO =====
+        let currentAudio = null;
+        let currentBtn = null;
+        let instructionsAudio = null;
+        let hoverSounds = {};
+        let globalPlaybackSpeed = 1;
+
         // ===== INICIALIZACIÓN =====
         document.addEventListener('DOMContentLoaded', () => {
             createStars();
@@ -193,12 +212,6 @@
                 starsContainer.appendChild(star);
             }
         }
-
-        // ===== VARIABLES GLOBALES DE AUDIO =====
-        let currentAudio = null;
-        let currentBtn = null;
-        let instructionsAudio = null;
-        let hoverSounds = {};
 
         // ===== INICIALIZAR REPRODUCTORES =====
         function initializeAudioPlayers() {
@@ -290,6 +303,7 @@
 
             // Toggle del audio de instrucciones
             if (instructionsAudio.paused) {
+                instructionsAudio.playbackRate = globalPlaybackSpeed;
                 instructionsAudio.play();
                 btn.innerHTML = '<span class="pause-icon">⏸</span>';
                 btn.classList.add('playing');
@@ -298,6 +312,25 @@
                 instructionsAudio.currentTime = 0;
                 btn.innerHTML = '<span class="play-icon">▶</span>';
                 btn.classList.remove('playing');
+            }
+        }
+
+        // ===== CAMBIAR VELOCIDAD GLOBAL =====
+        function changeGlobalSpeed() {
+            const select = document.getElementById('globalSpeed');
+            globalPlaybackSpeed = parseFloat(select.value);
+
+            // Aplicar a todos los audios de narrativas
+            for (let i = 0; i < 12; i++) {
+                const audio = document.getElementById(`audio${i}`);
+                if (audio) {
+                    audio.playbackRate = globalPlaybackSpeed;
+                }
+            }
+
+            // Aplicar al audio de instrucciones
+            if (instructionsAudio) {
+                instructionsAudio.playbackRate = globalPlaybackSpeed;
             }
         }
 
@@ -325,6 +358,7 @@
 
             // Toggle del audio actual
             if (audio.paused) {
+                audio.playbackRate = globalPlaybackSpeed;
                 audio.play();
                 btn.innerHTML = '<span class="pause-icon">⏸</span>';
                 btn.classList.add('playing');

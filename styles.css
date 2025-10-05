@@ -1294,3 +1294,83 @@ body.modal-open {
     color: #ce93d8;
     text-shadow: 0 0 10px rgba(156, 39, 176, 0.8);
 }
+
+/* Modal Braille Cards */
+.braille-cards-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1002;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.braille-cards-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.braille-cards-modal-content {
+    max-width: 600px;
+    border-color: rgba(156, 39, 176, 0.5);
+}
+
+.braille-cards-modal .modal-header {
+    background: rgba(156, 39, 176, 0.2);
+    border-bottom: 1px solid rgba(156, 39, 176, 0.3);
+}
+
+.braille-cards-modal .modal-header h3 {
+    color: #ce93d8;
+    text-shadow: 0 0 10px rgba(156, 39, 176, 0.6);
+}
+
+.braille-cards-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.braille-card-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 25px;
+    background: linear-gradient(135deg, rgba(156, 39, 176, 0.2), rgba(156, 39, 176, 0.1));
+    border: 2px solid rgba(156, 39, 176, 0.4);
+    border-radius: 15px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    min-width: 200px;
+}
+
+.braille-card-btn:hover {
+    background: linear-gradient(135deg, rgba(156, 39, 176, 0.3), rgba(156, 39, 176, 0.2));
+    border-color: rgba(156, 39, 176, 0.6);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(156, 39, 176, 0.3);
+}
+
+.braille-card-btn .icon {
+    font-size: 2.5rem;
+    filter: drop-shadow(0 0 10px rgba(156, 39, 176, 0.5));
+}
+
+.braille-card-btn .text {
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    color: #ce93d8;
+    text-shadow: 0 0 10px rgba(156, 39, 176, 0.8);
+}
