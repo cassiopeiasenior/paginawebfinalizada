@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -22,7 +22,7 @@
         <!-- Header -->
         <div class="header">
             <h1>🔊 Sound Narrative 🔊</h1>
-            <p>Explore the space weather through sound. Hover over each card to learn more..</p>
+            <p>Explore the space weather through sound. Hover over each card to learn more.</p>
 
             <!-- Botón de instrucciones -->
             <div class="instructions-container">
@@ -62,7 +62,7 @@
             <!-- Narrativa 2 -->
             <div class="narrative-card" data-hover-audio="assets/narrativasonora/hover/auroraing.m4a">
                 <h3 class="narrative-title">Aurora Borealis</h3>
-                <div class="audio-container" style="background-image: url('assets/narrativasonora/images/aurora.jpg');">
+                <div class="audio-container" style="background-image: url('assets/narrativasonora/images/aurora.JPG');">
                     <button class="audio-btn" onclick="playAudio(1)" id="audioBtn1">
                         <span class="play-icon">▶</span>
                     </button>
@@ -98,7 +98,7 @@
             <div class="narrative-card" data-hover-audio="assets/narrativasonora/hover/heliosferaing.m4a">
                 <h3 class="narrative-title">Heliosphere</h3>
                 <div class="audio-container"
-                    style="background-image: url('assets/narrativasonora/images/heliosfera.png');">
+                    style="background-image: url('assets/narrativasonora/images/heliosfera.PNG');">
                     <button class="audio-btn" onclick="playAudio(4)" id="audioBtn4">
                         <span class="play-icon">▶</span>
                     </button>
@@ -109,7 +109,7 @@
             <!-- Narrativa 6 -->
             <div class="narrative-card" data-hover-audio="assets/narrativasonora/hover/orbitaing.m4a">
                 <h3 class="narrative-title">Orbit</h3>
-                <div class="audio-container" style="background-image: url('assets/narrativasonora/images/orbita.jpg');">
+                <div class="audio-container" style="background-image: url('assets/narrativasonora/images/orbita.JPG');">
                     <button class="audio-btn" onclick="playAudio(5)" id="audioBtn5">
                         <span class="play-icon">▶</span>
                     </button>
@@ -193,13 +193,13 @@
     </div>
 
     <script>
-
         // ===== VARIABLES GLOBALES DE AUDIO =====
         let currentAudio = null;
         let currentBtn = null;
         let instructionsAudio = null;
         let hoverSounds = {};
-        let globalPlaybackSpeed = 1; // AÑADIR ESTA LÍNEA
+        let globalPlaybackSpeed = 1;
+
         // ===== INICIALIZACIÓN =====
         document.addEventListener('DOMContentLoaded', () => {
             createStars();
@@ -222,13 +222,10 @@
             }
         }
 
-
         // ===== INICIALIZAR REPRODUCTORES =====
         function initializeAudioPlayers() {
-            // Crear elemento de audio para instrucciones
             instructionsAudio = new Audio('assets/narrativasonora/audio/audiointroduccioningles.m4a');
 
-            // Agregar listeners a todos los audios
             for (let i = 0; i < 12; i++) {
                 const audio = document.getElementById(`audio${i}`);
                 const btn = document.getElementById(`audioBtn${i}`);
@@ -239,7 +236,6 @@
                 });
             }
 
-            // Listener para audio de instrucciones
             instructionsAudio.addEventListener('ended', () => {
                 const btn = document.getElementById('instructionsBtn');
                 btn.innerHTML = '<span class="play-icon">▶</span>';
@@ -249,13 +245,11 @@
 
         // ===== AGREGAR SONIDOS DE HOVER =====
         function addHoverSounds() {
-            // Agregar hover a todas las tarjetas con su propio audio
             const narrativeCards = document.querySelectorAll('.narrative-card');
 
             narrativeCards.forEach((card, index) => {
                 const hoverAudioSrc = card.getAttribute('data-hover-audio');
-
-                // Crear un objeto Audio para cada tarjeta
+                
                 if (hoverAudioSrc) {
                     hoverSounds[index] = new Audio(hoverAudioSrc);
                     hoverSounds[index].volume = 0.3;
@@ -268,20 +262,18 @@
                 });
             });
 
-            // Agregar hover al botón de instrucciones
             const instructionsBtn = document.getElementById('instructionsBtn');
             hoverSounds['instructions'] = new Audio('assets/narrativasonora/audio/hoverinstrucciones.mp3');
             hoverSounds['instructions'].volume = 0.3;
-
+            
             instructionsBtn.addEventListener('mouseenter', () => {
                 playHoverSound('instructions');
             });
 
-            // Agregar hover al botón de regreso
             const backBtn = document.querySelector('.back-btn');
             hoverSounds['back'] = new Audio('assets/narrativasonora/audio/hoverback.mp3');
             hoverSounds['back'].volume = 0.3;
-
+            
             backBtn.addEventListener('mouseenter', () => {
                 playHoverSound('back');
             });
@@ -292,7 +284,7 @@
             if (hoverSounds[key]) {
                 hoverSounds[key].currentTime = 0;
                 hoverSounds[key].play().catch(error => {
-                    console.log('No se pudo reproducir el sonido hover:', error);
+                    console.log('Could not play hover sound:', error);
                 });
             }
         }
@@ -301,7 +293,6 @@
         function playInstructions() {
             const btn = document.getElementById('instructionsBtn');
 
-            // Detener cualquier audio que esté reproduciéndose
             if (currentAudio && !currentAudio.paused) {
                 currentAudio.pause();
                 currentAudio.currentTime = 0;
@@ -311,9 +302,8 @@
                 }
             }
 
-            // Toggle del audio de instrucciones
             if (instructionsAudio.paused) {
-                instructionsAudio.playbackRate = globalPlaybackSpeed; // AÑADIR ESTA LÍNEA
+                instructionsAudio.playbackRate = globalPlaybackSpeed;
                 instructionsAudio.play();
                 btn.innerHTML = '<span class="pause-icon">⏸</span>';
                 btn.classList.add('playing');
@@ -324,12 +314,12 @@
                 btn.classList.remove('playing');
             }
         }
+
         // ===== CAMBIAR VELOCIDAD GLOBAL =====
         function changeGlobalSpeed() {
             const select = document.getElementById('globalSpeed');
             globalPlaybackSpeed = parseFloat(select.value);
 
-            // Aplicar a todos los audios de narrativas
             for (let i = 0; i < 12; i++) {
                 const audio = document.getElementById(`audio${i}`);
                 if (audio) {
@@ -337,7 +327,6 @@
                 }
             }
 
-            // Aplicar al audio de instrucciones
             if (instructionsAudio) {
                 instructionsAudio.playbackRate = globalPlaybackSpeed;
             }
@@ -348,7 +337,6 @@
             const audio = document.getElementById(`audio${index}`);
             const btn = document.getElementById(`audioBtn${index}`);
 
-            // Detener audio de instrucciones si está reproduciéndose
             if (instructionsAudio && !instructionsAudio.paused) {
                 instructionsAudio.pause();
                 instructionsAudio.currentTime = 0;
@@ -357,7 +345,6 @@
                 instructionsBtn.classList.remove('playing');
             }
 
-            // Si hay un audio reproduciéndose diferente, detenerlo
             if (currentAudio && currentAudio !== audio && !currentAudio.paused) {
                 currentAudio.pause();
                 currentAudio.currentTime = 0;
@@ -365,7 +352,6 @@
                 currentBtn.classList.remove('playing');
             }
 
-            // Toggle del audio actual
             if (audio.paused) {
                 audio.playbackRate = globalPlaybackSpeed;
                 audio.play();
