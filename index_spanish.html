@@ -40,7 +40,11 @@
                     <!-- Sección 1: Cuento (arriba) -->
                     <div class="section-circle section-1 active" data-section="1" onclick="selectSection(1)">
                         <div class="section-content">
-                            <div class="section-icon">📖</div>
+                            <div class="section-icon">
+                                <video class="section-video" autoplay muted loop playsinline>
+                                    <source src="assets/principal/vidintrocuento.mp4" type="video/mp4">
+                                </video>
+                            </div>
                             <h3>Cuento</h3>
                         </div>
                     </div>
@@ -48,7 +52,11 @@
                     <!-- Sección 2: Flashcards (abajo) -->
                     <div class="section-circle section-2" data-section="2" onclick="selectSection(2)">
                         <div class="section-content">
-                            <div class="section-icon">🎴</div>
+                            <div class="section-icon">
+                                <video class="section-video" autoplay muted loop playsinline>
+                                    <source src="assets/principal/vidintroflashcards.mp4" type="video/mp4">
+                                </video>
+                            </div>
                             <h3>Flashcards</h3>
                             <a href="flashcards_spanish.html" class="section-link"></a>
                         </div>
@@ -67,7 +75,11 @@
                     <!-- Sección 4: Bitácora Inclusiva (arriba) -->
                     <div class="section-circle section-4" data-section="4" onclick="selectSection(4)">
                         <div class="section-content">
-                            <div class="section-icon">🌍</div>
+                            <div class="section-icon">
+                                <video class="section-video" autoplay muted loop playsinline>
+                                    <source src="assets/principal/vidintroinclusivo.mp4" type="video/mp4">
+                                </video>
+                            </div>
                             <h3>Bitácora Inclusiva</h3>
                         </div>
                     </div>
@@ -75,7 +87,11 @@
                     <!-- Sección 5: Datos Curiosos (abajo) -->
                     <div class="section-circle section-5" data-section="5" onclick="selectSection(5)">
                         <div class="section-content">
-                            <div class="section-icon">☁️</div>
+                            <div class="section-icon">
+                                <video class="section-video" autoplay muted loop playsinline>
+                                    <source src="assets/principal/vidintrodatoscuriosos.mp4" type="video/mp4">
+                                </video>
+                            </div>
                             <h3>Datos Curiosos</h3>
                             <a href="datoscuriosos_spanish.html" class="section-link"></a>
                         </div>
@@ -83,17 +99,20 @@
                 </div>
             </div>
 
-            <!-- Contenedor inferior izquierdo (rectangular) -->
+            <!-- Contenedor inferior izquierdo (con logo y botón) -->
             <div class="bottom-left-container">
-                <img src="assets/logohumboldt.png" alt="Imagen decorativa"
-                    style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                <img src="assets/logohumboldt.png" alt="Imagen decorativa">
+                <!-- Botón Aplicando Nuestro Proyecto -->
+                <button class="project-btn" onclick="openProjectModal()">
+                    <span class="project-icon">🚀</span>
+                    <span class="project-text">Aplicando Nuestro Proyecto</span>
+                </button>
             </div>
 
             <!-- Contenedor inferior derecho (circular) -->
             <div class="bottom-right-container">
                 <div class="circle-image-placeholder">
-                    <img src="assets/logocassiopeiaseniorsf.png" alt="Imagen decorativa"
-                        style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                    <img src="assets/logocassiopeiaseniorsf.png" alt="Imagen decorativa">
                 </div>
                 <!-- Who We Are - clickeable -->
                 <button class="who-we-are-btn" onclick="openAboutModal()">
@@ -150,6 +169,22 @@
         </div>
     </div>
 
+    <!-- Modal Aplicando Nuestro Proyecto -->
+    <div class="project-modal" id="projectModal">
+        <div class="modal-overlay" onclick="closeProjectModal()"></div>
+        <div class="modal-content project-modal-content">
+            <div class="modal-header">
+                <h3>🚀 Aplicando Nuestro Proyecto</h3>
+                <button class="close-btn" onclick="closeProjectModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <p>[Espacio reservado para contenido - Próximamente se agregará información sobre cómo aplicar nuestro proyecto. Esta
+                    sección incluirá aplicaciones prácticas, guías de implementación y recursos para educadores y
+                    estudiantes.]</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Modal de Material de Inclusión -->
     <div class="inclusion-modal" id="inclusionModal">
         <div class="modal-overlay" onclick="closeInclusionModal()"></div>
@@ -196,48 +231,6 @@
         </div>
     </div>
 
-    <!-- Modal de Configuración de Idioma -->
-    <div class="config-modal" id="configModal">
-        <div class="modal-overlay" onclick="closeConfigModal()"></div>
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>🌍 Configuración de Idioma</h3>
-                <button class="close-btn" onclick="closeConfigModal()">×</button>
-            </div>
-            <div class="modal-body">
-                <div class="language-selector">
-                    <div class="language-buttons">
-                        <button class="lang-btn" data-lang="en" onclick="showLanguageWarning('en')">
-                            <span class="flag">🇺🇸</span>
-                            <span class="lang-text">Inglés</span>
-                        </button>
-                        <button class="lang-btn active" data-lang="es">
-                            <span class="flag">🇪🇸</span>
-                            <span class="lang-text">Español</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal de Advertencia de Idioma -->
-    <div class="warning-modal" id="languageWarningModal">
-        <div class="modal-overlay" onclick="closeLanguageWarning()"></div>
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>⚠️ Advertencia de Cambio de Idioma</h3>
-            </div>
-            <div class="modal-body">
-                <p id="warningMessage"></p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn-cancel" onclick="closeLanguageWarning()">Cancelar</button>
-                <button class="btn-confirm" id="confirmButton" onclick="confirmLanguageChange()">Continuar</button>
-            </div>
-        </div>
-    </div>
-
     <!-- Modal de Fichas Braille -->
     <div class="braille-cards-modal" id="brailleCardsModal">
         <div class="modal-overlay" onclick="closeBrailleCardsModal()"></div>
@@ -263,6 +256,71 @@
         </div>
     </div>
 
+    <!-- Modal de Configuración de Idioma -->
+    <div class="config-modal" id="configModal">
+        <div class="modal-overlay" onclick="closeConfigModal()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🌍 Configuración de Idioma</h3>
+                <button class="close-btn" onclick="closeConfigModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="language-selector">
+                    <div class="language-buttons">
+                        <button class="lang-btn" data-lang="en" onclick="showLanguageWarning('en')">
+                            <span class="flag">🇺🇸</span>
+                            <span class="lang-text">Inglés</span>
+                        </button>
+                        <button class="lang-btn active" data-lang="es">
+                            <span class="flag">🇪🇸</span>
+                            <span class="lang-text">Español</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Animated Story Options -->
+    <div class="animated-story-modal" id="animatedStoryModal">
+        <div class="modal-overlay" onclick="closeAnimatedStoryModal()"></div>
+        <div class="modal-content animated-story-modal-content">
+            <div class="modal-header">
+                <h3>🎨 Cuento Animado</h3>
+                <button class="close-btn" onclick="closeAnimatedStoryModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="story-version-buttons">
+                    <a href="https://www.youtube.com/watch?v=SBwpvaiPY0U" class="version-btn">
+                        <span class="btn-icon">⏱️</span>
+                        <span class="btn-text">Versión Corta</span>
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=S1rZiJ1_fcU&t=949s" class="version-btn">
+                        <span class="btn-icon">📽️</span>
+                        <span class="btn-text">Versión Larga</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Advertencia de Idioma -->
+    <div class="warning-modal" id="languageWarningModal">
+        <div class="modal-overlay" onclick="closeLanguageWarning()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>⚠️ Advertencia de Cambio de Idioma</h3>
+            </div>
+            <div class="modal-body">
+                <p id="warningMessage"></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel" onclick="closeLanguageWarning()">Cancelar</button>
+                <button class="btn-confirm" id="confirmButton" onclick="confirmLanguageChange()">Continuar</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         let currentSection = 1;
         let totalSections = 5;
@@ -274,7 +332,7 @@
                 content: "",
                 buttons: [
                     { text: "Leer Cuento", link: "https://heyzine.com/flip-book/7252d87380.html", icon: "📖" },
-                    { text: "Ver Cuento Animado", link: "cuento_ilustrado.html", icon: "🎨" }
+                    { text: "Ver Cuento Animado", action: "openAnimatedStoryModal", icon: "🎨" }
                 ],
                 color: "#4fc3f7"
             },
@@ -416,12 +474,21 @@
             if (data.buttons && data.buttons.length > 0) {
                 actionsHtml = '<div class="story-buttons">';
                 data.buttons.forEach(button => {
-                    actionsHtml += `
-                        <a href="${button.link}" class="story-btn">
-                            <span class="btn-icon">${button.icon}</span>
-                            <span class="btn-text">${button.text}</span>
-                        </a>
-                    `;
+                    if (button.action) {
+                        actionsHtml += `
+                            <button class="story-btn" onclick="${button.action}(); closeSectionModal();">
+                                <span class="btn-icon">${button.icon}</span>
+                                <span class="btn-text">${button.text}</span>
+                            </button>
+                        `;
+                    } else {
+                        actionsHtml += `
+                            <a href="${button.link}" class="story-btn">
+                                <span class="btn-icon">${button.icon}</span>
+                                <span class="btn-text">${button.text}</span>
+                            </a>
+                        `;
+                    }
                 });
                 actionsHtml += '</div>';
             } else if (data.link) {
@@ -460,6 +527,22 @@
             }
         }
 
+        function openProjectModal() {
+            const modal = document.getElementById('projectModal');
+            if (modal) {
+                modal.classList.add('show');
+                document.body.classList.add('modal-open');
+            }
+        }
+
+        function closeProjectModal() {
+            const modal = document.getElementById('projectModal');
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.classList.remove('modal-open');
+            }
+        }
+
         function openInclusionModal() {
             const modal = document.getElementById('inclusionModal');
             if (modal) {
@@ -487,6 +570,22 @@
 
         function closeVocabModal() {
             const modal = document.getElementById('vocabModal');
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.classList.remove('modal-open');
+            }
+        }
+
+        function openAnimatedStoryModal() {
+            const modal = document.getElementById('animatedStoryModal');
+            if (modal) {
+                modal.classList.add('show');
+                document.body.classList.add('modal-open');
+            }
+        }
+
+        function closeAnimatedStoryModal() {
+            const modal = document.getElementById('animatedStoryModal');
             if (modal) {
                 modal.classList.remove('show');
                 document.body.classList.remove('modal-open');
@@ -614,8 +713,10 @@
                         closeSectionModal();
                         closeInclusionModal();
                         closeAboutModal();
+                        closeProjectModal();
                         closeVocabModal();
                         closeBrailleCardsModal();
+                        closeAnimatedStoryModal();
                         break;
                     case '1':
                     case '2':
@@ -659,10 +760,35 @@
                     closeSectionModal();
                     closeInclusionModal();
                     closeAboutModal();
+                    closeProjectModal();
                     closeVocabModal();
+                    closeBrailleCardsModal();
+                    closeAnimatedStoryModal();
                 }
             });
         }
+
+        window.openVocabModal = openVocabModal;
+        window.closeVocabModal = closeVocabModal;
+        window.previousSection = previousSection;
+        window.nextSection = nextSection;
+        window.selectSection = selectSection;
+        window.goToSection = goToSection;
+        window.openSectionModal = openSectionModal;
+        window.closeSectionModal = closeSectionModal;
+        window.openInclusionModal = openInclusionModal;
+        window.closeInclusionModal = closeInclusionModal;
+        window.openConfigModal = openConfigModal;
+        window.closeConfigModal = closeConfigModal;
+        window.showLanguageWarning = showLanguageWarning;
+        window.closeLanguageWarning = closeLanguageWarning;
+        window.confirmLanguageChange = confirmLanguageChange;
+        window.openAboutModal =openAboutModal;
+        window.closeAboutModal = closeAboutModal;
+        window.openProjectModal = openProjectModal;
+        window.closeProjectModal = closeProjectModal;
+        window.openAnimatedStoryModal = openAnimatedStoryModal;
+        window.closeAnimatedStoryModal = closeAnimatedStoryModal;
 
         function openBrailleCardsModal() {
             closeVocabModal();
@@ -681,27 +807,8 @@
             }
         }
 
-        // Añadir estas dos líneas al final donde están los demás window.xxx
         window.openBrailleCardsModal = openBrailleCardsModal;
         window.closeBrailleCardsModal = closeBrailleCardsModal;
-
-        window.openVocabModal = openVocabModal;
-        window.closeVocabModal = closeVocabModal;
-        window.previousSection = previousSection;
-        window.nextSection = nextSection;
-        window.selectSection = selectSection;
-        window.goToSection = goToSection;
-        window.openSectionModal = openSectionModal;
-        window.closeSectionModal = closeSectionModal;
-        window.openInclusionModal = openInclusionModal;
-        window.closeInclusionModal = closeInclusionModal;
-        window.openConfigModal = openConfigModal;
-        window.closeConfigModal = closeConfigModal;
-        window.showLanguageWarning = showLanguageWarning;
-        window.closeLanguageWarning = closeLanguageWarning;
-        window.confirmLanguageChange = confirmLanguageChange;
-        window.openAboutModal = openAboutModal;
-        window.closeAboutModal = closeAboutModal;
     </script>
 </body>
 
