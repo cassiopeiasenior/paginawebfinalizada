@@ -364,11 +364,8 @@
         <div class="modal-content-lsenas">
             <span class="close-lsenas">&times;</span>
             <h2 id="modalTitle"></h2>
-            <div class="video-container-lsenas">
-                <video id="modalVideo" controls>
-                    <source src="" type="video/mp4">
-                    Your browser does not support the video element.
-                </video>
+            <div class="video-container-lsenas" id="videoContainerLsenas">
+                <!-- Video or iframe will be loaded dynamically here -->
             </div>
         </div>
     </div>
@@ -379,7 +376,7 @@
 
     <script>
         // ========================
-        // AUDIO HOVER (when mouse over)
+        // AUDIO HOVER
         // ========================
         function playHoverAudio(audioPath) {
             if (!audioPath) return;
@@ -417,7 +414,7 @@
         });
 
         // ========================
-        // Carousel configuration by device
+        // Carousel configuration
         // ========================
         if (window.innerWidth <= 768) {
             $('#theCarousel').carousel({ interval: false, pause: "hover" });
@@ -462,16 +459,36 @@
         };
 
         // ========================
-        // SIGN LANGUAGE MODAL - Configuration
+        // YOUTUBE FUNCTIONS
+        // ========================
+        function extractYouTubeID(url) {
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+            const match = url.match(regExp);
+            return (match && match[2].length === 11) ? match[2] : null;
+        }
+
+        function isYouTubeURL(url) {
+            return url.includes('youtube.com') || url.includes('youtu.be');
+        }
+
+        // ========================
+        // SIGN LANGUAGE VIDEOS - YOUTUBE READY
         // ========================
         const videosLenguajeSenas = {
-            ilari: "assets/flashcards/lenguajesenas/ilari-lsenas.mp4",
-            fiba: "assets/flashcards/lenguajesenas/fiba-lsenas.mp4",
-            orion: "assets/flashcards/lenguajesenas/orion-lsenas.mp4",
-            nerea: "assets/flashcards/lenguajesenas/nerea-lsenas.mp4",
-            cassia: "assets/flashcards/lenguajesenas/cassia-lsenas.mp4",
-            gaia: "assets/flashcards/lenguajesenas/gaia-lsenas.mp4",
-            deneb: "assets/flashcards/lenguajesenas/deneb-lsenas.mp4"
+            // REPLACE WITH YOUR YOUTUBE URLs
+            // You can use full URLs, short URLs, or just the video ID
+            ilari: "https://www.youtube.com/watch?v=YOUR_VIDEO_ID_ILARI",
+            fiba: "https://www.youtube.com/watch?v=YOUR_VIDEO_ID_FIBA",
+            orion: "https://www.youtube.com/watch?v=YOUR_VIDEO_ID_ORION",
+            nerea: "https://www.youtube.com/watch?v=YOUR_VIDEO_ID_NEREA",
+            cassia: "https://www.youtube.com/watch?v=YOUR_VIDEO_ID_CASSIA",
+            gaia: "https://www.youtube.com/watch?v=YOUR_VIDEO_ID_GAIA",
+            deneb: "https://www.youtube.com/watch?v=YOUR_VIDEO_ID_DENEB"
+
+            // ALTERNATIVE: Use only video ID (11 characters):
+            // ilari: "dQw4w9WgXcQ",
+            // Or local videos (will be detected automatically):
+            // ilari: "assets/flashcards/lenguajesenas/ilari-lsenas.mp4",
         };
 
         const nombresPersonajes = {
@@ -484,46 +501,89 @@
             deneb: "Deneb - Sign Language"
         };
 
+        // ========================
+        // OPEN SIGN LANGUAGE MODAL
+        // ========================
         function abrirModalLenguaje(personaje) {
             const modal = document.getElementById('modalLenguaje');
             const modalTitle = document.getElementById('modalTitle');
-            const modalVideo = document.getElementById('modalVideo');
+            const videoContainer = document.getElementById('videoContainerLsenas');
 
             modalTitle.textContent = nombresPersonajes[personaje] || personaje;
-            modalVideo.src = videosLenguajeSenas[personaje] || '';
+
+            const videoURL = videosLenguajeSenas[personaje] || '';
+
+            // Clear previous content
+            videoContainer.innerHTML = '';
+
+            if (isYouTubeURL(videoURL)) {
+                // It's a YouTube video
+                const videoID = extractYouTubeID(videoURL);
+                if (videoID) {
+                    const iframe = document.createElement('iframe');
+                    iframe.width = '100%';
+                    iframe.height = '100%';
+                    iframe.src = `https://www.youtube.com/embed/${videoID}?rel=0`;
+                    iframe.frameBorder = '0';
+                    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+                    iframe.allowFullscreen = true;
+                    videoContainer.appendChild(iframe);
+                } else {
+                    videoContainer.innerHTML = '<p style="color: white; text-align: center; padding: 20px;">Invalid YouTube URL</p>';
+                }
+            } else if (videoURL.length === 11 && !videoURL.includes('/') && !videoURL.includes('.')) {
+                // It's a direct YouTube ID (11 characters, no slashes or dots)
+                const iframe = document.createElement('iframe');
+                iframe.width = '100%';
+                iframe.height = '100%';
+                iframe.src = `https://www.youtube.com/embed/${videoURL}?rel=0`;
+                iframe.frameBorder = '0';
+                iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+                iframe.allowFullscreen = true;
+                videoContainer.appendChild(iframe);
+            } else {
+                // It's a local video
+                const video = document.createElement('video');
+                video.id = 'modalVideo';
+                video.controls = true;
+                video.style.width = '100%';
+                video.style.height = '100%';
+
+                const source = document.createElement('source');
+                source.src = videoURL;
+                source.type = 'video/mp4';
+
+                video.appendChild(source);
+                video.innerHTML += 'Your browser does not support the video element.';
+                videoContainer.appendChild(video);
+            }
 
             modal.style.display = 'block';
-            modalVideo.load();
         }
 
-        // Close modal with X
+        // ========================
+        // CLOSE MODAL
+        // ========================
         const modal = document.getElementById('modalLenguaje');
         const closeBtn = document.querySelector('.close-lsenas');
 
-        closeBtn.onclick = function () {
+        function cerrarModal() {
             modal.style.display = 'none';
-            const video = document.getElementById('modalVideo');
-            video.pause();
-            video.currentTime = 0;
-        };
+            const videoContainer = document.getElementById('videoContainerLsenas');
+            videoContainer.innerHTML = ''; // Clear content when closing
+        }
 
-        // Close modal clicking outside
+        closeBtn.onclick = cerrarModal;// Close modal clicking outside
         window.onclick = function (event) {
             if (event.target == modal) {
-                modal.style.display = 'none';
-                const video = document.getElementById('modalVideo');
-                video.pause();
-                video.currentTime = 0;
+                cerrarModal();
             }
         };
 
         // Close modal with ESC key
         document.addEventListener('keydown', function (event) {
             if (event.key === 'Escape' && modal.style.display === 'block') {
-                modal.style.display = 'none';
-                const video = document.getElementById('modalVideo');
-                video.pause();
-                video.currentTime = 0;
+                cerrarModal();
             }
         });
 

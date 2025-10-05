@@ -1,9 +1,8 @@
 /*
 ================================================
-PORTAL ESPACIAL - FORMATO PAINT
+PORTAL ESPACIAL - FORMATO PAINT SIMPLE
 ================================================
-2 círculos izquierda | Portada centro | 2 círculos derecha
-Settings arriba izquierda | Who Are We abajo centro
+Círculo con video arriba, texto abajo
 ================================================
 */
 
@@ -21,7 +20,6 @@ body {
     position: relative;
 }
 
-/* Video de fondo centrado */
 #video-background {
     position: fixed;
     top: 50%;
@@ -32,18 +30,8 @@ body {
     max-width: 80%;
     max-height: 80vh;
     z-index: -1;
-    opacity: 0;
+    opacity: 1;
     transition: opacity 0.5s ease;
-}
-
-/* Mostrar video solo en español */
-body.lang-es #video-background {
-    opacity: 1;
-}
-
-/* Fondo para inglés */
-body.lang-en #video-background {
-    opacity: 1;
 }
 
 body::before {
@@ -82,15 +70,8 @@ body.modal-open {
 }
 
 @keyframes twinkle {
-    0% {
-        opacity: 0.3;
-        transform: scale(0.8);
-    }
-
-    100% {
-        opacity: 1;
-        transform: scale(1.2);
-    }
+    0% { opacity: 0.3; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1.2); }
 }
 
 .shooting-star {
@@ -104,23 +85,10 @@ body.modal-open {
 }
 
 @keyframes shoot {
-    0% {
-        transform: translateX(-100px) translateY(100px);
-        opacity: 0;
-    }
-
-    10% {
-        opacity: 1;
-    }
-
-    90% {
-        opacity: 1;
-    }
-
-    100% {
-        transform: translateX(100vw) translateY(-100px);
-        opacity: 0;
-    }
+    0% { transform: translateX(-100px) translateY(100px); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateX(100vw) translateY(-100px); opacity: 0; }
 }
 
 .container {
@@ -166,25 +134,13 @@ body.modal-open {
 }
 
 @keyframes glow {
-    from {
-        filter: brightness(1);
-    }
-
-    to {
-        filter: brightness(1.3);
-    }
+    from { filter: brightness(1); }
+    to { filter: brightness(1.3); }
 }
 
 @keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .circular-container {
@@ -209,14 +165,7 @@ body.modal-open {
     margin: 0 auto;
 }
 
-.left-circles {
-    display: flex;
-    flex-direction: column;
-    gap: 60px;
-    justify-content: center;
-}
-
-.right-circles {
+.left-circles, .right-circles {
     display: flex;
     flex-direction: column;
     gap: 60px;
@@ -246,14 +195,6 @@ body.modal-open {
 
 .center-placeholder {
     display: none !important;
-}
-
-.placeholder-icon {
-    display: none;
-}
-
-.center-placeholder p {
-    display: none;
 }
 
 .section-circle {
@@ -286,32 +227,16 @@ body.modal-open {
 }
 
 @keyframes pulse-ring {
-
-    0%,
-    100% {
-        transform: scale(1);
-        opacity: 0.3;
-    }
-
-    50% {
-        transform: scale(1.1);
-        opacity: 0.1;
-    }
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.1); opacity: 0.1; }
 }
 
-/* Izquierda: Cuento (verde) */
-.section-1 {
+/* Colores de secciones */
+.section-1, .section-2, .section-4, .section-5 {
     background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(76, 175, 80, 0.1));
     border-color: rgba(76, 175, 80, 0.4);
 }
 
-/* Izquierda: Flashcards (verde) */
-.section-2 {
-    background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(76, 175, 80, 0.1));
-    border-color: rgba(76, 175, 80, 0.4);
-}
-
-/* Settings (azul) - Posición absoluta en esquina superior izquierda */
 .section-3 {
     background: linear-gradient(135deg, rgba(33, 150, 243, 0.2), rgba(33, 150, 243, 0.1));
     border-color: rgba(33, 150, 243, 0.4);
@@ -321,26 +246,6 @@ body.modal-open {
     top: -170px;
     left: 0;
     z-index: 15;
-}
-
-.section-3 .section-icon {
-    font-size: 1.5rem;
-}
-
-.section-3 .section-content h3 {
-    font-size: 0.5rem;
-}
-
-/* Derecha: Material Inclusión (verde) */
-.section-4 {
-    background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(76, 175, 80, 0.1));
-    border-color: rgba(76, 175, 80, 0.4);
-}
-
-/* Derecha: Datos Curiosos (verde) */
-.section-5 {
-    background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(76, 175, 80, 0.1));
-    border-color: rgba(76, 175, 80, 0.4);
 }
 
 .section-circle:hover {
@@ -353,12 +258,7 @@ body.modal-open {
     z-index: 10;
 }
 
-.section-1.active {
-    box-shadow: 0 25px 50px rgba(76, 175, 80, 0.5);
-    border-color: rgba(76, 175, 80, 0.8);
-}
-
-.section-2.active {
+.section-1.active, .section-2.active, .section-4.active, .section-5.active {
     box-shadow: 0 25px 50px rgba(76, 175, 80, 0.5);
     border-color: rgba(76, 175, 80, 0.8);
 }
@@ -368,56 +268,50 @@ body.modal-open {
     border-color: rgba(33, 150, 243, 0.8);
 }
 
-.section-4.active {
-    box-shadow: 0 25px 50px rgba(76, 175, 80, 0.5);
-    border-color: rgba(76, 175, 80, 0.8);
-}
-
-.section-5.active {
-    box-shadow: 0 25px 50px rgba(76, 175, 80, 0.5);
-    border-color: rgba(76, 175, 80, 0.8);
-}
-
+/* ESTILO PAINT: Video arriba, texto abajo */
 .section-content {
-    text-align: center;
-    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
     position: relative;
     z-index: 2;
-    padding: 20px;
 }
 
+/* Círculo del video */
 .section-icon {
-    font-size: 3rem;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
     margin-bottom: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
-    width: 80px;
-    height: 80px;
+    background: transparent;
+    flex-shrink: 0;
 }
 
+/* Video dentro del círculo pequeño */
 .section-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 10px;
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+    display: block;
 }
 
+/* Texto abajo del círculo */
 .section-content h3 {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: bold;
-    margin-bottom: 5px;
+    text-align: center;
+    color: white;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
     line-height: 1.2;
-}
-
-.section-content p {
-    font-size: 0.9rem;
-    opacity: 0.9;
-    line-height: 1.3;
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    margin: 0;
 }
 
 .section-link {
@@ -427,7 +321,18 @@ body.modal-open {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    z-index: 3;
+    z-index: 4;
+}
+
+/* Settings especial */
+.section-3 .section-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.8rem;
+}
+
+.section-3 .section-content h3 {
+    font-size: 0.7rem;
 }
 
 .navigation-controls {
@@ -500,18 +405,16 @@ body.modal-open {
     box-shadow: 0 0 15px rgba(79, 195, 247, 0.6);
 }
 
-/* Contenedor inferior izquierdo - Rectangular */
+/* Contenedores inferiores */
 .bottom-left-container {
     position: absolute;
     bottom: -150px;
     left: 40px;
-    width: auto;
-    height: auto;
-    z-index: 15;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 35px;
+    gap: 20px;
+    z-index: 15;
 }
 
 .bottom-left-container img {
@@ -521,46 +424,9 @@ body.modal-open {
     border-radius: 50%;
 }
 
-.image-placeholder {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(156, 39, 176, 0.2), rgba(156, 39, 176, 0.1));
-    border: 3px solid rgba(156, 39, 176, 0.4);
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.image-placeholder:hover {
-    transform: translateY(-5px);
-    border-color: rgba(156, 39, 176, 0.6);
-    box-shadow: 0 15px 40px rgba(156, 39, 176, 0.3);
-}
-
-.image-placeholder span {
-    font-size: 3rem;
-    filter: drop-shadow(0 0 10px rgba(156, 39, 176, 0.5));
-}
-
-.image-placeholder p {
-    color: #ce93d8;
-    font-size: 1rem;
-    font-weight: bold;
-    text-shadow: 0 0 10px rgba(156, 39, 176, 0.6);
-    margin: 0;
-}
-
-/* Contenedor inferior derecho - Circular + Who We Are */
 .bottom-right-container {
     position: absolute;
     bottom: -150px;
-    /* Asegúrate que sea igual al izquierdo */
     right: 110px;
     display: flex;
     flex-direction: column;
@@ -573,40 +439,18 @@ body.modal-open {
     width: 180px;
     height: 180px;
     border-radius: 50%;
-    backdrop-filter: blur(10px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
 }
 
-.circle-image-placeholder:hover {
-    transform: scale(1.05);
-    border-color: rgba(255, 152, 0, 0.6);
-    box-shadow: 0 15px 40px rgba(255, 152, 0, 0.3);
+.circle-image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.circle-image-placeholder span {
-    font-size: 3rem;
-    filter: drop-shadow(0 0 10px rgba(255, 152, 0, 0.5));
-}
-
-.circle-image-placeholder p {
-    color: #ffb74d;
-    font-size: 0.9rem;
-    font-weight: bold;
-    text-shadow: 0 0 10px rgba(255, 152, 0, 0.6);
-    margin: 0;
-}
-
-/* Botón Who We Are */
-.who-we-are-btn {
+/* Botones */
+.who-we-are-btn, .project-btn {
     padding: 15px 30px;
-    background: linear-gradient(135deg, rgba(79, 195, 247, 0.3), rgba(79, 195, 247, 0.2));
-    border: 2px solid rgba(79, 195, 247, 0.5);
     border-radius: 30px;
     backdrop-filter: blur(10px);
     cursor: pointer;
@@ -617,16 +461,18 @@ body.modal-open {
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
 }
 
-.who-we-are-btn:hover {
-    background: linear-gradient(135deg, rgba(79, 195, 247, 0.4), rgba(79, 195, 247, 0.3));
-    border-color: rgba(79, 195, 247, 0.7);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(79, 195, 247, 0.4);
+.who-we-are-btn {
+    background: linear-gradient(135deg, rgba(79, 195, 247, 0.3), rgba(79, 195, 247, 0.2));
+    border: 2px solid rgba(79, 195, 247, 0.5);
 }
 
-.who-icon {
+.project-btn {
+    background: linear-gradient(135deg, rgba(156, 39, 176, 0.3), rgba(156, 39, 176, 0.2));
+    border: 2px solid rgba(156, 39, 176, 0.5);
+}
+
+.who-icon, .project-icon {
     font-size: 1.5rem;
-    filter: drop-shadow(0 0 10px rgba(79, 195, 247, 0.6));
 }
 
 .who-text {
@@ -636,8 +482,17 @@ body.modal-open {
     text-shadow: 0 0 10px rgba(79, 195, 247, 0.8);
 }
 
-/* Modal About */
-.about-modal {
+.project-text {
+    color: #ce93d8;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(156, 39, 176, 0.8);
+}
+
+/* Modales */
+.section-modal, .config-modal, .warning-modal, .inclusion-modal,
+.about-modal, .project-modal, .vocab-modal, .braille-cards-modal,
+.animated-story-modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -652,48 +507,9 @@ body.modal-open {
     transition: all 0.3s ease;
 }
 
-.about-modal.show {
-    opacity: 1;
-    visibility: visible;
-}
-
-.about-modal-content {
-    max-width: 700px;
-    border-color: rgba(79, 195, 247, 0.5);
-}
-
-.about-modal .modal-header {
-    background: rgba(79, 195, 247, 0.2);
-    border-bottom: 1px solid rgba(79, 195, 247, 0.3);
-}
-
-.about-modal .modal-header h3 {
-    color: #4fc3f7;
-    text-shadow: 0 0 10px rgba(79, 195, 247, 0.6);
-}
-
-.section-modal,
-.config-modal,
-.warning-modal,
-.inclusion-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
-
-.section-modal.show,
-.config-modal.show,
-.warning-modal.show,
-.inclusion-modal.show {
+.section-modal.show, .config-modal.show, .warning-modal.show,
+.inclusion-modal.show, .about-modal.show, .project-modal.show,
+.vocab-modal.show, .braille-cards-modal.show, .animated-story-modal.show {
     opacity: 1;
     visibility: visible;
 }
@@ -718,55 +534,15 @@ body.modal-open {
     width: 90%;
     backdrop-filter: blur(15px);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-    animation: modalSlideIn 0.4s ease-out;
-}
-
-.section-modal-content {
-    max-width: 600px;
-}
-
-.inclusion-modal-content {
-    max-width: 600px;
-    border-color: rgba(255, 193, 7, 0.5);
-}
-
-@keyframes modalSlideIn {
-    0% {
-        opacity: 0;
-        transform: translateY(-50px) scale(0.9);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
 }
 
 .modal-header {
-    background: rgba(255, 152, 0, 0.2);
-    padding: 20px 25px;
-    border-radius: 18px 18px 0 0;
-    border-bottom: 1px solid rgba(255, 152, 0, 0.3);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.inclusion-modal .modal-header {
-    background: rgba(255, 193, 7, 0.2);
-    border-bottom: 1px solid rgba(255, 193, 7, 0.3);
-}
-
-.modal-header h3 {
-    color: #ff9800;
-    font-size: 1.4rem;
-    margin: 0;
-    text-shadow: 0 0 10px rgba(255, 152, 0, 0.6);
-}
-
-.inclusion-modal .modal-header h3 {
-    color: #ffc107;
-    text-shadow: 0 0 10px rgba(255, 193, 7, 0.6);
+.modal-body {
+    padding: 20px;
 }
 
 .close-btn {
@@ -775,858 +551,60 @@ body.modal-open {
     color: white;
     font-size: 2rem;
     cursor: pointer;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
 }
 
-.close-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: rotate(90deg);
-}
-
-.modal-body {
-    padding: 25px;
-}
-
-.modal-body p {
-    color: white;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    text-align: center;
-    margin: 0;
-}
-
-.modal-footer {
-    padding: 20px 25px;
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.modal-action-btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 25px;
-    background: linear-gradient(45deg, #210041, #000000);
-    color: white;
-    text-decoration: none;
-    border: none;
-    border-radius: 25px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(79, 195, 247, 0.3);
-}
-
-.modal-action-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(79, 195, 247, 0.5);
-}
-
-.inclusion-buttons {
-    display: flex;
+/* Galería */
+.applications-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 20px;
+    max-height: 500px;
+    overflow-y: auto;
+    padding: 10px;
 }
 
-.inclusion-btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    padding: 20px 25px;
-    background: linear-gradient(135deg, rgba(255, 193, 7, 0.2), rgba(255, 193, 7, 0.1));
-    border: 2px solid rgba(255, 193, 7, 0.4);
+.application-item {
     border-radius: 15px;
-    color: white;
+    overflow: hidden;
     cursor: pointer;
     transition: all 0.3s ease;
-    backdrop-filter: blur(5px);
-    min-width: 150px;
-    text-decoration: none;
+    border: 2px solid rgba(156, 39, 176, 0.3);
 }
 
-.inclusion-btn:hover {
-    background: linear-gradient(135deg, rgba(255, 193, 7, 0.3), rgba(255, 193, 7, 0.2));
-    border-color: rgba(255, 193, 7, 0.6);
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 10px 25px rgba(255, 193, 7, 0.3);
+.application-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
 }
 
-.inclusion-btn .icon {
-    font-size: 2.5rem;
-    filter: drop-shadow(0 0 10px rgba(255, 193, 7, 0.5));
-}
-
-.inclusion-btn .text {
-    font-size: 1rem;
-    font-weight: bold;
+.application-caption {
+    padding: 10px;
     text-align: center;
-    color: #ffc107;
-    text-shadow: 0 0 10px rgba(255, 193, 7, 0.8);
+    color: #ce93d8;
+    background: rgba(0, 0, 0, 0.5);
 }
 
-.language-selector {
-    text-align: center;
-}
-
-.language-buttons {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.lang-btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    padding: 20px 25px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 15px;
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(5px);
-    min-width: 120px;
-}
-
-.lang-btn:hover {
-    background: rgba(255, 152, 0, 0.2);
-    border-color: rgba(255, 152, 0, 0.6);
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 5px 20px rgba(255, 152, 0, 0.3);
-}
-
-.lang-btn.active {
-    background: rgba(79, 195, 247, 0.3);
-    border-color: rgba(79, 195, 247, 0.8);
-    color: #4fc3f7;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(79, 195, 247, 0.4);
-}
-
-.lang-btn .flag {
-    font-size: 2rem;
-}
-
-.lang-btn .lang-text {
-    font-size: 1rem;
-    font-weight: bold;
-    text-align: center;
-}
-
-.btn-cancel,
-.btn-confirm {
-    padding: 12px 25px;
-    border: none;
-    border-radius: 10px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    min-width: 100px;
-}
-
-.btn-cancel {
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-.btn-cancel:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.5);
-    transform: translateY(-2px);
-}
-
-.btn-confirm {
-    background: linear-gradient(45deg, #ff9800, #f57c00);
-    color: white;
-    border: 2px solid transparent;
-    box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
-}
-
-.btn-confirm:hover {
-    background: linear-gradient(45deg, #f57c00, #ef6c00);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 152, 0, 0.4);
-}
-
-.story-buttons {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 25px;
-}
-
-.story-btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    padding: 20px 30px;
-    background: linear-gradient(135deg, rgba(79, 195, 247, 0.2), rgba(79, 195, 247, 0.1));
-    border: 2px solid rgba(79, 195, 247, 0.4);
-    border-radius: 15px;
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-    min-width: 180px;
-    text-decoration: none;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.story-btn:hover {
-    background: linear-gradient(135deg, rgba(79, 195, 247, 0.3), rgba(79, 195, 247, 0.2));
-    border-color: rgba(79, 195, 247, 0.7);
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 10px 30px rgba(79, 195, 247, 0.4);
-}
-
-.story-btn .btn-icon {
-    font-size: 2.5rem;
-    filter: drop-shadow(0 0 10px rgba(79, 195, 247, 0.6));
-    animation: float-icon 3s ease-in-out infinite;
-}
-
-.story-btn .btn-text {
-    font-size: 1.1rem;
-    font-weight: bold;
-    text-align: center;
-    color: #4fc3f7;
-    text-shadow: 0 0 10px rgba(79, 195, 247, 0.8);
-    line-height: 1.3;
-}
-
-@keyframes float-icon {
-
-    0%,
-    100% {
-        transform: translateY(0px);
-    }
-
-    50% {
-        transform: translateY(-5px);
-    }
-}
-
+/* Responsive */
 @media (max-width: 1200px) {
-    .main-circle {
-        grid-template-columns: 180px 450px 180px;
-        gap: 50px;
-    }
-
-    .section-circle {
-        width: 180px;
-        height: 180px;
-    }
-
-    .center-image {
-        max-width: 450px;
-    }
+    .main-circle { grid-template-columns: 180px 450px 180px; gap: 50px; }
+    .section-circle { width: 180px; height: 180px; }
+    .section-icon { width: 100px; height: 100px; }
 }
 
 @media (max-width: 1024px) {
-    .main-circle {
-        grid-template-columns: 150px 400px 150px;
-        gap: 40px;
-    }
-
-    .section-circle {
-        width: 150px;
-        height: 150px;
-    }
-
-    .left-circles {
-        gap: 50px;
-    }
-
-    .right-circles {
-        gap: 50px;
-    }
-
-    .center-image {
-        max-width: 400px;
-    }
-
-    .section-icon {
-        font-size: 2.5rem;
-    }
-
-    .section-content h3 {
-        font-size: 1rem;
-    }
-
-    .section-content p {
-        font-size: 0.8rem;
-    }
+    .main-circle { grid-template-columns: 150px 400px 150px; gap: 40px; }
+    .section-circle { width: 150px; height: 150px; }
+    .section-icon { width: 80px; height: 80px; }
 }
 
 @media (max-width: 768px) {
-    .circular-container {
-        padding: 30px 15px;
-        min-height: auto;
-    }
-
-    .main-circle {
-        display: grid;
-        grid-template-columns: 140px 1fr 140px;
-        gap: 20px;
-        padding: 0;
-        max-width: 100%;
-    }
-
-    .left-circles {
-        flex-direction: column;
-        gap: 30px;
-        justify-content: center;
-    }
-
-    .right-circles {
-        flex-direction: column;
-        gap: 30px;
-        justify-content: center;
-    }
-
-    .center-image {
-        max-width: 100%;
-        aspect-ratio: 3/4;
-    }
-
-    .section-circle {
-        width: 140px;
-        height: 140px;
-    }
-
-    .section-3 {
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
-        width: 140px !important;
-        height: 140px !important;
-    }
-
-    .section-icon {
-        font-size: 2rem;
-    }
-
-    .section-content h3 {
-        font-size: 0.85rem;
-        line-height: 1.1;
-    }
-
-    .section-content p {
-        font-size: 0.7rem;
-    }
-
-    .nav-btn {
-        width: 50px;
-        height: 50px;
-        font-size: 1.3rem;
-    }
-
-    .title {
-        font-size: 2rem;
-    }
-
-    .subtitle {
-        font-size: 0.95rem;
-    }
-
-    .about-section {
-        margin: 50px auto 30px;
-        padding: 30px 20px;
-        max-width: 90%;
-    }
-
-    .about-title {
-        font-size: 1.5rem;
-    }
-
-    .about-text {
-        font-size: 0.95rem;
-    }
+    .main-circle { grid-template-columns: 140px 1fr 140px; gap: 20px; }
+    .section-circle { width: 140px; height: 140px; }
+    .section-icon { width: 70px; height: 70px; }
+    .section-3 { position: relative !important; top: auto !important; left: auto !important; width: 140px !important; height: 140px !important; }
 }
 
 @media (max-width: 480px) {
-    .circular-container {
-        padding: 40px 15px;
-    }
-
-    .main-circle {
-        gap: 30px;
-    }
-
-    .section-circle {
-        width: 110px;
-        height: 110px;
-    }
-
-    .left-circles,
-    .right-circles {
-        gap: 20px;
-    }
-
-    .center-image {
-        max-width: 280px;
-    }
-
-    .section-icon {
-        font-size: 1.6rem;
-    }
-
-    .section-content h3 {
-        font-size: 0.75rem;
-    }
-
-    .section-content p {
-        font-size: 0.65rem;
-    }
-
-    .nav-btn {
-        width: 45px;
-        height: 45px;
-        font-size: 1.2rem;
-    }
-
-    .title {
-        font-size: 1.8rem;
-    }
-
-    .subtitle {
-        font-size: 0.9rem;
-    }
-
-    .story-btn,
-    .inclusion-btn {
-        min-width: 150px;
-        padding: 15px 20px;
-    }
-
-    .story-btn .btn-icon,
-    .inclusion-btn .icon {
-        font-size: 2rem;
-    }
-
-    .about-section {
-        margin: 40px auto 20px;
-        padding: 25px 15px;
-    }
-
-    .about-title {
-        font-size: 1.3rem;
-    }
-
-    .about-text {
-        font-size: 0.85rem;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
-}
-
-.section-circle:focus,
-.nav-btn:focus,
-.indicator:focus,
-.lang-btn:focus,
-.inclusion-btn:focus,
-.story-btn:focus {
-    outline: 3px solid #4fc3f7;
-    outline-offset: 2px;
-}
-
-/* Modal Vocabulario Astronómico */
-.vocab-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1001;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
-
-.vocab-modal.show {
-    opacity: 1;
-    visibility: visible;
-}
-
-.vocab-modal-content {
-    max-width: 600px;
-    border-color: rgba(156, 39, 176, 0.5);
-}
-
-.vocab-modal .modal-header {
-    background: rgba(156, 39, 176, 0.2);
-    border-bottom: 1px solid rgba(156, 39, 176, 0.3);
-}
-
-.vocab-modal .modal-header h3 {
-    color: #ce93d8;
-    text-shadow: 0 0 10px rgba(156, 39, 176, 0.6);
-}
-
-.vocab-buttons {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 20px;
-}
-
-.vocab-btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    padding: 20px 25px;
-    background: linear-gradient(135deg, rgba(156, 39, 176, 0.2), rgba(156, 39, 176, 0.1));
-    border: 2px solid rgba(156, 39, 176, 0.4);
-    border-radius: 15px;
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(5px);
-    min-width: 200px;
-}
-
-.vocab-btn:hover {
-    background: linear-gradient(135deg, rgba(156, 39, 176, 0.3), rgba(156, 39, 176, 0.2));
-    border-color: rgba(156, 39, 176, 0.6);
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 10px 25px rgba(156, 39, 176, 0.3);
-}
-
-.vocab-btn .icon {
-    font-size: 2.5rem;
-    filter: drop-shadow(0 0 10px rgba(156, 39, 176, 0.5));
-}
-
-.vocab-btn .text {
-    font-size: 1rem;
-    font-weight: bold;
-    text-align: center;
-    color: #ce93d8;
-    text-shadow: 0 0 10px rgba(156, 39, 176, 0.8);
-}
-
-/* Modal Braille Cards */
-.braille-cards-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1002;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
-
-.braille-cards-modal.show {
-    opacity: 1;
-    visibility: visible;
-}
-
-.braille-cards-modal-content {
-    max-width: 600px;
-    border-color: rgba(156, 39, 176, 0.5);
-}
-
-.braille-cards-modal .modal-header {
-    background: rgba(156, 39, 176, 0.2);
-    border-bottom: 1px solid rgba(156, 39, 176, 0.3);
-}
-
-.braille-cards-modal .modal-header h3 {
-    color: #ce93d8;
-    text-shadow: 0 0 10px rgba(156, 39, 176, 0.6);
-}
-
-.braille-cards-buttons {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 20px;
-}
-
-.braille-card-btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    padding: 20px 25px;
-    background: linear-gradient(135deg, rgba(156, 39, 176, 0.2), rgba(156, 39, 176, 0.1));
-    border: 2px solid rgba(156, 39, 176, 0.4);
-    border-radius: 15px;
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(5px);
-    min-width: 200px;
-}
-
-.braille-card-btn:hover {
-    background: linear-gradient(135deg, rgba(156, 39, 176, 0.3), rgba(156, 39, 176, 0.2));
-    border-color: rgba(156, 39, 176, 0.6);
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 10px 25px rgba(156, 39, 176, 0.3);
-}
-
-.braille-card-btn .icon {
-    font-size: 2.5rem;
-    filter: drop-shadow(0 0 10px rgba(156, 39, 176, 0.5));
-}
-
-.braille-card-btn .text {
-    font-size: 1rem;
-    font-weight: bold;
-    text-align: center;
-    color: #ce93d8;
-    text-shadow: 0 0 10px rgba(156, 39, 176, 0.8);
-}
-
-/* Botón Aplicando Nuestro Proyecto */
-.project-btn {
-    padding: 15px 30px;
-    background: linear-gradient(135deg, rgba(156, 39, 176, 0.3), rgba(156, 39, 176, 0.2));
-    border: 2px solid rgba(156, 39, 176, 0.5);
-    border-radius: 30px;
-    backdrop-filter: blur(10px);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-    margin-top: 20px;
-}
-
-.project-btn:hover {
-    background: linear-gradient(135deg, rgba(156, 39, 176, 0.4), rgba(156, 39, 176, 0.3));
-    border-color: rgba(156, 39, 176, 0.7);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(156, 39, 176, 0.4);
-}
-
-.project-icon {
-    font-size: 1.5rem;
-    filter: drop-shadow(0 0 10px rgba(156, 39, 176, 0.6));
-}
-
-.project-text {
-    color: #ce93d8;
-    font-size: 1.1rem;
-    font-weight: bold;
-    text-shadow: 0 0 10px rgba(156, 39, 176, 0.8);
-}
-
-/* Modal Aplicando Nuestro Proyecto */
-.project-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
-
-.project-modal.show {
-    opacity: 1;
-    visibility: visible;
-}
-
-.project-modal-content {
-    max-width: 700px;
-    border-color: rgba(156, 39, 176, 0.5);
-}
-
-.project-modal .modal-header {
-    background: rgba(156, 39, 176, 0.2);
-    border-bottom: 1px solid rgba(156, 39, 176, 0.3);
-}
-
-.project-modal .modal-header h3 {
-    color: #ce93d8;
-    text-shadow: 0 0 10px rgba(156, 39, 176, 0.6);
-}
-
-/* Ajuste del contenedor bottom-left para centrar verticalmente */
-.bottom-left-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-.circle-image-placeholder img {
-    width: 180px !important;
-    height: 180px !important;
-    object-fit: cover;
-    border-radius: 50%;
-}
-
-/* Modal Animated Story */
-.animated-story-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1001;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
-
-.animated-story-modal.show {
-    opacity: 1;
-    visibility: visible;
-}
-
-.animated-story-modal-content {
-    max-width: 600px;
-    border-color: rgba(79, 195, 247, 0.5);
-}
-
-.animated-story-modal .modal-header {
-    background: rgba(79, 195, 247, 0.2);
-    border-bottom: 1px solid rgba(79, 195, 247, 0.3);
-}
-
-.animated-story-modal .modal-header h3 {
-    color: #4fc3f7;
-    text-shadow: 0 0 10px rgba(79, 195, 247, 0.6);
-}
-
-.story-version-buttons {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 20px;
-}
-
-.version-btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    padding: 25px 35px;
-    background: linear-gradient(135deg, rgba(79, 195, 247, 0.2), rgba(79, 195, 247, 0.1));
-    border: 2px solid rgba(79, 195, 247, 0.4);
-    border-radius: 15px;
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-    min-width: 200px;
-    text-decoration: none;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.version-btn:hover {
-    background: linear-gradient(135deg, rgba(79, 195, 247, 0.3), rgba(79, 195, 247, 0.2));
-    border-color: rgba(79, 195, 247, 0.7);
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 10px 30px rgba(79, 195, 247, 0.4);
-}
-
-.version-btn .btn-icon {
-    font-size: 2.5rem;
-    filter: drop-shadow(0 0 10px rgba(79, 195, 247, 0.6));
-}
-
-.version-btn .btn-text {
-    font-size: 1.1rem;
-    font-weight: bold;
-    text-align: center;
-    color: #4fc3f7;
-    text-shadow: 0 0 10px rgba(79, 195, 247, 0.8);
-}
-
-.section-3 .section-content {
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-}
-
-.section-3 .section-icon {
-    font-size: 2rem;
-    width: 50px;
-    height: 50px;
-    margin-bottom: 0;
-}
-
-.section-3 .section-content h3 {
-    font-size: 0.9rem;
-    margin: 0;
-}
-
-/* Estilos para los videos en los íconos de sección */
-.section-icon {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    border-radius: 15px; /* Ajusta según el diseño de tus círculos */
-}
-
-.section-video {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Esto hace que el video cubra todo el espacio manteniendo su proporción */
-    border-radius: 15px;
-}
-
-/* Si necesitas ajuste específico para cada sección */
-.section-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    gap: 10px;
+    .section-circle { width: 110px; height: 110px; }
+    .section-icon { width: 60px; height: 60px; }
 }
