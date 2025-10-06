@@ -251,11 +251,11 @@ body {
 }
 
 /* PERSONAJE 9 (SOHO) */
-.card-personaje9 .front {
+.card-soho .front {
     background: url("assets/flashcards/frente/imgfrentesoho.jpeg") center/cover no-repeat;
 }
 
-.card-personaje9 .back {
+.card-soho .back {
     background: linear-gradient(to top, rgba(128, 0, 128, 0.3), rgba(113, 88, 113, 0.5)),
                 url("assets/flashcards/trasera/imgtraserasoho.jpeg") center/cover no-repeat;
     color: #fff;
@@ -583,66 +583,76 @@ body {
 .modal-lsenas {
     display: none;
     position: fixed;
-    z-index: 9999;
+    z-index: 10000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.85);
+    background-color: rgba(0, 0, 0, 0.9);
     animation: fadeIn 0.3s ease;
 }
 
 .modal-content-lsenas {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-    margin: 5% auto;
-    padding: 30px;
-    border: 2px solid #ffcc00;
-    border-radius: 15px;
+    position: relative;
+    margin: 2% auto;
     width: 90%;
-    max-width: 800px;
-    box-shadow: 0 10px 40px rgba(255, 204, 0, 0.3);
+    max-width: 1200px;
+    height: 90vh;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border: 3px solid #ffcc00;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 30px rgba(255, 204, 0, 0.5);
+    display: flex;
+    flex-direction: column;
     animation: slideDown 0.4s ease;
 }
 
 .modal-content-lsenas h2 {
     color: #ffcc00;
     text-align: center;
-    margin-bottom: 20px;
-    font-size: 28px;
+    margin-bottom: 15px;
+    font-size: 2em;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    flex-shrink: 0;
 }
 
 .close-lsenas {
+    position: absolute;
+    top: 10px;
+    right: 25px;
     color: #ffcc00;
-    float: right;
-    font-size: 35px;
+    font-size: 40px;
     font-weight: bold;
     cursor: pointer;
+    z-index: 10001;
     transition: all 0.3s ease;
-    line-height: 20px;
 }
 
 .close-lsenas:hover,
 .close-lsenas:focus {
     color: #fff;
-    transform: rotate(90deg);
+    transform: scale(1.2);
 }
 
 .video-container-lsenas {
-    position: relative;
+    flex: 1;
     width: 100%;
-    padding-bottom: 56.25%; /* Ratio 16:9 */
-    background: #000;
+    background-color: #000;
     border-radius: 10px;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
 }
 
+.video-container-lsenas iframe,
 .video-container-lsenas video {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
+    border: none;
+    display: block;
 }
 
 @keyframes fadeIn {
@@ -665,12 +675,20 @@ body {
 @media (max-width: 768px) {
     .modal-content-lsenas {
         width: 95%;
-        margin: 10% auto;
-        padding: 20px;
+        height: 85vh;
+        margin: 5% auto;
+        padding: 15px;
     }
     
     .modal-content-lsenas h2 {
-        font-size: 22px;
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+    
+    .close-lsenas {
+        font-size: 30px;
+        top: 5px;
+        right: 15px;
     }
 }
 

@@ -8,22 +8,33 @@
 
     <!-- Bootstrap 3 CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- Estilos personalizados -->
+    <!-- Custom styles -->
     <link rel="stylesheet" href="flashcards_styles.css">
 </head>
 
 <body>
     <div class="container">
 
-        <div style="text-align: center; margin: 20px 0;">
-            <a href="index.html" class="back-to-home">
-                <span class="home-icon">🏠</span>
-            </a>
+        <!-- Header with home button and instructions -->
+        <div class="header-container" style="display: flex; justify-content: space-between; align-items: center; margin: 20px 0; gap: 20px;">
+            <!-- Home button on the left -->
+            <div style="flex-shrink: 0;">
+                <a href="index.html" class="back-to-home">
+                    <span class="home-icon">🏠</span>
+                </a>
+            </div>
+            
+            <!-- Instructions on the right -->
+            <div class="instructions-box" style="flex: 1; background: rgba(26, 26, 46, 0.85); padding: 15px 25px; border-radius: 15px; border: 2px solid rgba(255, 204, 0, 0.5); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);">
+                <p style="margin: 0; color: #ffffff; font-size: 16px; line-height: 1.5; text-align: center;">
+                    <strong style="color: #ffcc00;">📌 Instructions:</strong> Click on the flashcard to make it flip. When it flips, press "Open" to find the character’s introduction audio, their presentation in Colombian Sign Language, and their corresponding papercraft.
+                </p>
+            </div>
         </div>
 
         <div id="theCarousel" class="carousel slide" data-ride="carousel" data-interval="4000">
 
-            <!-- Indicadores -->
+            <!-- Indicators -->
             <ol class="carousel-indicators">
                 <li data-target="#theCarousel" data-slide-to="0" class="active"></li>
                 <li data-target="#theCarousel" data-slide-to="1"></li>
@@ -300,7 +311,7 @@
                                 <div class="circulos-container" id="circulos-sombra">
                                     <button class="circulo" aria-label="Audio"
                                         data-hover-audio="assets/flashcards/audio/audioraudioingles.mp3"></button>
-                                    <button class="circulo" aria-label="Info"
+                                    <button class="circulo" aria-label="Sign Language"
                                         data-hover-audio="assets/flashcards/audio/audiolenguajeingles.mp3"></button>
                                     <button class="circulo" aria-label="Papercraft"
                                         data-hover-audio="assets/flashcards/audio/audiopapercraft.mp3"></button>
@@ -311,7 +322,7 @@
                         </div>
 
                         <!-- FLASHCARD SOHO -->
-                        <div class="card card-personaje9">
+                        <div class="card card-soho">
                             <div class="face front">
                                 <img src="assets/flashcards/personajes/imgsoho.png" alt="SOHO" class="static-img">
                                 <video autoplay loop muted class="gif-img">
@@ -329,15 +340,15 @@
                                     so its people can be prepared if danger arises. There's nothing to worry about, SOHO
                                     can see it all.
                                 </p>
-                                <div class="circulos-container" id="circulos-personaje9">
+                                <div class="circulos-container" id="circulos-soho">
                                     <button class="circulo" aria-label="Audio"
                                         data-hover-audio="assets/flashcards/audio/audioraudioingles.mp3"></button>
-                                    <button class="circulo" aria-label="Info"
+                                    <button class="circulo" aria-label="Sign Language"
                                         data-hover-audio="assets/flashcards/audio/audiolenguajeingles.mp3"></button>
                                     <button class="circulo" aria-label="Papercraft"
                                         data-hover-audio="assets/flashcards/audio/audiopapercraft.mp3"></button>
                                 </div>
-                                <button class="btn-abrir" data-target="circulos-personaje9"
+                                <button class="btn-abrir" data-target="circulos-soho"
                                     data-hover-audio="assets/flashcards/audio/audioopen.mp3">Open</button>
                             </div>
                         </div>
@@ -347,7 +358,7 @@
 
             </div>
 
-            <!-- Controles -->
+            <!-- Controls -->
             <a class="left carousel-control" href="#theCarousel" role="button" data-slide="prev">
                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
@@ -359,25 +370,19 @@
         </div>
     </div>
 
-    <!-- Modal para Sign Language -->
+    <!-- Modal for Sign Language -->
     <div id="modalLenguaje" class="modal-lsenas">
         <div class="modal-content-lsenas">
             <span class="close-lsenas">&times;</span>
             <h2 id="modalTitle"></h2>
-            <div class="video-container-lsenas" id="videoContainerLsenas">
-                <!-- Video or iframe will be loaded dynamically here -->
-            </div>
+            <div class="video-container-lsenas" id="videoContainerLsenas"></div>
         </div>
     </div>
 
-    <!-- JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script>
-        // ========================
-        // AUDIO HOVER
-        // ========================
         function playHoverAudio(audioPath) {
             if (!audioPath) return;
             try {
@@ -402,9 +407,6 @@
             });
         });
 
-        // ========================
-        // Card flip
-        // ========================
         document.querySelectorAll('.card').forEach(card => {
             card.addEventListener('click', function (e) {
                 const tag = e.target.tagName.toLowerCase();
@@ -413,9 +415,6 @@
             });
         });
 
-        // ========================
-        // Carousel configuration
-        // ========================
         if (window.innerWidth <= 768) {
             $('#theCarousel').carousel({ interval: false, pause: "hover" });
         } else {
@@ -430,9 +429,6 @@
             }
         });
 
-        // ========================
-        // Show/Hide circles
-        // ========================
         document.querySelectorAll('.btn-abrir').forEach(btn => {
             btn.addEventListener('click', function (e) {
                 e.stopPropagation();
@@ -443,9 +439,6 @@
             });
         });
 
-        // ========================
-        // Character audios
-        // ========================
         const audiosPersonajes = {
             ilari: "assets/flashcards/descripcion/ilariingles.m4a",
             fiba: "assets/flashcards/descripcion/fibaingles.m4a",
@@ -455,12 +448,9 @@
             gaia: "assets/flashcards/descripcion/gaiaingles.m4a",
             deneb: "assets/flashcards/descripcion/denebingles.m4a",
             sombra: "assets/flashcards/descripcion/sombraingles.m4a",
-            personaje9: "assets/flashcards/descripcion/sohoingles.m4a"
+            soho: "assets/flashcards/descripcion/sohoingles.m4a"
         };
 
-        // ========================
-        // YOUTUBE FUNCTIONS
-        // ========================
         function extractYouTubeID(url) {
             const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
             const match = url.match(regExp);
@@ -471,24 +461,16 @@
             return url.includes('youtube.com') || url.includes('youtu.be');
         }
 
-        // ========================
-        // SIGN LANGUAGE VIDEOS - YOUTUBE READY
-        // ========================
         const videosLenguajeSenas = {
-            // REPLACE WITH YOUR YOUTUBE URLs
-            // You can use full URLs, short URLs, or just the video ID
-            ilari: "https://www.youtube.com/watch?v=YOUR_VIDEO_ID_ILARI",
-            fiba: "https://www.youtube.com/watch?v=YOUR_VIDEO_ID_FIBA",
+            ilari: "https://www.youtube.com/watch?v=uh4BpFyp5R4",
+            fiba: "https://www.youtube.com/watch?v=uqNHtVn6ANU",
             orion: "https://www.youtube.com/watch?v=YOUR_VIDEO_ID_ORION",
             nerea: "https://www.youtube.com/watch?v=YOUR_VIDEO_ID_NEREA",
             cassia: "https://www.youtube.com/watch?v=YOUR_VIDEO_ID_CASSIA",
             gaia: "https://www.youtube.com/watch?v=YOUR_VIDEO_ID_GAIA",
-            deneb: "https://www.youtube.com/watch?v=YOUR_VIDEO_ID_DENEB"
-
-            // ALTERNATIVE: Use only video ID (11 characters):
-            // ilari: "dQw4w9WgXcQ",
-            // Or local videos (will be detected automatically):
-            // ilari: "assets/flashcards/lenguajesenas/ilari-lsenas.mp4",
+            deneb: "https://www.youtube.com/watch?v=-8p-9mbBBcQ",
+            sombra: "https://www.youtube.com/watch?v=BY6LxUi7FiE",
+            soho: "https://www.youtube.com/watch?v=z3avTDlCBPI"
         };
 
         const nombresPersonajes = {
@@ -498,12 +480,11 @@
             nerea: "Nerea - Sign Language",
             cassia: "Cassia - Sign Language",
             gaia: "Gaia - Sign Language",
-            deneb: "Deneb - Sign Language"
+            deneb: "Deneb - Sign Language",
+            sombra: "Solar Shadow - Sign Language",
+            soho: "SOHO - Sign Language"
         };
 
-        // ========================
-        // OPEN SIGN LANGUAGE MODAL
-        // ========================
         function abrirModalLenguaje(personaje) {
             const modal = document.getElementById('modalLenguaje');
             const modalTitle = document.getElementById('modalTitle');
@@ -513,11 +494,9 @@
 
             const videoURL = videosLenguajeSenas[personaje] || '';
 
-            // Clear previous content
             videoContainer.innerHTML = '';
 
             if (isYouTubeURL(videoURL)) {
-                // It's a YouTube video
                 const videoID = extractYouTubeID(videoURL);
                 if (videoID) {
                     const iframe = document.createElement('iframe');
@@ -532,7 +511,6 @@
                     videoContainer.innerHTML = '<p style="color: white; text-align: center; padding: 20px;">Invalid YouTube URL</p>';
                 }
             } else if (videoURL.length === 11 && !videoURL.includes('/') && !videoURL.includes('.')) {
-                // It's a direct YouTube ID (11 characters, no slashes or dots)
                 const iframe = document.createElement('iframe');
                 iframe.width = '100%';
                 iframe.height = '100%';
@@ -542,7 +520,6 @@
                 iframe.allowFullscreen = true;
                 videoContainer.appendChild(iframe);
             } else {
-                // It's a local video
                 const video = document.createElement('video');
                 video.id = 'modalVideo';
                 video.controls = true;
@@ -561,35 +538,29 @@
             modal.style.display = 'block';
         }
 
-        // ========================
-        // CLOSE MODAL
-        // ========================
         const modal = document.getElementById('modalLenguaje');
         const closeBtn = document.querySelector('.close-lsenas');
 
         function cerrarModal() {
             modal.style.display = 'none';
             const videoContainer = document.getElementById('videoContainerLsenas');
-            videoContainer.innerHTML = ''; // Clear content when closing
+            videoContainer.innerHTML = '';
         }
 
-        closeBtn.onclick = cerrarModal;// Close modal clicking outside
+        closeBtn.onclick = cerrarModal;
+
         window.onclick = function (event) {
             if (event.target == modal) {
                 cerrarModal();
             }
         };
 
-        // Close modal with ESC key
         document.addEventListener('keydown', function (event) {
             if (event.key === 'Escape' && modal.style.display === 'block') {
                 cerrarModal();
             }
         });
 
-        // ========================
-        // Circle button events
-        // ========================
         document.querySelectorAll('.circulo').forEach(circulo => {
             circulo.addEventListener('click', function (e) {
                 e.stopPropagation();
@@ -598,33 +569,23 @@
                 const index = Array.from(this.parentNode.children).indexOf(this);
 
                 switch (index) {
-                    case 0: // Character audio
+                    case 0:
                         const personajeAudio = audiosPersonajes[personaje];
                         if (personajeAudio) {
                             const audio = new Audio(personajeAudio);
                             audio.play().catch(() => console.log(`Audio for ${personaje} not available`));
                         }
                         break;
-                    case 1: // Sign language / Info
-                        if (personaje === 'sombra') {
-                            window.open('https://www.nasa.gov/feature/goddard/2016/understanding-space-weather', '_blank');
-                        } else if (personaje === 'personaje9') {
-                            window.open('https://soho.nascom.nasa.gov/', '_blank');
-                        } else {
-                            // Open modal for other characters
-                            abrirModalLenguaje(personaje);
-                        }
+                    case 1:
+                        abrirModalLenguaje(personaje);
                         break;
-                    case 2: // Papercraft
+                    case 2:
                         window.open(`assets/flashcards/papercraft/papercraft${personaje}.png`, '_blank');
                         break;
                 }
             });
         });
 
-        // ========================
-        // Mobile reorganization
-        // ========================
         function reorganizeCarouselForMobile() {
             const isMobile = window.innerWidth <= 768;
             const carousel = $('#theCarousel');
@@ -661,7 +622,7 @@
                 </div>
                 <div class="item">
                     <div class="cards-wrapper">
-                        ${$('.card-personaje9').first().prop('outerHTML')}
+                        ${$('.card-soho').first().prop('outerHTML')}
                     </div>
                 </div>
             `;

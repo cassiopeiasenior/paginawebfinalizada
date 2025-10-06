@@ -15,10 +15,21 @@
 <body>
     <div class="container">
 
-        <div style="text-align: center; margin: 20px 0;">
-            <a href="index_spanish.html" class="back-to-home">
-                <span class="home-icon">🏠</span>
-            </a>
+        <!-- Header con botón de inicio e instrucciones -->
+        <div class="header-container" style="display: flex; justify-content: space-between; align-items: center; margin: 20px 0; gap: 20px;">
+            <!-- Botón de inicio a la izquierda -->
+            <div style="flex-shrink: 0;">
+                <a href="index_spanish.html" class="back-to-home">
+                    <span class="home-icon">🏠</span>
+                </a>
+            </div>
+            
+            <!-- Instrucciones a la derecha -->
+            <div class="instructions-box" style="flex: 1; background: rgba(26, 26, 46, 0.85); padding: 15px 25px; border-radius: 15px; border: 2px solid rgba(255, 204, 0, 0.5); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);">
+                <p style="margin: 0; color: #ffffff; font-size: 16px; line-height: 1.5; text-align: center;">
+                    <strong style="color: #ffcc00;">📌 Instrucciones:</strong> Haz clic en la flashcard para que gire. Cuando gire, oprime <strong style="color: #ffcc00;">"Abrir"</strong> para encontrar el audio de la presentación del personaje, su presentación en lenguaje de señas colombiano y su respectivo papercraft.
+                </p>
+            </div>
         </div>
 
         <div id="theCarousel" class="carousel slide" data-ride="carousel" data-interval="4000">
@@ -327,7 +338,7 @@
                         </div>
 
                         <!-- FLASHCARD SOHO -->
-                        <div class="card card-personaje9">
+                        <div class="card card-soho">
                             <div class="face front">
                                 <img src="assets/flashcards/personajes/imgsoho.png" alt="SOHO" class="static-img">
                                 <video autoplay loop muted class="gif-img">
@@ -347,7 +358,7 @@
                                     se presenta el
                                     peligro; no hay de qué preocuparse ¡SOHO puede verlo todo!
                                 </p>
-                                <div class="circulos-container" id="circulos-personaje9">
+                                <div class="circulos-container" id="circulos-soho">
                                     <button class="circulo" aria-label="Audio"
                                         data-hover-audio="assets/flashcards/audio/audioraudio.mp3"></button>
                                     <button class="circulo" aria-label="Lenguaje de señas"
@@ -355,7 +366,7 @@
                                     <button class="circulo" aria-label="Papercraft"
                                         data-hover-audio="assets/flashcards/audio/audiopapercraft.mp3"></button>
                                 </div>
-                                <button class="btn-abrir" data-target="circulos-personaje9"
+                                <button class="btn-abrir" data-target="circulos-soho"
                                     data-hover-audio="assets/flashcards/audio/audioabrir.mp3">Abrir</button>
                             </div>
                         </div>
@@ -382,9 +393,7 @@
         <div class="modal-content-lsenas">
             <span class="close-lsenas">&times;</span>
             <h2 id="modalTitle"></h2>
-            <div class="video-container-lsenas" id="videoContainerLsenas">
-                <!-- Aquí se cargará dinámicamente el video o iframe -->
-            </div>
+            <div class="video-container-lsenas" id="videoContainerLsenas"></div>
         </div>
     </div>
 
@@ -394,7 +403,7 @@
 
     <script>
         // ========================
-        // AUDIO HOVER (cuando paso el mouse)
+        // AUDIO HOVER
         // ========================
         function playHoverAudio(audioPath) {
             if (!audioPath) return;
@@ -432,7 +441,7 @@
         });
 
         // ========================
-        // Configuración del carrusel según dispositivo
+        // Configuración del carrusel
         // ========================
         if (window.innerWidth <= 768) {
             $('#theCarousel').carousel({ interval: false, pause: "hover" });
@@ -473,11 +482,11 @@
             gaia: "assets/flashcards/descripcion/gaiaespanol.m4a",
             deneb: "assets/flashcards/descripcion/denebespanol.m4a",
             sombra: "assets/flashcards/descripcion/sombraespanol.m4a",
-            personaje9: "assets/flashcards/descripcion/sohoespanol.m4a"
+            soho: "assets/flashcards/descripcion/sohoespanol.m4a"
         };
 
         // ========================
-        // FUNCIÓN PARA EXTRAER ID DE YOUTUBE
+        // FUNCIONES DE YOUTUBE
         // ========================
         function extractYouTubeID(url) {
             const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
@@ -485,32 +494,26 @@
             return (match && match[2].length === 11) ? match[2] : null;
         }
 
-        // ========================
-        // FUNCIÓN PARA DETERMINAR SI ES URL DE YOUTUBE
-        // ========================
         function isYouTubeURL(url) {
             return url.includes('youtube.com') || url.includes('youtu.be');
         }
 
         // ========================
-        // VIDEOS LENGUAJE DE SEÑAS - ACTUALIZADOS PARA YOUTUBE
+        // VIDEOS LENGUAJE DE SEÑAS
         // ========================
         const videosLenguajeSenas = {
-            // IMPORTANTE: Reemplaza estas URLs con tus URLs reales de YouTube
-            // Puedes usar URLs completas de YouTube o IDs directamente
-            ilari: "https://www.youtube.com/watch?v=TU_VIDEO_ID_ILARI",
-            fiba: "https://www.youtube.com/watch?v=TU_VIDEO_ID_FIBA",
-            orion: "https://www.youtube.com/watch?v=TU_VIDEO_ID_ORION",
-            nerea: "https://www.youtube.com/watch?v=TU_VIDEO_ID_NEREA",
-            cassia: "https://www.youtube.com/watch?v=TU_VIDEO_ID_CASSIA",
-            gaia: "https://www.youtube.com/watch?v=TU_VIDEO_ID_GAIA",
-            deneb: "https://www.youtube.com/watch?v=TU_VIDEO_ID_DENEB"
-            
-            // ALTERNATIVA: También puedes usar solo el ID del video:
-            // ilari: "dQw4w9WgXcQ",
-            // O videos locales (el código detectará automáticamente):
-            // ilari: "assets/flashcards/lenguajesenas/ilari-lsenas.mp4",
+            ilari: "https://www.youtube.com/watch?v=uh4BpFyp5R4",
+            fiba: "https://www.youtube.com/watch?v=uqNHtVn6ANU",
+            orion: "https://www.youtube.com/watch?v=YOUR_VIDEO_ID_ORION",
+            nerea: "https://www.youtube.com/watch?v=YOUR_VIDEO_ID_NEREA",
+            cassia: "https://www.youtube.com/watch?v=YOUR_VIDEO_ID_CASSIA",
+            gaia: "https://www.youtube.com/watch?v=YOUR_VIDEO_ID_GAIA",
+            deneb: "https://www.youtube.com/watch?v=-8p-9mbBBcQ",
+            sombra: "https://www.youtube.com/watch?v=BY6LxUi7FiE",
+            soho: "https://www.youtube.com/watch?v=z3avTDlCBPI"
         };
+
+        // IMPORTANTE: No hay objetos enlacesExternos. Todos los personajes usan el modal con videos embebidos.
 
         const nombresPersonajes = {
             ilari: "Ilari - Lenguaje de Señas",
@@ -519,7 +522,9 @@
             nerea: "Nerea - Lenguaje de Señas",
             cassia: "Cassia - Lenguaje de Señas",
             gaia: "Gaia - Lenguaje de Señas",
-            deneb: "Deneb - Lenguaje de Señas"
+            deneb: "Deneb - Lenguaje de Señas",
+            sombra: "Sombra Solar - Lenguaje de Señas",
+            soho: "SOHO - Lenguaje de Señas"
         };
 
         // ========================
@@ -591,7 +596,7 @@
         function cerrarModal() {
             modal.style.display = 'none';
             const videoContainer = document.getElementById('videoContainerLsenas');
-            videoContainer.innerHTML = ''; // Limpiar contenido al cerrar
+            videoContainer.innerHTML = '';
         }
 
         closeBtn.onclick = cerrarModal;
@@ -628,15 +633,8 @@
                             audio.play().catch(() => console.log(`Audio de ${personaje} no disponible`));
                         }
                         break;
-                    case 1: // Lenguaje de señas / Info
-                        if (personaje === 'sombra') {
-                            window.open('https://www.nasa.gov/feature/goddard/2016/understanding-space-weather', '_blank');
-                        } else if (personaje === 'personaje9') {
-                            window.open('https://soho.nascom.nasa.gov/', '_blank');
-                        } else {
-                            // Abrir modal para los demás personajes
-                            abrirModalLenguaje(personaje);
-                        }
+                    case 1: // Lenguaje de señas - TODOS LOS PERSONAJES USAN EL MODAL
+                        abrirModalLenguaje(personaje);
                         break;
                     case 2: // Papercraft
                         window.open(`assets/flashcards/papercraft/papercraft${personaje}.png`, '_blank');
@@ -684,7 +682,7 @@
                 </div>
                 <div class="item">
                     <div class="cards-wrapper">
-                        ${$('.card-personaje9').first().prop('outerHTML')}
+                        ${$('.card-soho').first().prop('outerHTML')}
                     </div>
                 </div>
             `;
@@ -717,4 +715,4 @@
     </script>
 </body>
 
-</html>
+</html>       
