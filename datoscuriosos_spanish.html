@@ -11,10 +11,10 @@
 <body>
     <!--
     ================================================
-    DATOS CURIOSOS ESTELARES - ESTRUCTURA HTML (17 PERSONAJES)
+    DATOS CURIOSOS ESTELARES - ESTRUCTURA HTML (18 PERSONAJES)
     ================================================
     Esta página presenta datos curiosos sobre el espacio mediante:
-    - 17 personajes interactivos en carrusel con videos
+    - 18 personajes interactivos en carrusel con videos
     - Globos de texto simplificados que aparecen al hacer hover
     - Navegación fluida entre personajes
     - Botón de regreso al portal principal
@@ -41,7 +41,7 @@
 
         <!-- Título dinámico del dato curioso actual -->
         <div class="current-topic-header">
-            <h2 class="current-topic-title" id="currentTopicTitle">Tormenta Geomagnética 2024</h2>
+            <h2 class="current-topic-title" id="currentTopicTitle">Clima Espacial</h2>
         </div>
 
         <!-- Contenedor del carrusel de personajes -->
@@ -79,7 +79,7 @@
                             <div class="bubble-arrow"></div>
                             <div class="bubble-source">
                                 <p>Tomado de:
-                                    "https://science.nasa.gov/science-research/heliophysics/how-nasa-tracked-the-most-intense-solar-storm-in-decades/"
+                                    href="https://science.nasa.gov/science-research/heliophysics/how-nasa-tracked-the-most-intense-solar-storm-in-decades/"
                                     target="_blank" rel="noopener noreferrer" class="source-link">NASA - Tormenta
                                     Solar más Intensa</a>
                                 </p>
@@ -536,33 +536,33 @@
                         </div>
                     </div>
 
-                    <!-- Personaje 18: [NOMBRE] - [TEMA] -->
-                    <div class="character-slide" data-character="nombre-personaje">
+                    <!-- Personaje 18: Gaia - Clima Espacial -->
+                    <div class="character-slide" data-character="gaia3">
                         <div class="character-container">
                             <div class="character-video">
-                                <video src="assets/datoscuriosos/vids/vidpersonaje18.mp4" autoplay muted loop
+                                <video src="assets/datoscuriosos/vids/vidgaia3.mp4" autoplay muted loop
                                     class="character-video-element">
                                     Tu navegador no soporta videos HTML5.
                                 </video>
-                                <!-- AUDIO HOVER -->
-                                <audio class="hover-audio" preload="auto">
-                                    <source src="assets/datoscuriosos/audio/personaje18.mp3" type="audio/mpeg">
-                                </audio>
                             </div>
                         </div>
                         <div class="speech-bubble">
                             <div class="bubble-content">
-                                <p>Aquí va el texto del dato curioso del personaje 18...</p>
+                                <p>El clima espacial son las erupciones energéticas del sol como radiación o liberación
+                                    de ondas y partículas cargadas al espacio. ¿Sabías que sus efectos no se quedan
+                                    únicamente flotando en el vacío?, estos llegan hasta la tierra y atacan nuestra
+                                    tecnología de alto valor, generando caídas en redes eléctricas, apagones, afectan
+                                    satélites y sistemas de comunicación.</p>
                             </div>
                             <div class="bubble-arrow"></div>
                             <div class="bubble-source">
-                                <p>Tomado de: <a href="URL_DE_LA_FUENTE" target="_blank" rel="noopener noreferrer"
-                                        class="source-link">Nombre de la Fuente</a>
+                                <p>Tomado de: <a href="https://science.nasa.gov/sun/solar-storms-and-flares/"
+                                        target="_blank" rel="noopener noreferrer" class="source-link">NASA - Tormentas
+                                        Solares y Llamaradas</a>
                                 </p>
                             </div>
                         </div>
                     </div>
-
                 </div>
 
                 <!-- Indicadores del carrusel -->
@@ -576,7 +576,7 @@
                     <span class="indicator" onclick="goToCharacter(6)"></span>
                     <span class="indicator" onclick="goToCharacter(7)"></span>
                     <span class="indicator" onclick="goToCharacter(8)"></span>
-                    <span class="indicator<span class=" indicator" onclick="goToCharacter(9)"></span>
+                    <span class="indicator" onclick="goToCharacter(9)"></span>
                     <span class="indicator" onclick="goToCharacter(10)"></span>
                     <span class="indicator" onclick="goToCharacter(11)"></span>
                     <span class="indicator" onclick="goToCharacter(12)"></span>
@@ -622,7 +622,7 @@
             "Manchas Solares",
             "Viento Solar",
             "Aves y Tormentas Geomagnéticas",
-            "TÍTULO DEL NUEVO DATO CURIOSO"
+            "Clima Espacial"
         ];
 
         function updateCurrentTopic(index) {
