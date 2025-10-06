@@ -179,10 +179,10 @@
                 <button class="close-btn" onclick="closeProjectModal()">×</button>
             </div>
             <div class="modal-body">
-                <p>[Espacio reservado para contenido - Próximamente se agregará información sobre cómo aplicar nuestro
-                    proyecto. Esta
-                    sección incluirá aplicaciones prácticas, guías de implementación y recursos para educadores y
-                    estudiantes.]</p>
+                <!-- Galería de imágenes -->
+                <div class="applications-gallery" id="applicationsGallery">
+                    <!-- Las imágenes se cargarán dinámicamente aquí -->
+                </div>
             </div>
         </div>
     </div>
@@ -769,6 +769,93 @@
                 }
             });
         }
+
+        // ========================
+        // GALERÍA DE APLICACIONES
+        // ========================
+
+        // Configuración de imágenes de aplicaciones
+        const applicationsData = [
+            { img: "assets/aplicaciones/aplicacion1.jpeg" },
+            { img: "assets/aplicaciones/aplicacion2.jpeg" },
+            { img: "assets/aplicaciones/aplicacion3.jpeg" },
+            { img: "assets/aplicaciones/aplicacion4.jpeg" },
+            { img: "assets/aplicaciones/aplicacion5.png" },
+            { img: "assets/aplicaciones/aplicacion6.png" }
+            // Agrega más imágenes aquí siguiendo el mismo formato
+        ];
+
+        // Cargar galería al abrir el modal
+        function loadApplicationsGallery() {
+            const gallery = document.getElementById('applicationsGallery');
+            if (!gallery) return;
+
+            gallery.innerHTML = ''; // Limpiar contenido previo
+
+            applicationsData.forEach((app, index) => {
+                const item = document.createElement('div');
+                item.className = 'application-item';
+                item.onclick = () => openImageViewer(app.img, app.caption);
+
+                item.innerHTML = `
+            <img src="${app.img}" alt="${app.caption}" loading="lazy">
+            <div class="application-caption">${app.caption || ''}</div>
+        `;
+
+                gallery.appendChild(item);
+            });
+        }
+
+        // Abrir visor de imagen ampliada
+        function openImageViewer(imgSrc, caption) {
+            // Crear modal si no existe
+            let modal = document.getElementById('imageViewerModal');
+            if (!modal) {
+                modal = document.createElement('div');
+                modal.id = 'imageViewerModal';
+                modal.className = 'image-viewer-modal';
+                modal.innerHTML = `
+            <div class="image-viewer-content">
+                <button class="image-viewer-close" onclick="closeImageViewer()">×</button>
+                <img id="viewerImage" src="" alt="">
+            </div>
+        `;
+                document.body.appendChild(modal);
+
+                // Cerrar al hacer clic fuera de la imagen
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        closeImageViewer();
+                    }
+                });
+            }
+
+            const img = document.getElementById('viewerImage');
+            img.src = imgSrc;
+            img.alt = caption;
+
+            modal.classList.add('show');
+        }
+
+        // Cerrar visor de imagen
+        function closeImageViewer() {
+            const modal = document.getElementById('imageViewerModal');
+            if (modal) {
+                modal.classList.remove('show');
+            }
+        }
+
+        // Modificar la función openProjectModal existente
+        const originalOpenProjectModal = window.openProjectModal;
+        window.openProjectModal = function () {
+            originalOpenProjectModal();
+            loadApplicationsGallery();
+        };
+
+        // Hacer funciones globales
+        window.loadApplicationsGallery = loadApplicationsGallery;
+        window.openImageViewer = openImageViewer;
+        window.closeImageViewer = closeImageViewer;
 
         window.openVocabModal = openVocabModal;
         window.closeVocabModal = closeVocabModal;
