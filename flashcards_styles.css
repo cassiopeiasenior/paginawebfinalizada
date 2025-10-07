@@ -13,48 +13,48 @@ body {
 /* ===========================
    CARRUSEL Y LAYOUT
    =========================== */
-.carousel { 
-    margin: 0 auto; 
-    max-width: 1260px; 
+.carousel {
+    margin: 0 auto;
+    max-width: 1260px;
 }
 
-.carousel-indicators { 
-    bottom: -40px; 
+.carousel-indicators {
+    bottom: -40px;
 }
 
-.carousel-indicators li { 
-    width: 12px; 
-    height: 12px; 
-    border-radius: 50%; 
-    border: 2px solid #fff; 
-    background: transparent; 
-    margin: 4px; 
+.carousel-indicators li {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    background: transparent;
+    margin: 4px;
 }
 
-.carousel-indicators .active { 
-    background: #fff; 
-    border-color: #fff; 
+.carousel-indicators .active {
+    background: #fff;
+    border-color: #fff;
 }
 
-.carousel-control.left, 
-.carousel-control.right { 
-    width: 50px; 
+.carousel-control.left,
+.carousel-control.right {
+    width: 50px;
 }
 
-.carousel-control .glyphicon { 
-    font-size: 22px; 
-    color: #fff; 
+.carousel-control .glyphicon {
+    font-size: 22px;
+    color: #fff;
 }
 
 /* Layout de slides */
-.carousel-inner .item { 
-    padding: 20px 0; 
+.carousel-inner .item {
+    padding: 20px 0;
 }
 
-.cards-wrapper { 
-    display: flex; 
-    justify-content: space-between; 
-    gap: 20px; 
+.cards-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
 }
 
 /* ===========================
@@ -75,7 +75,7 @@ body {
 /* Cada "face" ocupa todo el contenedor */
 .card .face {
     position: absolute;
-    width: 100%; 
+    width: 100%;
     height: 100%;
     backface-visibility: hidden;
     border-radius: 10px;
@@ -84,27 +84,27 @@ body {
 }
 
 /* Front / back transform para flip */
-.card .front { 
-    transform: rotateY(0deg); 
+.card .front {
+    transform: rotateY(0deg);
 }
 
-.card .back { 
-    transform: rotateY(180deg); 
-    background: rgba(3,35,54,0.95); 
-    padding: 18px; 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: space-between; 
-    text-align: center; 
+.card .back {
+    transform: rotateY(180deg);
+    background: rgba(3, 35, 54, 0.95);
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
 }
 
 /* Flip */
-.card.flip .front { 
-    transform: rotateY(180deg); 
+.card.flip .front {
+    transform: rotateY(180deg);
 }
 
-.card.flip .back { 
-    transform: rotateY(360deg); 
+.card.flip .back {
+    transform: rotateY(360deg);
 }
 
 /* ===========================
@@ -114,32 +114,32 @@ body {
 .card .front img,
 .card .front video {
     position: absolute;
-    top: 0; 
+    top: 0;
     left: 0;
-    width: 100%; 
+    width: 100%;
     height: 100%;
     object-fit: cover;
     z-index: 0;
 }
 
 /* Técnica static -> gif (ej. Ilari) */
-.card .front .static-img { 
-    display: block; 
-    z-index: 0; 
+.card .front .static-img {
+    display: block;
+    z-index: 0;
 }
 
-.card .front .gif-img { 
-    display: none; 
-    z-index: 0; 
+.card .front .gif-img {
+    display: none;
+    z-index: 0;
 }
 
 /* Al pasar el mouse por la tarjeta, swap static -> gif */
-.card:hover .front .static-img { 
-    display: none; 
+.card:hover .front .static-img {
+    display: none;
 }
 
-.card:hover .front .gif-img { 
-    display: block; 
+.card:hover .front .gif-img {
+    display: block;
 }
 
 /* ===========================
@@ -149,12 +149,13 @@ body {
     position: absolute;
     bottom: 0;
     width: 100%;
-    background: rgba(0,0,0,0.65);
+    background: rgba(0, 0, 0, 0.65);
     color: #fff;
     padding: 12px;
     text-align: center;
     z-index: 3;
-    margin: 0; /* Eliminar margen por defecto */
+    margin: 0;
+    /* Eliminar margen por defecto */
 }
 
 /* ===========================
@@ -168,7 +169,7 @@ body {
 
 .card-ilari .back {
     background: linear-gradient(to top, rgba(3, 83, 0, 0.7), rgba(3, 54, 3, 0.95)),
-                url("assets/flashcards/trasera/imgtraserailari.jpg") center/cover no-repeat;
+        url("assets/flashcards/trasera/imgtraserailari.jpg") center/cover no-repeat;
     color: #fff;
 }
 
@@ -179,7 +180,7 @@ body {
 
 .card-fiba .back {
     background: linear-gradient(to top, rgba(3, 83, 0, 0.7), rgba(3, 54, 3, 0.95)),
-                url("assets/flashcards/trasera/imgtraserailari.jpg") center/cover no-repeat;
+        url("assets/flashcards/trasera/imgtraserailari.jpg") center/cover no-repeat;
     color: #fff;
 }
 
@@ -190,7 +191,7 @@ body {
 
 .card-orion .back {
     background: linear-gradient(to top, rgba(20, 20, 80, 0.7), rgba(10, 10, 50, 0.7)),
-                url("assets/flashcards/trasera/imgtraseraorion.jpg") center/cover no-repeat;
+        url("assets/flashcards/trasera/imgtraseraorion.jpg") center/cover no-repeat;
     color: #fff;
 }
 
@@ -201,7 +202,7 @@ body {
 
 .card-nerea .back {
     background: linear-gradient(to top, rgba(0, 80, 80, 0.7), rgba(0, 60, 60, 0.7)),
-                url("assets/flashcards/trasera/imgtraseranerea.jpeg") center/cover no-repeat;
+        url("assets/flashcards/trasera/imgtraseranerea.jpeg") center/cover no-repeat;
     color: #fff;
 }
 
@@ -212,7 +213,7 @@ body {
 
 .card-cassia .back {
     background: linear-gradient(to top, rgba(34, 139, 34, 0.6), rgba(0, 100, 0, 0.6)),
-                url("assets/flashcards/trasera/imgtraseracassia.jpeg") center/cover no-repeat;
+        url("assets/flashcards/trasera/imgtraseracassia.jpeg") center/cover no-repeat;
     color: #fff;
 }
 
@@ -223,7 +224,7 @@ body {
 
 .card-gaia .back {
     background: linear-gradient(to top, rgba(139, 69, 19, 0.5), rgba(101, 67, 33, 0.5)),
-                url("assets/flashcards/trasera/imgtraseragaia.jpg") center/cover no-repeat;
+        url("assets/flashcards/trasera/imgtraseragaia.jpg") center/cover no-repeat;
     color: #fff;
 }
 
@@ -234,7 +235,7 @@ body {
 
 .card-deneb .back {
     background: linear-gradient(to top, rgba(75, 0, 130, 0.6), rgba(25, 25, 112, 0.6)),
-                url("assets/flashcards/trasera/imgtraseradeneb.jpeg") center/cover no-repeat;
+        url("assets/flashcards/trasera/imgtraseradeneb.jpeg") center/cover no-repeat;
     color: #fff;
 }
 
@@ -246,7 +247,7 @@ body {
 
 .card-sombra .back {
     background: linear-gradient(to top, rgba(128, 0, 0, 0.7), rgba(0, 0, 0, 0.95)),
-                url("assets/flashcards/trasera/imgtraserasombrasolar.jpeg") center/cover no-repeat;
+        url("assets/flashcards/trasera/imgtraserasombrasolar.jpeg") center/cover no-repeat;
     color: #fff;
 }
 
@@ -257,7 +258,7 @@ body {
 
 .card-soho .back {
     background: linear-gradient(to top, rgba(128, 0, 128, 0.3), rgba(113, 88, 113, 0.5)),
-                url("assets/flashcards/trasera/imgtraserasoho.jpeg") center/cover no-repeat;
+        url("assets/flashcards/trasera/imgtraserasoho.jpeg") center/cover no-repeat;
     color: #fff;
 }
 
@@ -265,32 +266,36 @@ body {
    CÍRCULOS (BOTONES) - OCULTOS POR DEFECTO
    =========================== */
 .circulos-container {
-    display: none;         /* oculto por defecto */
+    display: none;
+    /* oculto por defecto */
     justify-content: center;
     gap: 10px;
     margin: 15px 0;
 }
 
 .circulos-container.visible {
-    display: flex;         /* visible cuando se añade .visible */
+    display: flex;
+    /* visible cuando se añade .visible */
 }
 
 /* Estilo de los botones-círculo */
 .circulo {
-    width: 40px; 
+    width: 40px;
     height: 40px;
     border-radius: 50%;
     border: 2px solid #ffffff;
     cursor: pointer;
-    transition: all 0.3s ease; /* Transición suave para hover */
+    transition: all 0.3s ease;
+    /* Transición suave para hover */
     position: relative;
     overflow: hidden;
 }
 
 /* Efectos hover para círculos */
-.circulo:hover { 
-    background-color: #b300b3; 
-    transform: translateY(-3px) scale(1.05); /* Efecto más dramático */
+.circulo:hover {
+    background-color: #b300b3;
+    transform: translateY(-3px) scale(1.05);
+    /* Efecto más dramático */
     border-color: #ffcc00;
     box-shadow: 0 5px 15px rgba(179, 0, 179, 0.4);
 }
@@ -300,9 +305,7 @@ body {
     background: url("assets/flashcards/icons/sonido.png") center/cover no-repeat;
 }
 
-
-
-.circulo:nth-child(3) {
+.circulo:nth-child(2) {
     background: url("assets/flashcards/icons/papercraft.png") center/cover no-repeat;
 }
 
@@ -311,8 +314,7 @@ body {
     background: #ffffff url("assets/flashcards/icons/sonido.png") center/cover no-repeat;
 }
 
-
-.circulo:hover:nth-child(3) {
+.circulo:hover:nth-child(2) {
     background: #ffffff url("assets/flashcards/icons/papercraft.png") center/cover no-repeat;
 }
 
@@ -327,14 +329,15 @@ body {
     border-radius: 25px;
     border: none;
     cursor: pointer;
-    transition: all 0.3s ease; /* Transición suave para hover */
+    transition: all 0.3s ease;
+    /* Transición suave para hover */
     position: relative;
     overflow: hidden;
 }
 
 /* Efectos hover para botón abrir */
-.btn-abrir:hover { 
-    background: #ffaa00; 
+.btn-abrir:hover {
+    background: #ffaa00;
     transform: translateY(-2px) scale(1.02);
     box-shadow: 0 4px 12px rgba(255, 170, 0, 0.4);
 }
@@ -352,8 +355,13 @@ body {
 }
 
 @keyframes shine {
-    0% { left: -100%; }
-    100% { left: 100%; }
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
 }
 
 /* ===========================
@@ -371,10 +379,6 @@ body {
 
 .circulos-container.visible .circulo:nth-child(2) {
     animation-delay: 0.2s;
-}
-
-.circulos-container.visible .circulo:nth-child(3) {
-    animation-delay: 0.3s;
 }
 
 @keyframes bounceIn {
@@ -398,7 +402,8 @@ body {
 }
 
 .card:hover {
-    transform: translateY(-5px); /* Elevación sutil al hacer hover */
+    transform: translateY(-5px);
+    /* Elevación sutil al hacer hover */
 }
 
 /* ===========================
@@ -431,10 +436,13 @@ body {
 }
 
 @keyframes pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(1);
         opacity: 0.8;
     }
+
     50% {
         transform: scale(1.2);
         opacity: 1;
@@ -445,36 +453,36 @@ body {
    RESPONSIVE
    =========================== */
 @media (max-width: 900px) {
-    .cards-wrapper { 
-        justify-content: center; 
+    .cards-wrapper {
+        justify-content: center;
     }
-    
-    .card { 
-        max-width: 85%; 
+
+    .card {
+        max-width: 85%;
     }
 }
 
 @media (max-width: 520px) {
-    .card { 
-        max-width: 95%; 
-        height: 460px; 
+    .card {
+        max-width: 95%;
+        height: 460px;
     }
-    
-    .carousel-control.left, 
-    .carousel-control.right { 
-        display: none; 
+
+    .carousel-control.left,
+    .carousel-control.right {
+        display: none;
     }
-    
-    .carousel-indicators { 
-        bottom: -50px; 
+
+    .carousel-indicators {
+        bottom: -50px;
     }
-    
+
     /* Ajustar tamaño de círculos en móvil */
     .circulo {
         width: 35px;
         height: 35px;
     }
-    
+
     /* Ajustar padding del botón en móvil */
     .btn-abrir {
         padding: 8px 16px;
@@ -499,11 +507,11 @@ body {
         background: rgba(0, 0, 0, 0.9) !important;
         border: 2px solid #fff;
     }
-    
+
     .circulo {
         border: 3px solid #fff;
     }
-    
+
     .btn-abrir {
         border: 2px solid #000;
     }
@@ -511,24 +519,25 @@ body {
 
 /* Respetar preferencias de movimiento reducido */
 @media (prefers-reduced-motion: reduce) {
+
     .card .face,
     .circulo,
     .btn-abrir {
         transition: none;
     }
-    
+
     .card:hover {
         transform: none;
     }
-    
+
     .circulo:hover {
         transform: none;
     }
-    
+
     .btn-abrir:hover {
         transform: none;
     }
-    
+
     /* Animations disabled for reduced motion preference */
     /* No nested @keyframes allowed in CSS */
 }
@@ -544,13 +553,14 @@ body {
         gap: 15px !important;
         flex-wrap: nowrap !important;
     }
+
     .card {
         max-width: 48% !important;
         min-width: 48% !important;
         flex: 0 0 48% !important;
         height: 480px !important;
     }
-    
+
     /* SOHO solo */
     .item:last-child .card:only-child {
         max-width: 70% !important;
@@ -565,7 +575,7 @@ body {
         min-width: 47% !important;
         height: 440px !important;
     }
-    
+
     .item:last-child .card:only-child {
         max-width: 85% !important;
         min-width: 85% !important;
@@ -651,8 +661,13 @@ body {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes slideDown {
@@ -660,6 +675,7 @@ body {
         transform: translateY(-50px);
         opacity: 0;
     }
+
     to {
         transform: translateY(0);
         opacity: 1;
@@ -674,12 +690,12 @@ body {
         margin: 5% auto;
         padding: 15px;
     }
-    
+
     .modal-content-lsenas h2 {
         font-size: 1.5em;
         margin-bottom: 10px;
     }
-    
+
     .close-lsenas {
         font-size: 30px;
         top: 5px;
@@ -704,7 +720,7 @@ body {
     font-size: 18px;
     border: 3px solid rgba(255, 204, 0, 0.4);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3),
-                0 0 20px rgba(255, 204, 0, 0.2);
+        0 0 20px rgba(255, 204, 0, 0.2);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     overflow: hidden;
@@ -729,7 +745,7 @@ body {
     transform: translateY(-3px) scale(1.05);
     border-color: #ffcc00;
     box-shadow: 0 8px 30px rgba(255, 204, 0, 0.4),
-                0 0 40px rgba(255, 204, 0, 0.3);
+        0 0 40px rgba(255, 204, 0, 0.3);
     color: #ffcc00;
 }
 
@@ -753,11 +769,11 @@ body {
         padding: 12px 28px;
         font-size: 16px;
     }
-    
+
     .back-to-home .home-icon {
         font-size: 20px;
     }
-    
+
     .back-to-home .home-text {
         font-size: 14px;
     }
@@ -768,7 +784,7 @@ body {
         padding: 10px 24px;
         font-size: 14px;
     }
-    
+
     .back-to-home .home-icon {
         font-size: 18px;
     }
