@@ -309,6 +309,17 @@ body {
     background: url("assets/flashcards/icons/papercraft.png") center/cover no-repeat;
 }
 
+/* DESCOMENTAR ESTAS LÍNEAS SI ACTIVAS LENGUAJE DE SEÑAS (3 círculos) */
+/*
+.circulo:nth-child(2) {
+    background: url("assets/flashcards/icons/lenguajesenas.png") center/cover no-repeat;
+}
+
+.circulo:nth-child(3) {
+    background: url("assets/flashcards/icons/papercraft.png") center/cover no-repeat;
+}
+*/
+
 /* Mantener iconos visibles al hacer hover */
 .circulo:hover:nth-child(1) {
     background: #ffffff url("assets/flashcards/icons/sonido.png") center/cover no-repeat;
@@ -318,6 +329,16 @@ body {
     background: #ffffff url("assets/flashcards/icons/papercraft.png") center/cover no-repeat;
 }
 
+/* DESCOMENTAR ESTAS LÍNEAS SI ACTIVAS LENGUAJE DE SEÑAS (3 círculos) */
+/*
+.circulo:hover:nth-child(2) {
+    background: #ffffff url("assets/flashcards/icons/lenguajesenas.png") center/cover no-repeat;
+}
+
+.circulo:hover:nth-child(3) {
+    background: #ffffff url("assets/flashcards/icons/papercraft.png") center/cover no-repeat;
+}
+*/
 /* ===========================
    BOTÓN ABRIR (EN LA BACK)
    =========================== */
